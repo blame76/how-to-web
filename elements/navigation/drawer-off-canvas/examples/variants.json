@@ -1,0 +1,26 @@
+{
+  "id": "drawer-off-canvas",
+  "kind": "organism",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "navigation-drawer",
+      "label": "Navigation Drawer",
+      "example": null
+    },
+    {
+      "id": "filter-drawer",
+      "label": "Filter Drawer",
+      "example": null
+    },
+    {
+      "id": "details-drawer",
+      "label": "Details Drawer",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
