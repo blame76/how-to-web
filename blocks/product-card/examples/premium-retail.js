@@ -79,7 +79,7 @@ function reportHeight(){
     window.parent.postMessage({
       type:'how-to-web:example-height',
       height:document.documentElement.scrollHeight
-    },window.location.origin);
+    },'*');
   });
 }
 
