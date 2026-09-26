@@ -1,0 +1,26 @@
+{
+  "id": "event-card",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "calendar-led",
+      "label": "Calendar Led",
+      "example": null
+    },
+    {
+      "id": "image-led",
+      "label": "Image Led",
+      "example": null
+    },
+    {
+      "id": "compact",
+      "label": "Compact",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
