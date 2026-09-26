@@ -1,0 +1,26 @@
+{
+  "id": "alert-banner",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "informational",
+      "label": "Informational",
+      "example": null
+    },
+    {
+      "id": "urgent",
+      "label": "Urgent",
+      "example": null
+    },
+    {
+      "id": "outcome",
+      "label": "Outcome",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
