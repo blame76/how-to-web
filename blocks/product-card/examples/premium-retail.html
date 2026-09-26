@@ -10,9 +10,46 @@
 <body>
 <main class="example-shell">
   <p class="example-label">Beispiel · Fashion / Streetwear</p>
+
   <div data-product-card aria-live="off">
-    <p class="loading">Beispiel wird aus <code>premium-retail.json</code> geladen …</p>
+    <article class="product-card" aria-labelledby="product-title">
+      <div class="product-card__media" data-product-media>
+        <picture>
+          <source type="image/avif" srcset="../assets/generated/hoodie-studio-front-480.avif 480w, ../assets/generated/hoodie-studio-front-960.avif 960w, ../assets/generated/hoodie-studio-front-1440.avif 1440w, ../assets/generated/hoodie-studio-front-1920.avif 1920w" sizes="(max-width: 440px) calc(100vw - 16px), 400px">
+          <source type="image/webp" srcset="../assets/generated/hoodie-studio-front-480.webp 480w, ../assets/generated/hoodie-studio-front-960.webp 960w, ../assets/generated/hoodie-studio-front-1440.webp 1440w, ../assets/generated/hoodie-studio-front-1920.webp 1920w" sizes="(max-width: 440px) calc(100vw - 16px), 400px">
+          <img src="../assets/generated/hoodie-studio-front-960.webp" alt="Grauer Oversized-Hoodie in frontaler Studioansicht." width="1920" height="1920" data-fit="contain">
+        </picture>
+      </div>
+
+      <div class="product-card__body">
+        <p class="product-card__brand">ZERO EIGHT FORTUNE</p>
+        <h2 class="product-card__title" id="product-title">Lunar Oversized Hoodie</h2>
+        <p class="product-card__price">89,00 €</p>
+        <p class="product-card__rating" aria-label="4,8 von 5 · 127 Bewertungen">4,8 von 5 · 127 Bewertungen</p>
+        <p class="product-card__variation">Moon Grey · Oversized · XS–XL</p>
+
+        <ul class="product-card__thumbnails" aria-label="Produktansichten">
+          <li>
+            <button class="product-card__thumbnail" type="button" data-static-image="studio" aria-pressed="true" aria-label="Studio anzeigen">
+              <img src="../assets/generated/hoodie-studio-front-480.webp" alt="" width="96" height="96">
+            </button>
+          </li>
+          <li>
+            <button class="product-card__thumbnail" type="button" data-static-image="moon" aria-pressed="false" aria-label="Getragen, Rückseite anzeigen">
+              <img src="../assets/generated/hoodie-moon-back-480.webp" alt="" width="96" height="96">
+            </button>
+          </li>
+        </ul>
+
+        <a class="product-card__action" href="https://example.com/products/lunar-oversized-hoodie">
+          Produkt ansehen<span class="visually-hidden">: Lunar Oversized Hoodie</span>
+        </a>
+
+        <p class="product-card__status">Demo: 2 von empfohlenen 3+ Ansichten vorhanden.</p>
+      </div>
+    </article>
   </div>
+
   <p class="example-note">Demo-Inhalt. Produkt, Preis und Bewertungen sind fiktiv; die Bildassets sind Bestandteil des Showcases.</p>
 </main>
 </body>
