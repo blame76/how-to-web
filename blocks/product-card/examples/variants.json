@@ -1,0 +1,26 @@
+{
+  "id": "product-card",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "premium-retail",
+      "label": "Premium Retail",
+      "example": null
+    },
+    {
+      "id": "technical-retail",
+      "label": "Technical Retail",
+      "example": null
+    },
+    {
+      "id": "compact",
+      "label": "Compact",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
