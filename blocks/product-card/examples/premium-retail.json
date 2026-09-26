@@ -1,0 +1,57 @@
+{
+  "id": "premium-retail",
+  "label": "Premium Retail · Lunar Hoodie",
+  "status": "prototype",
+  "demo_content": true,
+  "context": "Fashion / Streetwear product listing",
+  "product": {
+    "brand": "ZERO EIGHT FORTUNE",
+    "name": "Lunar Oversized Hoodie",
+    "price": {
+      "amount": "89,00",
+      "currency": "EUR",
+      "display": "89,00 €"
+    },
+    "rating": {
+      "value": 4.8,
+      "count": 127,
+      "display": "4,8 von 5 · 127 Bewertungen",
+      "fictional": true
+    },
+    "variation_cue": "Moon Grey · Oversized · XS–XL",
+    "product_url": "#product-demo",
+    "images": [
+      {
+        "id": "studio-front",
+        "label": "Studio",
+        "alt": "Grauer Oversized-Hoodie in frontaler Studioansicht.",
+        "fit": "contain",
+        "width": 1920,
+        "height": 1920,
+        "avif_srcset": "../assets/generated/hoodie-studio-front-480.avif 480w, ../assets/generated/hoodie-studio-front-960.avif 960w, ../assets/generated/hoodie-studio-front-1440.avif 1440w, ../assets/generated/hoodie-studio-front-1920.avif 1920w",
+        "webp_srcset": "../assets/generated/hoodie-studio-front-480.webp 480w, ../assets/generated/hoodie-studio-front-960.webp 960w, ../assets/generated/hoodie-studio-front-1440.webp 1440w, ../assets/generated/hoodie-studio-front-1920.webp 1920w",
+        "fallback": "../assets/generated/hoodie-studio-front-960.webp"
+      },
+      {
+        "id": "moon-back",
+        "label": "Getragen · Rückseite",
+        "alt": "Person im grauen Oversized-Hoodie von hinten auf dem Mond mit Blick auf die Erde.",
+        "fit": "cover",
+        "width": 1920,
+        "height": 1920,
+        "avif_srcset": "../assets/generated/hoodie-moon-back-480.avif 480w, ../assets/generated/hoodie-moon-back-960.avif 960w, ../assets/generated/hoodie-moon-back-1440.avif 1440w, ../assets/generated/hoodie-moon-back-1920.avif 1920w",
+        "webp_srcset": "../assets/generated/hoodie-moon-back-480.webp 480w, ../assets/generated/hoodie-moon-back-960.webp 960w, ../assets/generated/hoodie-moon-back-1440.webp 1440w, ../assets/generated/hoodie-moon-back-1920.webp 1920w",
+        "fallback": "../assets/generated/hoodie-moon-back-960.webp"
+      }
+    ]
+  },
+  "decisions": {
+    "whole_card_clickable": false,
+    "quick_add": false,
+    "wishlist": false,
+    "sale_badge": false,
+    "thumbnail_switcher": true,
+    "image_count_target": 3,
+    "current_image_count": 2
+  }
+}
