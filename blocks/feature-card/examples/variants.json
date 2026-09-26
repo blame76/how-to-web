@@ -1,0 +1,26 @@
+{
+  "id": "feature-card",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "icon-led",
+      "label": "Icon Led",
+      "example": null
+    },
+    {
+      "id": "image-led",
+      "label": "Image Led",
+      "example": null
+    },
+    {
+      "id": "text-only",
+      "label": "Text Only",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
