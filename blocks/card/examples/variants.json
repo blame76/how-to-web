@@ -1,0 +1,27 @@
+{
+  "id": "card",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "minimal",
+      "label": "Minimal",
+      "example": null
+    },
+    {
+      "id": "media-top",
+      "label": "Media Top",
+      "example": null
+    },
+    {
+      "id": "media-side",
+      "label": "Media Side",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  },
+  "machine_spec": "/specs/blocks/card.json"
+}
