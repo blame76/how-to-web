@@ -1,0 +1,26 @@
+{
+  "id": "cta-section",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "centered",
+      "label": "Centered",
+      "example": null
+    },
+    {
+      "id": "split",
+      "label": "Split",
+      "example": null
+    },
+    {
+      "id": "compact",
+      "label": "Compact",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
