@@ -1,0 +1,27 @@
+{
+  "id": "hero",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "statement",
+      "label": "Statement",
+      "example": null
+    },
+    {
+      "id": "media-split",
+      "label": "Media Split",
+      "example": null
+    },
+    {
+      "id": "product",
+      "label": "Product",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  },
+  "machine_spec": "/specs/blocks/hero.json"
+}
