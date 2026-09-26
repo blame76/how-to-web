@@ -1,0 +1,26 @@
+{
+  "id": "mega-menu",
+  "kind": "organism",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "grouped-links",
+      "label": "Grouped Links",
+      "example": null
+    },
+    {
+      "id": "task-based",
+      "label": "Task Based",
+      "example": null
+    },
+    {
+      "id": "featured-content",
+      "label": "Featured Content",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
