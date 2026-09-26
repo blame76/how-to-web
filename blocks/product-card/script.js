@@ -64,8 +64,8 @@ async function loadExamples(){
     const first=toolbar.querySelector('button');
     if(first) openExample(data.examples[0],first);
   }catch(error){
-    console.warn('Beispiele konnten nicht geladen werden.',error);
-    showEmpty('Beispiel-Manifest fehlt.');
+    console.warn('Beispiele konnten nicht geladen werden. Statischer Fallback bleibt sichtbar.',error);
+    currentFrame=frame.querySelector('iframe');
   }
 }
 
@@ -76,5 +76,6 @@ window.addEventListener('message',event=>{
   if(height) currentFrame.style.height=`${height}px`;
 });
 
+currentFrame=frame.querySelector('iframe');
 loadVariants();
 loadExamples();
