@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Product Card – how-to-web</title>
-  <meta name="description" content="Strukturreferenz für Product Card.">
+  <meta name="description" content="Interaktive Referenz für Produktkarten: sehen, benennen, entscheiden und selbst prüfen.">
   <link rel="stylesheet" href="./styles.css">
   <script src="./script.js" defer></script>
 </head>
@@ -13,57 +13,94 @@
   <header class="site-intro">
     <p class="eyebrow">how-to-web · block</p>
     <h1>Product Card</h1>
-    <p><strong>Was muss ich über ein Produkt auf einen Blick wissen?</strong></p>
-    <p>Diese Seite ist zunächst nur das Schwarz-Weiß-Gerüst. Die Bühne lädt später eigenständige Beispiele aus <code>examples/</code>.</p>
+    <p class="lead"><strong>Was muss ich über ein Produkt auf einen Blick wissen?</strong></p>
+    <p>Eine Produktkarte ist kein verkleinertes Produktdetail. Sie hilft Menschen zu entscheiden, ob sich ein genauerer Blick lohnt.</p>
   </header>
 
   <section aria-labelledby="live-title">
-    <h2 id="live-title">Showcase</h2>
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">01 · Erst sehen</p>
+        <h2 id="live-title">Showcase</h2>
+      </div>
+      <p>Die Beispiele laufen isoliert in der Bühne und werden aus ihrem eigenen JSON gerendert.</p>
+    </div>
     <div class="stage" data-stage>
-      <div class="stage-toolbar" data-stage-toolbar aria-label="Beispiele wechseln"></div>
+      <div class="stage-toolbar" data-stage-toolbar aria-label="Produktkarten-Beispiele wechseln"></div>
       <div class="stage-frame" data-stage-frame></div>
     </div>
-    <h3>Geplante Darstellungen</h3>
-    <ul data-variants><li>Varianten werden aus <code>examples/variants.json</code> geladen.</li></ul>
+    <p class="stage-note">Aktuell bewusst nur eine ausgearbeitete Richtung. Weitere Varianten kommen erst, wenn diese Struktur trägt.</p>
+  </section>
+
+  <section aria-labelledby="variants-title">
+    <p class="eyebrow">02 · Varianten erkennen</p>
+    <h2 id="variants-title">Auf unserer Karte</h2>
+    <ul class="variant-list" data-variants>
+      <li>Varianten werden aus <code>examples/variants.json</code> geladen.</li>
+    </ul>
   </section>
 
   <section aria-labelledby="anatomy-title">
+    <p class="eyebrow">03 · Benennen</p>
     <h2 id="anatomy-title">Anatomie</h2>
-    <ul><li><code>product-image</code></li><li><code>product-name</code></li><li><code>price</code></li><li><code>rating-or-proof</code></li><li><code>variation-cue</code></li><li><code>action</code></li></ul>
+    <div class="anatomy-grid">
+      <div class="panel"><code>product-image</code><p>Das Produkt schnell visuell erfassen.</p></div>
+      <div class="panel"><code>product-name</code><p>Eindeutige Bezeichnung, nicht Marketingnebel.</p></div>
+      <div class="panel"><code>price</code><p>Preis und relevante Preisbedingungen.</p></div>
+      <div class="panel"><code>rating-or-proof</code><p>Nur zeigen, wenn echte Daten vorhanden sind.</p></div>
+      <div class="panel"><code>variation-cue</code><p>Varianten sichtbar machen, ohne die Liste zu vervielfachen.</p></div>
+      <div class="panel"><code>action</code><p>Eine klare nächste Handlung.</p></div>
+    </div>
   </section>
 
   <section aria-labelledby="research-title">
+    <p class="eyebrow">04 · Verstehen</p>
     <h2 id="research-title">Best-Practice-Leitplanken</h2>
-    <ul><li>Product list items need enough information for fast comparison; title, price, image and relevant category attributes are critical.</li><li>For visually evaluated categories, additional thumbnails can reduce unnecessary pogo-sticking.</li><li>Variants should not create clutter that makes distinct products harder to scan.</li></ul>
-    <p><a href="./RESEARCH.md">Recherche und Quellen</a></p>
+    <ul class="research-list">
+      <li><strong>Vergleichbarkeit:</strong> Preis, Produktname/-typ, Bild, Bewertungsdaten und Varianten gehören zu den häufig entscheidenden Informationen einer Produktliste.</li>
+      <li><strong>Visuelle Produkte:</strong> Für Apparel reichen ein oder zwei Ansichten häufig nicht. Baymard empfiehlt mindestens drei zugängliche Thumbnails.</li>
+      <li><strong>Varianten:</strong> Größen/Farben desselben Produkts nicht unnötig als separate Produkte aufblasen.</li>
+      <li><strong>Bilder:</strong> Responsive Quellen mit <code>srcset</code>/<code>sizes</code> verwenden und intrinsische Maße setzen, um unnötige Transfers und Layout Shift zu vermeiden.</li>
+      <li><strong>Bedienung:</strong> Thumbnail-Controls müssen per Tastatur erreichbar, verständlich benannt und ausreichend groß sein.</li>
+    </ul>
+    <p><a href="./RESEARCH.md">Recherche, Quellen und Ableitungen öffnen</a></p>
   </section>
 
   <section aria-labelledby="decide-title">
-    <h2 id="decide-title">Was musst du entscheiden?</h2>
+    <p class="eyebrow">05 · Entscheiden</p>
+    <h2 id="decide-title">Was musst du festlegen?</h2>
     <div class="grid">
-      <div class="panel"><h3>Inhalt</h3><p>Welche Information ist Pflicht, was optional?</p></div>
-      <div class="panel"><h3>Hierarchie</h3><p>Was muss zuerst gesehen oder verstanden werden?</p></div>
-      <div class="panel"><h3>Interaktion</h3><p>Welche Aktionen oder Zustände braucht dieser Baustein wirklich?</p></div>
-      <div class="panel"><h3>Darstellung</h3><p>Welche Variante beschreibt die gewünschte Wirkung am besten?</p></div>
+      <div class="panel"><h3>Informationsdichte</h3><p>Was braucht man zum Vergleichen, bevor man die Detailseite öffnet?</p></div>
+      <div class="panel"><h3>Bildstrategie</h3><p>Studio, Detail, Rückseite, getragen, Kontext – welche Ansichten beantworten echte Fragen?</p></div>
+      <div class="panel"><h3>Varianten</h3><p>Nur anzeigen, nur andeuten oder bereits in der Karte auswählbar machen?</p></div>
+      <div class="panel"><h3>Aktion</h3><p>Produkt ansehen, Optionen wählen oder Quick Add? Die Aktion folgt dem tatsächlichen Produktmodell.</p></div>
     </div>
   </section>
 
   <section aria-labelledby="review-title">
+    <p class="eyebrow">06 · Selbst prüfen</p>
     <h2 id="review-title">Review it yourself</h2>
-    <ul>
-      <li>Verstehst du Zweck und wichtigste Information innerhalb weniger Sekunden?</li>
-      <li>Funktioniert der Baustein mit Tastatur und ohne Hover?</li>
-      <li>Bleibt die Reihenfolge auf schmalen Bildschirmen logisch?</li>
-      <li>Ist jede Aktion auch ohne Farbe oder reine Bildwirkung verständlich?</li>
-      <li>Was passiert bei langen Texten, fehlenden Bildern oder optionalen Inhalten?</li>
+    <ul class="check-list">
+      <li>Kannst du Produkt, Preis und wesentliche Unterschiede ohne Öffnen der Detailseite erfassen?</li>
+      <li>Kannst du alle Bildansichten per Tastatur wechseln und erkennst du die aktive Ansicht?</li>
+      <li>Bleibt die Karte bei 200&nbsp;% Zoom und auf schmalen Viewports verständlich?</li>
+      <li>Hat jedes interaktive Ziel mindestens 24×24 CSS-Pixel oder ausreichend Abstand?</li>
+      <li>Sind Bildgrößen reserviert und werden nur passende responsive Dateien geladen?</li>
+      <li>Erfindet die Karte keine Bewertungen, Rabatte, Verfügbarkeit oder Nachhaltigkeitsclaims?</li>
     </ul>
+    <aside class="known-gap">
+      <strong>Bekannte Lücke im aktuellen Demo:</strong>
+      Für den Hoodie liegen erst zwei freigegebene Ansichten vor. Für Apparel spricht die aktuelle Baymard-Forschung für mindestens drei.
+    </aside>
   </section>
 
   <section aria-labelledby="machine-title">
+    <p class="eyebrow">07 · Weitergeben</p>
     <h2 id="machine-title">Maschinenlesbar</h2>
     <ul>
-      <li><a href="./examples/variants.json">Geplante Beispielvarianten (JSON)</a></li>
-      <li><code>/specs/blocks/product-card.json</code> – kanonische Spec, sobald der Generator existiert</li>
+      <li><a href="./examples/premium-retail.json"><code>premium-retail.json</code></a> – Inhalt, Entscheidungen und Assets des aktuellen Beispiels</li>
+      <li><a href="./examples/variants.json"><code>variants.json</code></a> – Showcase-Varianten</li>
+      <li><code>/specs/blocks/product-card.json</code> – spätere kanonische Block-Spec</li>
     </ul>
   </section>
 </main>
