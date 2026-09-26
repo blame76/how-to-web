@@ -1,0 +1,26 @@
+{
+  "id": "article-teaser",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "editorial",
+      "label": "Editorial",
+      "example": null
+    },
+    {
+      "id": "compact",
+      "label": "Compact",
+      "example": null
+    },
+    {
+      "id": "image-led",
+      "label": "Image Led",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}

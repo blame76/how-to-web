@@ -1,0 +1,26 @@
+{
+  "id": "pricing-card",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "single-plan",
+      "label": "Single Plan",
+      "example": null
+    },
+    {
+      "id": "recommended-plan",
+      "label": "Recommended Plan",
+      "example": null
+    },
+    {
+      "id": "comparison",
+      "label": "Comparison",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}

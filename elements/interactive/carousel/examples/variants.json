@@ -1,0 +1,26 @@
+{
+  "id": "carousel",
+  "kind": "organism",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "image-slides",
+      "label": "Image Slides",
+      "example": null
+    },
+    {
+      "id": "cards",
+      "label": "Cards",
+      "example": null
+    },
+    {
+      "id": "testimonials",
+      "label": "Testimonials",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}

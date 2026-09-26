@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Card – how-to-web</title>
+  <meta name="description" content="Strukturreferenz für Card.">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="site-intro">
+    <p class="eyebrow">how-to-web · block</p>
+    <h1>Card</h1>
+    <p><strong>Was gehört wirklich zusammen?</strong></p>
+    <p>Diese Seite ist zunächst nur das Schwarz-Weiß-Gerüst. Die Bühne lädt später eigenständige Beispiele aus <code>examples/</code>.</p>
+  </header>
+
+  <section aria-labelledby="live-title">
+    <h2 id="live-title">Showcase</h2>
+    <div class="stage" data-stage>
+      <div class="stage-toolbar" data-stage-toolbar aria-label="Beispiele wechseln"></div>
+      <div class="stage-frame" data-stage-frame></div>
+    </div>
+    <h3>Geplante Darstellungen</h3>
+    <ul data-variants><li>Varianten werden aus <code>examples/variants.json</code> geladen.</li></ul>
+  </section>
+
+  <section aria-labelledby="anatomy-title">
+    <h2 id="anatomy-title">Anatomie</h2>
+    <ul><li><code>container</code></li><li><code>heading</code></li><li><code>body</code></li><li><code>action</code></li></ul>
+  </section>
+
+  <section aria-labelledby="research-title">
+    <h2 id="research-title">Best-Practice-Leitplanken</h2>
+    <ul><li>Cards should summarize one subject and remain meaningful if reordered.</li><li>Use cards for related collections, not as decoration or as substitutes for tables.</li><li>Card groups benefit from list semantics; child actions must remain understandable in context.</li></ul>
+    <p><a href="./RESEARCH.md">Recherche und Quellen</a></p>
+  </section>
+
+  <section aria-labelledby="decide-title">
+    <h2 id="decide-title">Was musst du entscheiden?</h2>
+    <div class="grid">
+      <div class="panel"><h3>Inhalt</h3><p>Welche Information ist Pflicht, was optional?</p></div>
+      <div class="panel"><h3>Hierarchie</h3><p>Was muss zuerst gesehen oder verstanden werden?</p></div>
+      <div class="panel"><h3>Interaktion</h3><p>Welche Aktionen oder Zustände braucht dieser Baustein wirklich?</p></div>
+      <div class="panel"><h3>Darstellung</h3><p>Welche Variante beschreibt die gewünschte Wirkung am besten?</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="review-title">
+    <h2 id="review-title">Review it yourself</h2>
+    <ul>
+      <li>Verstehst du Zweck und wichtigste Information innerhalb weniger Sekunden?</li>
+      <li>Funktioniert der Baustein mit Tastatur und ohne Hover?</li>
+      <li>Bleibt die Reihenfolge auf schmalen Bildschirmen logisch?</li>
+      <li>Ist jede Aktion auch ohne Farbe oder reine Bildwirkung verständlich?</li>
+      <li>Was passiert bei langen Texten, fehlenden Bildern oder optionalen Inhalten?</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="machine-title">
+    <h2 id="machine-title">Maschinenlesbar</h2>
+    <ul>
+      <li><a href="./examples/variants.json">Geplante Beispielvarianten (JSON)</a></li>
+      <li><code>/specs/blocks/card.json</code> – kanonische Spec, sobald der Generator existiert</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

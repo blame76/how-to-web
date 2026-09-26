@@ -1,0 +1,26 @@
+{
+  "id": "modal",
+  "kind": "organism",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "critical-interruption",
+      "label": "Critical Interruption",
+      "example": null
+    },
+    {
+      "id": "confirmation",
+      "label": "Confirmation",
+      "example": null
+    },
+    {
+      "id": "focused-task",
+      "label": "Focused Task",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}

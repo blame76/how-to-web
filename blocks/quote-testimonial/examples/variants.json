@@ -1,0 +1,26 @@
+{
+  "id": "quote-testimonial",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "portrait",
+      "label": "Portrait",
+      "example": null
+    },
+    {
+      "id": "text-only",
+      "label": "Text Only",
+      "example": null
+    },
+    {
+      "id": "attribution-led",
+      "label": "Attribution Led",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}

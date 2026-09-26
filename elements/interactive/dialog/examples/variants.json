@@ -1,0 +1,26 @@
+{
+  "id": "dialog",
+  "kind": "organism",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "information",
+      "label": "Information",
+      "example": null
+    },
+    {
+      "id": "form",
+      "label": "Form",
+      "example": null
+    },
+    {
+      "id": "confirmation",
+      "label": "Confirmation",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}

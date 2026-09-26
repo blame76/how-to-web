@@ -1,0 +1,26 @@
+{
+  "id": "navbar",
+  "kind": "organism",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "simple",
+      "label": "Simple",
+      "example": null
+    },
+    {
+      "id": "with-disclosures",
+      "label": "With Disclosures",
+      "example": null
+    },
+    {
+      "id": "utility-plus-primary",
+      "label": "Utility Plus Primary",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}

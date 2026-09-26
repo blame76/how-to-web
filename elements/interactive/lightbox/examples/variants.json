@@ -1,0 +1,26 @@
+{
+  "id": "lightbox",
+  "kind": "organism",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "single-image",
+      "label": "Single Image",
+      "example": null
+    },
+    {
+      "id": "gallery",
+      "label": "Gallery",
+      "example": null
+    },
+    {
+      "id": "media-detail",
+      "label": "Media Detail",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}

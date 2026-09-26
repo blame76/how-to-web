@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+R="$(cd "$(dirname "${BASH_SOURCE[0]}")"&&pwd)";S="$R/source";O="$R/generated";mkdir -p "$S" "$O";command -v magick >/dev/null||{ echo "ImageMagick fehlt";exit 1;};shopt -s nullglob;F=("$S"/*);[ ${#F[@]} -gt 0 ]||{ echo "Keine Quelldateien";exit 0;};A=0;magick -list format 2>/dev/null|grep -Eq '^[[:space:]]*AVIF'&&A=1||true;for i in "${F[@]}";do b="$(basename "$i")";b="${b%.*}";for w in 480 960 1440 1920;do magick "$i" -auto-orient -resize "${w}x${w}>" -strip -quality 82 "$O/${b}-${w}.webp";[ "$A" -eq 0 ]||magick "$i" -auto-orient -resize "${w}x${w}>" -strip -quality 58 "$O/${b}-${w}.avif";done;done

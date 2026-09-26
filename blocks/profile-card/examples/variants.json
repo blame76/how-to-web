@@ -1,0 +1,26 @@
+{
+  "id": "profile-card",
+  "kind": "block",
+  "status": "structure-only",
+  "variants": [
+    {
+      "id": "formal",
+      "label": "Formal",
+      "example": null
+    },
+    {
+      "id": "creative",
+      "label": "Creative",
+      "example": null
+    },
+    {
+      "id": "direct-contact",
+      "label": "Direct Contact",
+      "example": null
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
