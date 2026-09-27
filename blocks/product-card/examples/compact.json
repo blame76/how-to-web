@@ -19,7 +19,9 @@
       "alt": "Grauer Oversized-Hoodie in frontaler Studioansicht.",
       "width": 1920,
       "height": 1920,
-      "fallback": "../assets/generated/hoodie-studio-front-480.webp"
+      "fallback": "../assets/generated/hoodie-studio-front-480.webp",
+      "avif_srcset": "../assets/generated/hoodie-studio-front-480.avif 480w, ../assets/generated/hoodie-studio-front-960.avif 960w",
+      "webp_srcset": "../assets/generated/hoodie-studio-front-480.webp 480w, ../assets/generated/hoodie-studio-front-960.webp 960w"
     }
   },
   "decisions": {
