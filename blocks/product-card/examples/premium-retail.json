@@ -1,7 +1,7 @@
 {
   "id": "premium-retail",
   "label": "Premium Retail · Lunar Hoodie",
-  "status": "prototype",
+  "status": "ready",
   "demo_content": true,
   "context": "Fashion / Streetwear product listing",
   "product": {
@@ -33,6 +33,19 @@
         "fallback": "../assets/generated/hoodie-studio-front-960.webp"
       },
       {
+        "id": "studio-detail",
+        "label": "Detail",
+        "alt": "Detailansicht des grauen Oversized-Hoodies mit Fokus auf Kapuze, Schulter und Stoffstruktur.",
+        "fit": "cover",
+        "position": "50% 22%",
+        "scale": 1.65,
+        "width": 1920,
+        "height": 1920,
+        "avif_srcset": "../assets/generated/hoodie-studio-front-480.avif 480w, ../assets/generated/hoodie-studio-front-960.avif 960w, ../assets/generated/hoodie-studio-front-1440.avif 1440w, ../assets/generated/hoodie-studio-front-1920.avif 1920w",
+        "webp_srcset": "../assets/generated/hoodie-studio-front-480.webp 480w, ../assets/generated/hoodie-studio-front-960.webp 960w, ../assets/generated/hoodie-studio-front-1440.webp 1440w, ../assets/generated/hoodie-studio-front-1920.webp 1920w",
+        "fallback": "../assets/generated/hoodie-studio-front-960.webp"
+      },
+      {
         "id": "moon-back",
         "label": "Getragen · Rückseite",
         "alt": "Person im grauen Oversized-Hoodie von hinten auf dem Mond mit Blick auf die Erde.",
@@ -52,7 +65,7 @@
     "sale_badge": false,
     "thumbnail_switcher": true,
     "image_count_target": 3,
-    "current_image_count": 2
+    "current_image_count": 3
   },
   "conforms_to": "../build-dna.json"
 }
