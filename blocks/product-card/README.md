@@ -1,6 +1,6 @@
 # Product Card
 
-Erster vollständiger **how-to-web Showcase + Build-DNA-Prototyp**.
+Vollständige **how-to-web Showcase + Build-DNA-Referenz** für eine Product Card.
 
 Die Referenz hat zwei Aufgaben:
 
@@ -27,10 +27,9 @@ product-card/
     ├── manifest.json
     ├── variants.json
     ├── build-manifest.sh
-    ├── premium-retail.html
-    ├── premium-retail.css
-    ├── premium-retail.js
-    └── premium-retail.json
+    ├── premium-retail.{html,css,js,json}
+    ├── technical-retail.{html,css,js,json}
+    └── compact.{html,css,js,json}
 ```
 
 ## Build DNA vs. Beispiel-JSON
@@ -84,14 +83,15 @@ Dafür gilt im Showcase:
 
 Diese Regel ist zusätzlich in der Build DNA festgeschrieben.
 
-## Vorhandene Bildassets
+## Varianten
 
-Aktuell:
+Die Referenz enthält drei vollständige Varianten:
 
-1. `hoodie-studio-front` – neutrale Studioansicht
-2. `hoodie-moon-back` – getragene Rückansicht auf dem Mond mit Blick auf die Erde
+1. `premium-retail` – bildstark, drei Ansichten inklusive Detail-Crop.
+2. `technical-retail` – spezifikationsorientiert für vergleichsintensive Produkte.
+3. `compact` – platzsparende Listenansicht mit reduzierten Sekundärinformationen.
 
-Für Apparel empfiehlt die aktuelle Recherche mehr als zwei zugängliche Produktansichten. Der aktuelle Stand bleibt deshalb als bekannte Demo-Lücke sichtbar.
+Die vorhandenen Bildassets sind `hoodie-studio-front` und `hoodie-moon-back`. Die Premium-Variante erzeugt zusätzlich eine Detailansicht als bewussten Crop aus dem Studio-Asset.
 
 ## Neue Bilder generieren
 
@@ -103,7 +103,7 @@ Für Apparel empfiehlt die aktuelle Recherche mehr als zwei zugängliche Produkt
 
 > Obviously AI-generated cinematic fashion scene on the Moon. One adult model is shown strictly from behind with no face visible, wearing one bare oversized heavyweight hoodie with no branding, print, typography or logo. The model stands on a lunar surface and looks toward the Earth above the horizon. Full hoodie silhouette must remain readable, realistic fabric folds and oversized proportions, dramatic but plausible lunar light, no helmet, no text, no watermark, square 1:1 composition, 2048x2048 or larger.
 
-### Sinnvolle dritte Ansicht
+### Optionale zusätzliche Detailaufnahme
 
 > High-end e-commerce detail photograph of the same bare oversized heavyweight hoodie, close-up of hood, shoulder seam and heavyweight fabric texture, no person, no branding, no typography, no logo, no watermark, neutral studio background, realistic material detail, square 1:1 composition, 2048x2048 or larger.
 
