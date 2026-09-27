@@ -1,25 +1,25 @@
 {
   "id": "product-card",
   "kind": "block",
-  "status": "prototype",
+  "status": "ready",
   "variants": [
     {
       "id": "premium-retail",
       "label": "Premium Retail",
       "example": "premium-retail.html",
-      "status": "prototype"
+      "status": "ready"
     },
     {
       "id": "technical-retail",
       "label": "Technical Retail",
-      "example": null,
-      "status": "planned"
+      "example": "technical-retail.html",
+      "status": "ready"
     },
     {
       "id": "compact",
       "label": "Compact",
-      "example": null,
-      "status": "planned"
+      "example": "compact.html",
+      "status": "ready"
     }
   ],
   "stage": {
