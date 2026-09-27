@@ -4,7 +4,7 @@
   "id": "product-card",
   "kind": "block",
   "title": "Product Card",
-  "status": "prototype",
+  "status": "ready",
   "purpose": "Help a user identify and compare a product in a collection and decide whether to inspect its detail page.",
   "reconstruction_priority": [
     "purpose",
@@ -218,7 +218,19 @@
       "id": "premium-retail",
       "data": "./examples/premium-retail.json",
       "human": "./examples/premium-retail.html",
-      "note": "Fashion/streetwear demo. Example data is not part of the generic component contract."
+      "note": "Fashion/streetwear example with multiple visual product views."
+    },
+    {
+      "id": "technical-retail",
+      "data": "./examples/technical-retail.json",
+      "human": "./examples/technical-retail.html",
+      "note": "Spec-forward example for products where structured attributes drive comparison."
+    },
+    {
+      "id": "compact",
+      "data": "./examples/compact.json",
+      "human": "./examples/compact.html",
+      "note": "Dense listing example that preserves the core contract while reducing secondary information."
     }
   ]
 }
