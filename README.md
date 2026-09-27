@@ -8,7 +8,7 @@ For humans it explains what a component, block, organism or pattern is, which de
 
 For coding agents it provides **Build DNA**: a portable reconstruction contract that describes purpose, composition, behavior, responsive rules, accessibility and constraints without binding the implementation to a framework.
 
-## First complete prototype
+## Reference feature
 
 ### Product Card
 
@@ -17,7 +17,7 @@ For coding agents it provides **Build DNA**: a portable reconstruction contract 
 - Build DNA: `blocks/product-card/build-dna.json`
 - Agent discovery: `blocks/product-card/llms.txt`
 - Research: `blocks/product-card/RESEARCH.md`
-- Example: `blocks/product-card/examples/premium-retail.html`
+- Examples: `blocks/product-card/examples/` (`premium-retail`, `technical-retail`, `compact`)
 
 Public target:
 
@@ -52,4 +52,4 @@ The repository publishes `llms.txt`. Individual component paths may provide a mo
 
 ## Status
 
-The Product Card is the reference prototype. Other features should only be expanded in series after its Build-DNA reconstruction test is satisfactory.
+The Product Card is the reference feature and baseline for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.
