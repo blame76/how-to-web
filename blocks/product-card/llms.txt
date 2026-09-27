@@ -6,14 +6,14 @@ This path documents a framework-independent Product Card. Coding agents should u
 
 ## Primary
 
-- [Build DNA](https://blame76.github.io/how-to-web/blocks/product-card/build-dna.json): Canonical machine-readable reconstruction contract. Read this first.
-- [Product Card reference](https://blame76.github.io/how-to-web/blocks/product-card/index.md): Concise LLM-friendly explanation of anatomy, behavior, responsive rules, accessibility and constraints.
-- [Human reference](https://blame76.github.io/how-to-web/blocks/product-card/): Interactive showcase and review guidance.
+- [Build DNA](./build-dna.json): Canonical machine-readable reconstruction contract. Read this first.
+- [Product Card reference](./index.md): Concise LLM-friendly explanation of anatomy, behavior, responsive rules, accessibility and constraints.
+- [Human reference](./): Interactive showcase and review guidance.
 
 ## Example
 
-- [Premium Retail example data](https://blame76.github.io/how-to-web/blocks/product-card/examples/premium-retail.json): Concrete fictional hoodie data conforming to the Build DNA.
-- [Premium Retail example](https://blame76.github.io/how-to-web/blocks/product-card/examples/premium-retail.html): Rendered example.
+- [Premium Retail example data](./examples/premium-retail.json): Concrete fictional hoodie data conforming to the Build DNA.
+- [Premium Retail example](./examples/premium-retail.html): Rendered example.
 
 ## Source
 
