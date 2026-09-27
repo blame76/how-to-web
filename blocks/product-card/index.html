@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Product Card – how-to-web</title>
   <meta name="description" content="Interaktive Referenz für Produktkarten: sehen, benennen, entscheiden und selbst prüfen.">
+  <meta name="how-to-web:build-dna" content="./build-dna.json">
+  <link rel="alternate" type="text/markdown" href="./index.md" title="Product Card – Markdown">
+  <link rel="describedby" type="text/markdown" href="./llms.txt">
+  <link rel="alternate" type="application/json" href="./build-dna.json" title="how-to-web Build DNA">
   <link rel="stylesheet" href="./styles.css">
   <script src="./script.js" defer></script>
 </head>
@@ -94,14 +98,48 @@
     </aside>
   </section>
 
-  <section aria-labelledby="machine-title">
+  <section class="machine-section" aria-labelledby="machine-title">
     <p class="eyebrow">07 · Weitergeben</p>
     <h2 id="machine-title">Maschinenlesbar</h2>
-    <ul>
-      <li><a href="./examples/premium-retail.json"><code>premium-retail.json</code></a> – Inhalt, Entscheidungen und Assets des aktuellen Beispiels</li>
-      <li><a href="./examples/variants.json"><code>variants.json</code></a> – Showcase-Varianten</li>
-      <li><code>/specs/blocks/product-card.json</code> – spätere kanonische Block-Spec</li>
-    </ul>
+    <p class="machine-lead">Hier liegt der eigentliche Bauvertrag. Ein Coding-Agent soll die Product Card nicht aus unserem HTML kopieren müssen, sondern Zweck, Struktur, Verhalten und unverlierbare Constraints aus der <strong>Build DNA</strong> rekonstruieren können.</p>
+
+    <div class="build-dna-panel">
+      <div>
+        <p class="eyebrow">how-to-web · Build DNA 0.1</p>
+        <h3>Portable Reconstruction Contract</h3>
+        <p><code>build-dna.json</code> beschreibt die Product Card implementierungsneutral. Framework, CSS-System und konkrete Tokens dürfen sich ändern; Semantik, Verhalten, Informationshierarchie und Accessibility-Vertrag nicht.</p>
+      </div>
+      <ul class="machine-links">
+        <li><a href="./build-dna.json"><strong>Build DNA öffnen</strong> · JSON</a></li>
+        <li><a href="./index.md">LLM-freundliche Referenz · Markdown</a></li>
+        <li><a href="./llms.txt">Agent Discovery · llms.txt</a></li>
+        <li><a href="./examples/premium-retail.json">Konkretes Hoodie-Beispiel · JSON</a></li>
+        <li><a href="https://github.com/blame76/how-to-web/tree/main/blocks/product-card">Source im GitHub-Repository</a></li>
+      </ul>
+    </div>
+
+    <div class="agent-prompt">
+      <h3>Für Coding-Agenten</h3>
+      <p>Ein Vibe-Coder soll später im Wesentlichen nur noch sagen müssen:</p>
+      <pre><code>Baue mir eine Product Card nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+
+Nutze die dort verlinkte Build DNA als Rekonstruktionsvertrag.
+Übernimm Zweck, Struktur, Verhalten, Responsive- und Accessibility-Constraints.
+Passe Framework, CSS und visuelle Tokens an mein Projekt an.
+Erfinde keine Produktanforderungen oder Claims, die nicht beschrieben sind.</code></pre>
+    </div>
+
+    <div class="grid machine-contract">
+      <div class="panel">
+        <h3>Muss erhalten bleiben</h3>
+        <p>Purpose, Composition, Verhalten, stabile Geometrie, Responsive-Regeln, Accessibility und Daten-Constraints.</p>
+      </div>
+      <div class="panel">
+        <h3>Darf angepasst werden</h3>
+        <p>Framework, Komponenten-API, Klassen, CSS-Methodik, Typografie, Farben, Radien und weitere visuelle Tokens.</p>
+      </div>
+    </div>
   </section>
 </main>
 </body>
