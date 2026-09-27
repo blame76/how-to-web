@@ -10,7 +10,7 @@ function render(data){
   const p=data.product;
   mount.innerHTML=`
     <article class="product-card" aria-labelledby="compact-title">
-      <div class="product-card__media"><img src="${p.image.fallback}" alt="${p.image.alt}" width="${p.image.width}" height="${p.image.height}"></div>
+      <div class="product-card__media"><picture><source type="image/avif" srcset="${p.image.avif_srcset}" sizes="120px"><source type="image/webp" srcset="${p.image.webp_srcset}" sizes="120px"><img src="${p.image.fallback}" alt="${p.image.alt}" width="${p.image.width}" height="${p.image.height}"></picture></div>
       <div class="product-card__body">
         <p class="product-card__brand">${p.brand}</p>
         <h2 id="compact-title">${p.name}</h2>
