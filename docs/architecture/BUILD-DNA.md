@@ -1,6 +1,6 @@
 # Build DNA
 
-Status: 0.1 prototype
+Status: 0.1 working contract
 
 ## Purpose
 
