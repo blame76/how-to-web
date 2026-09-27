@@ -8,6 +8,15 @@ const fallbackImages={
     webp:'../assets/generated/hoodie-studio-front-480.webp 480w, ../assets/generated/hoodie-studio-front-960.webp 960w, ../assets/generated/hoodie-studio-front-1440.webp 1440w, ../assets/generated/hoodie-studio-front-1920.webp 1920w',
     fallback:'../assets/generated/hoodie-studio-front-960.webp'
   },
+  detail:{
+    alt:'Detailansicht des grauen Oversized-Hoodies mit Fokus auf Kapuze, Schulter und Stoffstruktur.',
+    fit:'cover',
+    position:'50% 22%',
+    scale:1.65,
+    avif:'../assets/generated/hoodie-studio-front-480.avif 480w, ../assets/generated/hoodie-studio-front-960.avif 960w, ../assets/generated/hoodie-studio-front-1440.avif 1440w, ../assets/generated/hoodie-studio-front-1920.avif 1920w',
+    webp:'../assets/generated/hoodie-studio-front-480.webp 480w, ../assets/generated/hoodie-studio-front-960.webp 960w, ../assets/generated/hoodie-studio-front-1440.webp 1440w, ../assets/generated/hoodie-studio-front-1920.webp 1920w',
+    fallback:'../assets/generated/hoodie-studio-front-960.webp'
+  },
   moon:{
     alt:'Person im grauen Oversized-Hoodie von hinten auf dem Mond mit Blick auf die Erde.',
     fit:'cover',
@@ -25,7 +34,7 @@ function pictureMarkup(image){
     <picture>
       <source type="image/avif" srcset="${avif}" sizes="(max-width: 440px) calc(100vw - 16px), 400px">
       <source type="image/webp" srcset="${webp}" sizes="(max-width: 440px) calc(100vw - 16px), 400px">
-      <img src="${fallback}" alt="${image.alt}" width="${image.width||1920}" height="${image.height||1920}" data-fit="${image.fit}" decoding="async">
+      <img src="${fallback}" alt="${image.alt}" width="${image.width||1920}" height="${image.height||1920}" data-fit="${image.fit}" style="object-position:${image.position||'center'};transform:scale(${image.scale||1})" decoding="async">
     </picture>`;
 }
 
@@ -74,7 +83,6 @@ function render(data){
         <p class="product-card__variation">${product.variation_cue}</p>
         <ul class="product-card__thumbnails" aria-label="Produktansichten">${product.images.map(thumbMarkup).join('')}</ul>
         <a class="product-card__action" href="${product.product_url}">Produkt ansehen<span class="visually-hidden">: ${product.name}</span></a>
-        <p class="product-card__status">Demo: ${data.decisions.current_image_count} von empfohlenen ${data.decisions.image_count_target}+ Ansichten vorhanden.</p>
       </div>
     </article>`;
 
