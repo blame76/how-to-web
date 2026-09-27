@@ -1,0 +1,32 @@
+{
+  "id": "compact",
+  "label": "Compact · Dense Listing",
+  "status": "ready",
+  "demo_content": true,
+  "context": "Space-constrained product list",
+  "conforms_to": "../build-dna.json",
+  "product": {
+    "brand": "ZERO EIGHT FORTUNE",
+    "name": "Lunar Oversized Hoodie",
+    "price": {
+      "amount": "89,00",
+      "currency": "EUR",
+      "display": "89,00 €"
+    },
+    "variation_cue": "Moon Grey · XS–XL",
+    "product_url": "https://example.com/products/lunar-oversized-hoodie",
+    "image": {
+      "alt": "Grauer Oversized-Hoodie in frontaler Studioansicht.",
+      "width": 1920,
+      "height": 1920,
+      "fallback": "../assets/generated/hoodie-studio-front-480.webp"
+    }
+  },
+  "decisions": {
+    "information_density": "compact",
+    "whole_card_clickable": false,
+    "quick_add": false,
+    "image_switcher": false,
+    "secondary_information_reduced": true
+  }
+}
