@@ -67,12 +67,13 @@ Do not invent discounts, stock, availability, shipping promises, sustainability 
 
 ## Example
 
-The current visual example is the fictional **Lunar Oversized Hoodie**:
+The reference ships three complete variants:
 
-- [Example data](./examples/premium-retail.json)
-- [Example page](./examples/premium-retail.html)
+- [Premium Retail](./examples/premium-retail.html) — visual, image-led retail.
+- [Technical Retail](./examples/technical-retail.html) — structured specifications for comparison-heavy products.
+- [Compact](./examples/compact.html) — dense listing with reduced secondary information.
 
-The example demonstrates the contract; it is not the contract itself.
+Each variant has its own JSON data source. The examples demonstrate the contract; none of them is the contract itself.
 
 ## Coding-agent instruction
 
