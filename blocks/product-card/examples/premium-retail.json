@@ -53,5 +53,6 @@
     "thumbnail_switcher": true,
     "image_count_target": 3,
     "current_image_count": 2
-  }
+  },
+  "conforms_to": "../build-dna.json"
 }
