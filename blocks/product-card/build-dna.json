@@ -207,10 +207,10 @@
     "No unsupported product claims are invented."
   ],
   "public": {
-    "human_page": "https://blame76.github.io/how-to-web/blocks/product-card/",
-    "markdown": "https://blame76.github.io/how-to-web/blocks/product-card/index.md",
-    "llms": "https://blame76.github.io/how-to-web/blocks/product-card/llms.txt",
-    "build_dna": "https://blame76.github.io/how-to-web/blocks/product-card/build-dna.json",
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
     "source_repository": "https://github.com/blame76/how-to-web/tree/main/blocks/product-card"
   },
   "examples": [
