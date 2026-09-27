@@ -1,0 +1,15 @@
+# how-to-web
+
+> A visual and machine-readable web reference for humans and coding agents. how-to-web teaches what web building blocks are, how to review them, and how to reconstruct them from portable Build DNA.
+
+Use the most specific `llms.txt` available for a component path. Build DNA is the primary machine-readable reconstruction contract; examples are demonstrations, not specifications.
+
+## Components
+
+- [Product Card](https://blame76.github.io/how-to-web/blocks/product-card/index.md): Human/agent reference for a product-listing card.
+- [Product Card Build DNA](https://blame76.github.io/how-to-web/blocks/product-card/build-dna.json): Canonical reconstruction contract.
+- [Product Card llms.txt](https://blame76.github.io/how-to-web/blocks/product-card/llms.txt): Component-specific agent guidance.
+
+## Source
+
+- [GitHub repository](https://github.com/blame76/how-to-web): Source, research and architecture documentation.
