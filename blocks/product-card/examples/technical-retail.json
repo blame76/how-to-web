@@ -1,0 +1,52 @@
+{
+  "id": "technical-retail",
+  "label": "Technical Retail · Spec-forward",
+  "status": "ready",
+  "demo_content": true,
+  "context": "Specification-heavy retail listing",
+  "conforms_to": "../build-dna.json",
+  "product": {
+    "brand": "ZERO EIGHT FORTUNE",
+    "name": "Lunar Oversized Hoodie",
+    "price": {
+      "amount": "89,00",
+      "currency": "EUR",
+      "display": "89,00 €"
+    },
+    "product_url": "https://example.com/products/lunar-oversized-hoodie",
+    "sku": "ZEF-LUN-01",
+    "image": {
+      "alt": "Grauer Oversized-Hoodie in frontaler Studioansicht.",
+      "width": 1920,
+      "height": 1920,
+      "avif_srcset": "../assets/generated/hoodie-studio-front-480.avif 480w, ../assets/generated/hoodie-studio-front-960.avif 960w, ../assets/generated/hoodie-studio-front-1440.avif 1440w, ../assets/generated/hoodie-studio-front-1920.avif 1920w",
+      "webp_srcset": "../assets/generated/hoodie-studio-front-480.webp 480w, ../assets/generated/hoodie-studio-front-960.webp 960w, ../assets/generated/hoodie-studio-front-1440.webp 1440w, ../assets/generated/hoodie-studio-front-1920.webp 1920w",
+      "fallback": "../assets/generated/hoodie-studio-front-960.webp"
+    },
+    "specs": [
+      {
+        "label": "Material",
+        "value": "480 gsm Heavyweight Cotton"
+      },
+      {
+        "label": "Fit",
+        "value": "Oversized"
+      },
+      {
+        "label": "Größen",
+        "value": "XS–XL"
+      },
+      {
+        "label": "Farbe",
+        "value": "Moon Grey"
+      }
+    ]
+  },
+  "decisions": {
+    "information_density": "high",
+    "whole_card_clickable": false,
+    "quick_add": false,
+    "image_switcher": false,
+    "emphasize_specs": true
+  }
+}
