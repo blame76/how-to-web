@@ -6,9 +6,9 @@ Use the most specific `llms.txt` available for a component path. Build DNA is th
 
 ## Components
 
-- [Product Card](https://blame76.github.io/how-to-web/blocks/product-card/index.md): Human/agent reference for a product-listing card.
-- [Product Card Build DNA](https://blame76.github.io/how-to-web/blocks/product-card/build-dna.json): Canonical reconstruction contract.
-- [Product Card llms.txt](https://blame76.github.io/how-to-web/blocks/product-card/llms.txt): Component-specific agent guidance.
+- [Product Card](./blocks/product-card/index.md): Human/agent reference for a product-listing card.
+- [Product Card Build DNA](./blocks/product-card/build-dna.json): Canonical reconstruction contract.
+- [Product Card llms.txt](./blocks/product-card/llms.txt): Component-specific agent guidance.
 
 ## Source
 
