@@ -1,18 +1,24 @@
 # Product Card
 
-Erster vollständig ausgearbeiteter Showcase-Block für **how-to-web**.
+Erster vollständiger **how-to-web Showcase + Build-DNA-Prototyp**.
 
-Die Referenzseite bleibt schwarz/weiß. Das eigentliche Beispiel ist lokal gekapselt und wird aus JSON gerendert.
+Die Referenz hat zwei Aufgaben:
 
-## Struktur
+1. Menschen sollen eine Product Card sehen, benennen, beurteilen und spezifizieren können.
+2. Coding-Agenten sollen sie unabhängig vom Originalcode aus einer implementierungsneutralen Build DNA rekonstruieren können.
+
+## Kanonische Dateien
 
 ```text
 product-card/
-├── index.html
+├── index.html          # visuelle/human-readable Referenz
+├── index.md            # LLM-freundliche Referenz
+├── build-dna.json      # kanonischer Rekonstruktionsvertrag
+├── llms.txt            # Agent-Discovery für diesen Pfad
+├── RESEARCH.md         # Quellen und fachliche Ableitungen
+├── README.md
 ├── styles.css
 ├── script.js
-├── RESEARCH.md
-├── README.md
 ├── assets/
 │   ├── process-images.sh
 │   ├── source/
@@ -27,31 +33,65 @@ product-card/
     └── premium-retail.json
 ```
 
-Es gibt bewusst **kein zentrales CSS oder JavaScript** für das Beispiel.
+## Build DNA vs. Beispiel-JSON
 
-## Aktuelles Beispiel
+**`build-dna.json`** beschreibt, was eine Product Card als Web-Baustein ausmacht:
 
-`premium-retail.html` rendert seine Produktdaten aus `premium-retail.json`.
+- Purpose
+- Composition
+- Data Contract
+- Layout
+- Visual Hierarchy
+- Behavior
+- Responsive
+- Accessibility
+- Performance
+- Constraints
+- Adaptation Contract
+- Acceptance
 
-Das JSON enthält:
+**`examples/premium-retail.json`** enthält dagegen nur konkrete Demo-Daten für den Lunar Hoodie und verweist mit `conforms_to` auf die Build DNA.
 
-- Produktbezeichnung und Preis
-- Demo-Bewertungsdaten
-- Variant-Cue
-- Bildquellen für AVIF/WebP
-- Alt-Texte und Bildrollen
-- Darstellungsentscheidungen
+Die Beispielimplementierung ist **nicht** die Spezifikation.
 
-Damit ist die Beispielseite austauschbar, ohne HTML neu zu schreiben.
+## Coding-Agent-Workflow
+
+Ein Agent sollte bei einer Anfrage wie
+
+```text
+Baue mir eine Product Card nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+```
+
+folgendermaßen arbeiten:
+
+1. `llms.txt` bzw. die Discovery-Links der Seite lesen.
+2. `build-dna.json` als primären Rekonstruktionsvertrag verwenden.
+3. Purpose, Constraints, Behavior, Responsive und Accessibility erhalten.
+4. Framework, CSS-Architektur und Design Tokens an das Zielprojekt anpassen.
+5. Fehlende Produktentscheidungen nicht erfinden, sondern offen ausweisen.
+
+## Geometrie-Regel
+
+Der Medienwechsel darf die Karte nicht verändern.
+
+Dafür gilt im Showcase:
+
+- der JSON-Mount besitzt eine feste maximale Inline-Größe,
+- die Card selbst ist immer `width: 100%`,
+- die Medienfläche bleibt `1:1`,
+- unterschiedliche intrinsische Bildabmessungen dürfen weder Kartenbreite noch Seitenverhältnis beeinflussen.
+
+Diese Regel ist zusätzlich in der Build DNA festgeschrieben.
 
 ## Vorhandene Bildassets
 
-Aktuell werden zwei freigegebene Ansichten verwendet:
+Aktuell:
 
 1. `hoodie-studio-front` – neutrale Studioansicht
 2. `hoodie-moon-back` – getragene Rückansicht auf dem Mond mit Blick auf die Erde
 
-Für Apparel empfiehlt die aktuelle Baymard-Forschung mindestens drei zugängliche Produktansichten. Der aktuelle Zwei-Bild-Stand ist deshalb im Review ausdrücklich als offene Lücke dokumentiert.
+Für Apparel empfiehlt die aktuelle Recherche mehr als zwei zugängliche Produktansichten. Der aktuelle Stand bleibt deshalb als bekannte Demo-Lücke sichtbar.
 
 ## Neue Bilder generieren
 
@@ -63,17 +103,11 @@ Für Apparel empfiehlt die aktuelle Baymard-Forschung mindestens drei zugänglic
 
 > Obviously AI-generated cinematic fashion scene on the Moon. One adult model is shown strictly from behind with no face visible, wearing one bare oversized heavyweight hoodie with no branding, print, typography or logo. The model stands on a lunar surface and looks toward the Earth above the horizon. Full hoodie silhouette must remain readable, realistic fabric folds and oversized proportions, dramatic but plausible lunar light, no helmet, no text, no watermark, square 1:1 composition, 2048x2048 or larger.
 
-### Weitere sinnvolle dritte Ansicht
+### Sinnvolle dritte Ansicht
 
 > High-end e-commerce detail photograph of the same bare oversized heavyweight hoodie, close-up of hood, shoulder seam and heavyweight fabric texture, no person, no branding, no typography, no logo, no watermark, neutral studio background, realistic material detail, square 1:1 composition, 2048x2048 or larger.
 
-UI-Text, Produktname, Preis, Labels und Badges gehören **nie** ins generierte Bild. Sie bleiben HTML.
-
-Originale kommen nach:
-
-```text
-assets/source/
-```
+UI-Text, Produktname, Preis, Labels und Badges bleiben HTML.
 
 ## Bilder optimieren
 
@@ -83,25 +117,23 @@ assets/source/
 bash blocks/product-card/assets/process-images.sh
 ```
 
-Erzeugt 480, 960, 1440 und 1920 Pixel breite WebP-Dateien sowie AVIF, falls die lokale Installation AVIF unterstützt.
+Erzeugt 480, 960, 1440 und 1920 Pixel breite WebP-Dateien sowie AVIF, falls unterstützt.
 
 ## Beispiele automatisch in die Bühne aufnehmen
-
-Nach dem Anlegen oder Entfernen einer HTML-Datei:
 
 ```bash
 bash blocks/product-card/examples/build-manifest.sh
 ```
 
-Das Script erzeugt `examples/manifest.json`. Existiert ein gleichnamiges JSON, wird dessen `label` für den Switcher verwendet.
+Das Script erzeugt `examples/manifest.json`.
 
-## Qualitätsregel
+## Serien-Gate
 
-Ein neues Beispiel gilt erst als Showcase, wenn:
+Ein Feature ist erst bereit als Vorlage für die Serie, wenn:
 
-- sein Inhalt aus JSON kommt,
-- es isoliert ohne zentrale Beispiel-CSS/JS-Abhängigkeit funktioniert,
-- Tastaturbedienung und Fokus sichtbar sind,
-- responsive Bilder verwendet werden,
-- es bei 200 % Zoom und schmalen Viewports nicht zerfällt,
-- keine Produktbehauptung erfunden wird, ohne sie als Demo-Inhalt zu kennzeichnen.
+- Human Reference funktioniert,
+- Markdown Reference vorhanden ist,
+- Build DNA ohne Beispielcode verständlich ist,
+- llms.txt Discovery vorhanden ist,
+- ein fremdes LLM aus der Build DNA eine funktional äquivalente Umsetzung erzeugen kann,
+- Review-Gate und Acceptance erfüllt sind.
