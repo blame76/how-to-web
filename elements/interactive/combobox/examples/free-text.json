@@ -7,7 +7,7 @@
     "label": "Describe or choose an object",
     "value_policy": "free-text",
     "placeholder": "e.g. something wearable",
-    "minimum_query_length": 1,
+    "minimum_query_length": 0,
     "empty_message": "No matching object — your text is still valid.",
     "options": [
       {
