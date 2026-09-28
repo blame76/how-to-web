@@ -196,10 +196,15 @@
     ]
   },
   "agent_contract": {
-    "instruction": "Reconstruct from this Build DNA rather than copying reference HTML. Preserve navigation semantics and information hierarchy. Ask for missing IA, hover and dismiss decisions instead of inventing them.",
+    "instruction": "Before reconstructing, use selection_gate when the user's need is still a pattern choice. Do not assume a Mega Menu is justified merely because it was named. If the pattern is already chosen, reconstruct from this Build DNA rather than copying reference HTML. Preserve navigation semantics and information hierarchy. Ask for missing IA, hover and dismiss decisions instead of inventing them.",
     "when_conflicting": "Purpose, constraints, behavior and accessibility override visual resemblance.",
     "output_expectation": "Production-appropriate Mega Menu code for the requested stack plus explicitly listed unresolved IA or interaction decisions.",
     "request_examples": [
+      {
+        "id": "pattern-selection",
+        "intent": "Evaluate whether a Mega Menu is justified before implementation.",
+        "prompt": "Prüfe zuerst anhand des Selection Gate, ob ein Mega Menu für meine Navigation gegenüber einer einfacheren Navigation begründbar ist. Baue erst danach."
+      },
       {
         "id": "generic-reconstruction",
         "intent": "Build a generic Mega Menu.",
@@ -228,6 +233,7 @@
     ]
   },
   "acceptance": [
+    "The use of a Mega Menu can be justified against a simpler credible navigation alternative, or the pattern choice is explicitly treated as already decided.",
     "Typical site navigation uses navigation/link/disclosure semantics rather than ARIA menu or menubar roles.",
     "Every panel can be opened by click/tap and keyboard without hover.",
     "aria-expanded matches visible disclosure state.",
@@ -266,5 +272,33 @@
       "human": "./examples/featured-content.html",
       "note": "Grouped navigation plus one subordinate visual teaser."
     }
-  ]
+  ],
+  "selection_gate": {
+    "question": "Does a Mega Menu solve the navigation task better than a simpler navigation pattern?",
+    "supports_when": [
+      "There is a substantial set of relevant navigation destinations.",
+      "Destinations can be divided into meaningful, stable groups.",
+      "Users benefit from seeing several groups or destinations at the same time.",
+      "Reducing drill-down depth or improving scanability creates a concrete navigation benefit.",
+      "The same information architecture remains coherent when presentation reflows on narrow viewports."
+    ],
+    "argues_against_when": [
+      "A small dropdown or visible top-level navigation exposes the relevant destinations clearly.",
+      "Groups are forced, ambiguous or based mainly on internal organizational structure.",
+      "The main problem is very deep or unclear information architecture rather than lack of overview.",
+      "The Mega Menu is being used to expose nearly every page in the site.",
+      "The visual size of the pattern is the primary justification."
+    ],
+    "no_magic_threshold": "Do not infer a universal link-count threshold. Quantity matters together with grouping, overview need and task context.",
+    "validation": {
+      "method": "Compare the Mega Menu with the simplest credible alternative using the same information architecture and realistic findability tasks.",
+      "observe": [
+        "task completion",
+        "wrong turns or misclicks",
+        "unnecessary drill-down",
+        "orientation and recovery"
+      ],
+      "rule": "Prefer the simpler pattern when it serves the same user tasks equally well."
+    }
+  }
 }
