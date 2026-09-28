@@ -261,12 +261,12 @@
       "required": true
     },
     "active_option": {
-      "meaning": "the suggestion currently navigated with keyboard/pointer; represented by aria-activedescendant when present",
+      "meaning": "the suggestion currently navigated in the popup; it may carry aria-selected=true and be referenced by aria-activedescendant while still not being the committed combobox value",
       "required": true,
       "nullable": true
     },
     "selected_value": {
-      "meaning": "the value explicitly committed according to the variant contract",
+      "meaning": "the value explicitly committed into the combobox value model according to the variant contract; distinct from popup option selection/highlight",
       "required": true,
       "nullable": true
     },
@@ -384,7 +384,8 @@
     "keyboard_operable": true,
     "hover_required": false,
     "preserve_native_text_editing": true,
-    "active_option_scrolled_into_view": true
+    "active_option_scrolled_into_view": true,
+    "popup_selection": "The active listbox option may use aria-selected=true as the popup selection/focus indication. This does not by itself mean the combobox selected_value has been committed."
   },
   "performance": {
     "local_filtering": "avoid unnecessary work for small static sets",
@@ -400,7 +401,8 @@
     "Do not silently accept arbitrary text in a restricted-value combobox.",
     "Do not silently restrict free text when the documented value policy allows arbitrary input.",
     "Do not allow aria-activedescendant to reference a missing or hidden option.",
-    "Do not leave a keyboard-active option scrolled out of view."
+    "Do not leave a keyboard-active option scrolled out of view.",
+    "Do not confuse aria-selected on the active popup option with the committed combobox selected_value."
   ],
   "adaptation_contract": {
     "may_change": [
@@ -507,7 +509,7 @@
   ]
 }</code></pre>
   </details>
-  <!-- BUILD_DNA_INLINE:END -->
+    <!-- BUILD_DNA_INLINE:END -->
 
   <div class="build-dna-panel">
     <div><p class="eyebrow">how-to-web · Build DNA 0.1</p><h3>State Contract included</h3><p>Die DNA beschreibt nicht nur Composition und Accessibility, sondern explizit Query, Popup, Active Option, Selected Value und Value Policy.</p></div>
