@@ -1,0 +1,30 @@
+# how-to-web Form Submission
+
+> Machine-readable reconstruction guidance for the lifecycle from submit intent to a clear, recoverable outcome.
+
+## Primary
+
+- [Build DNA](./build-dna.json): Canonical normative contract. Read this first.
+- [Pattern reference](./index.md): Concise explanation of flow, error classes and retry.
+- [Human reference](./): Interactive learning page.
+- [Research](./RESEARCH.md): Evidence and source reasoning.
+
+## Example
+
+- [Contact message example](./examples/contact-message.html): Ordinary contact form used to demonstrate the lifecycle.
+- [Contact message data](./examples/contact-message.json): Demo-specific field and scenario data.
+
+## Agent instruction
+
+Do not copy the example form as the generic pattern.
+
+First establish:
+
+1. the task and side effects,
+2. authoritative server validation,
+3. which outcomes can occur,
+4. how entered values survive recoverable failure,
+5. whether retry is safe,
+6. how success and dynamic status are communicated.
+
+Distinguish validation_error, submission_error and outcome_unknown. Ask for missing backend or domain decisions rather than inventing idempotency, CSRF or service behavior.
