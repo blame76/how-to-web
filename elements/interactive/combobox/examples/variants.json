@@ -1,0 +1,32 @@
+{
+  "id": "combobox",
+  "kind": "organism",
+  "status": "ready",
+  "variants": [
+    {
+      "id": "free-text",
+      "label": "Free Text Suggestions",
+      "description": "Manual list autocomplete; suggestions help, arbitrary text remains valid.",
+      "example": "free-text.html",
+      "status": "ready"
+    },
+    {
+      "id": "restricted",
+      "label": "Restricted Selection",
+      "description": "Typing filters known values; a listed option must be explicitly committed.",
+      "example": "restricted.html",
+      "status": "ready"
+    },
+    {
+      "id": "rich-suggestions",
+      "label": "Rich Suggestions",
+      "description": "Listbox options include secondary descriptive metadata but remain one selectable value each.",
+      "example": "rich-suggestions.html",
+      "status": "ready"
+    }
+  ],
+  "stage": {
+    "manifest": "manifest.json",
+    "autoload": true
+  }
+}
