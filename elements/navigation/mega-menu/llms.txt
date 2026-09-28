@@ -2,7 +2,7 @@
 
 > Reconstruction guidance for the how-to-web Mega Menu organism.
 
-Use [Build DNA](./build-dna.json) as the normative contract. Examples demonstrate different information architectures; they do not replace the contract.
+Use [Build DNA](./build-dna.json) as the normative contract. If the pattern itself has not yet been justified, evaluate the Build DNA `selection_gate` before implementation. Examples demonstrate different information architectures; they do not replace the contract.
 
 ## Primary
 
@@ -23,6 +23,10 @@ Use [Build DNA](./build-dna.json) as the normative contract. Examples demonstrat
 ## Platform note
 
 The Popover API is a valid current implementation option for overlay panels, but it is not the normative contract. A conventional disclosure implementation is equally valid when it preserves the same semantics, focus and dismiss behavior.
+
+## Selection before implementation
+
+Do not assume that a named Mega Menu is automatically the right navigation pattern. When pattern choice is still open, compare it with the simplest credible alternative using the same information architecture. There is no universal link-count threshold.
 
 ## Agent instruction
 
