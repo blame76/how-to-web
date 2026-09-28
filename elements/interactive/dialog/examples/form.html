@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Form Dialog – how-to-web</title><link rel="stylesheet" href="./form.css"><script src="./form.js" defer></script></head>
+<body>
+<main class="demo">
+  <p class="eyebrow">Dialog · Form</p>
+  <h1>Kleine Aufgabe, klarer Fokus.</h1>
+  <p class="intro">Der Dialog öffnet direkt am ersten relevanten Feld. Abbrechen und Speichern schließen; danach kehrt der Fokus zum Öffner zurück.</p>
+  <button class="open-button" type="button" data-open>Kontakt ergänzen</button>
+
+  <dialog class="modal" aria-labelledby="form-title" data-dialog>
+    <form class="dialog-shell" data-form>
+      <header class="dialog-header">
+        <p class="eyebrow">Kontakt</p>
+        <h2 id="form-title">Kontakt ergänzen</h2>
+      </header>
+      <div class="dialog-content">
+        <label>Name<input name="name" type="text" required data-initial-focus></label>
+        <label>E-Mail<input name="email" type="email" required></label>
+        <label>Notiz<input name="note" type="text"></label>
+      </div>
+      <footer class="dialog-actions">
+        <button type="button" class="secondary" data-cancel>Abbrechen</button>
+        <button type="submit" class="primary">Speichern</button>
+      </footer>
+    </form>
+  </dialog>
+  <p class="status" data-status aria-live="polite"></p>
+</main>
+</body></html>
