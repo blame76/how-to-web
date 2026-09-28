@@ -1,0 +1,27 @@
+{
+  "id": "confirmation",
+  "label": "Destructive Confirmation",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "dialog": {
+    "label": "Projekt wirklich löschen?",
+    "initial_focus": "less destructive action",
+    "close_behavior": [
+      "cancel button",
+      "Escape",
+      "confirm action"
+    ],
+    "backdrop_close": false,
+    "focus_return": {
+      "cancel": "invoker",
+      "confirm": "logical next target after removed item"
+    },
+    "destructive_action": "delete project demo"
+  },
+  "decisions": {
+    "modal": true,
+    "native_dialog": true,
+    "initial_focus": "cancel button",
+    "backdrop_close": false
+  }
+}
