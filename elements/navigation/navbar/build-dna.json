@@ -1,0 +1,251 @@
+{
+  "format": "how-to-web-build-dna",
+  "version": "0.1",
+  "id": "navbar",
+  "kind": "organism",
+  "title": "Navbar",
+  "status": "ready",
+  "purpose": "Provide consistent global navigation to the site's most important destinations while preserving orientation and operability across responsive states.",
+  "reconstruction_priority": [
+    "purpose",
+    "constraints",
+    "behavior",
+    "composition",
+    "responsive",
+    "accessibility",
+    "visual"
+  ],
+  "composition": [
+    {
+      "id": "navigation-landmark",
+      "role": "global primary navigation region",
+      "required": true,
+      "semantics": "nav"
+    },
+    {
+      "id": "home-link",
+      "role": "site or brand home destination",
+      "required": true,
+      "semantics": "link"
+    },
+    {
+      "id": "primary-links",
+      "role": "ordered global destinations",
+      "required": true,
+      "semantics": "list of links"
+    },
+    {
+      "id": "current-page",
+      "role": "orientation within global destinations",
+      "required": false,
+      "semantics": "aria-current on the current link"
+    },
+    {
+      "id": "disclosure-trigger",
+      "role": "show or hide an optional child link group",
+      "required": false,
+      "semantics": "button controlling a list of links"
+    },
+    {
+      "id": "mobile-trigger",
+      "role": "show or hide the same navigation at narrow widths",
+      "required": false,
+      "semantics": "button controlling the navigation panel"
+    },
+    {
+      "id": "utility-links",
+      "role": "secondary service destinations that remain navigation",
+      "required": false,
+      "semantics": "separate link group"
+    }
+  ],
+  "data_contract": {
+    "required": [
+      "navigation.label",
+      "navigation.home.label",
+      "navigation.home.href",
+      "navigation.primary[0..n].label",
+      "navigation.primary[0..n].href or navigation.primary[0..n].children"
+    ],
+    "optional": [
+      "navigation.primary[].current",
+      "navigation.primary[].children[]",
+      "navigation.utility[]",
+      "navigation.mobile_label",
+      "decisions.single_open_group",
+      "decisions.sticky"
+    ],
+    "prohibit_invention": [
+      "navigation destinations",
+      "information hierarchy",
+      "current page",
+      "utility actions",
+      "child groups",
+      "sticky behavior"
+    ]
+  },
+  "layout": {
+    "wide_state": "home link and global navigation presented in a horizontal or otherwise immediately visible composition",
+    "narrow_state": "the same information architecture may collapse behind one explicit disclosure trigger",
+    "hierarchy": "primary and utility navigation must remain distinguishable",
+    "order_invariant": true,
+    "destination_invariant": true,
+    "wording_invariant": true
+  },
+  "visual": {
+    "preserve": "clear hierarchy, current-state visibility and distinguishable interactive states",
+    "adaptable_tokens": [
+      "color",
+      "typeface",
+      "font-size",
+      "spacing",
+      "border",
+      "radius",
+      "shadow",
+      "breakpoint",
+      "alignment"
+    ]
+  },
+  "behavior": {
+    "navigation_targets": "Links navigate; buttons disclose. Do not combine both behaviors in one control.",
+    "site_navigation_role": "Use normal site-navigation semantics by default; do not apply menu or menubar roles unless intentionally implementing the complete widget contract.",
+    "current_page": "At most one relevant destination in the rendered navigation should expose aria-current=\"page\".",
+    "disclosures": {
+      "enabled_when": "a global navigation item owns a real group of child destinations",
+      "trigger": "native button",
+      "required_state": "aria-expanded",
+      "relationship": "aria-controls when a stable controlled element id is available",
+      "hover_only": false,
+      "keyboard_baseline": [
+        "Tab",
+        "Shift+Tab",
+        "Enter",
+        "Space"
+      ],
+      "escape": "When a disclosed group is open, Escape closes it and focus returns to or remains on its controlling trigger.",
+      "arrow_keys": "optional enhancement; never a replacement for normal Tab order",
+      "default_multiple_open": false
+    },
+    "responsive_navigation": {
+      "mobile_is_variant": false,
+      "trigger": "native button when collapse is necessary",
+      "required_state": "aria-expanded",
+      "escape": "When the narrow navigation panel is open, Escape closes it and returns focus to the mobile trigger.",
+      "content_change": false,
+      "reorder": false
+    },
+    "outside_pointer": "A transient wide-screen disclosure may close on pointer interaction outside the navigation, provided keyboard behavior remains independent."
+  },
+  "responsive": {
+    "principle": "Transform presentation, not information architecture.",
+    "minimum_test_viewport_css_px": 320,
+    "zoom_test_percent": 200,
+    "horizontal_scroll": false,
+    "same_labels": true,
+    "same_order": true,
+    "same_destinations": true,
+    "essential_destinations_remain_reachable": true,
+    "breakpoint_is_implementation_detail": true
+  },
+  "accessibility": {
+    "native_controls": true,
+    "navigation_landmark": true,
+    "landmark_label": "Required when needed to distinguish this navigation landmark from other navigation landmarks on the page.",
+    "list_semantics": true,
+    "visible_focus": true,
+    "keyboard_operable": true,
+    "hover_required": false,
+    "current_page_state": "aria-current=\"page\" when a rendered link represents the current page",
+    "disclosure_state": "aria-expanded on disclosure controls",
+    "minimum_pointer_target_css_px": 24,
+    "focus_obscuring": "Author-created sticky or overlay behavior must not completely obscure a focused component.",
+    "page_integration": [
+      "The host page provides a bypass mechanism for repeated global navigation, commonly a skip link before the header/navigation.",
+      "If sticky positioning is enabled, test focused descendants and subsequent page controls against WCAG 2.4.11."
+    ]
+  },
+  "constraints": [
+    "Do not use role=\"menu\" or role=\"menubar\" for ordinary website navigation unless the full widget interaction model is intentionally implemented.",
+    "Do not make a control both navigate and disclose at the same time.",
+    "Do not make child navigation hover-only.",
+    "Do not silently change labels, destinations or ordering between wide and narrow states.",
+    "Do not remove essential destinations at narrower widths; collapse them into an operable disclosure instead.",
+    "Do not invent site hierarchy or utility destinations from the visual example.",
+    "Do not treat mobile navigation as a separate content variant.",
+    "Do not expand the Navbar into a full Site Header: promotional bars, complete search systems, cart/account workflows and mega menus are separate concerns."
+  ],
+  "adaptation_contract": {
+    "may_change": [
+      "framework",
+      "template language",
+      "CSS architecture",
+      "class names",
+      "design tokens",
+      "colors",
+      "typography",
+      "spacing",
+      "exact breakpoint",
+      "wide-layout alignment",
+      "animation"
+    ],
+    "must_preserve": [
+      "global navigation purpose",
+      "destination labels and targets",
+      "information hierarchy and ordering",
+      "native link versus disclosure-button semantics",
+      "current-page orientation",
+      "disclosure state contract",
+      "responsive information continuity",
+      "keyboard operability",
+      "focus visibility",
+      "page-level bypass requirement"
+    ]
+  },
+  "agent_contract": {
+    "instruction": "Reconstruct the Navbar from this Build DNA rather than copying reference HTML. Adapt implementation details to the target stack. Preserve the supplied information architecture and ask for missing navigation decisions instead of inventing them.",
+    "when_conflicting": "Purpose, constraints, behavior and accessibility override visual resemblance.",
+    "output_expectation": "Production-appropriate navigation code for the requested stack, plus explicitly listed unresolved information-architecture decisions."
+  },
+  "acceptance": [
+    "Every supplied global destination is reachable as a real link.",
+    "The home/brand destination is a real link.",
+    "The current page is visibly distinguishable and programmatically exposed when supplied.",
+    "Disclosure groups use buttons with exposed expanded state and do not require hover.",
+    "Normal Tab and Shift+Tab navigation reaches all operable controls and links.",
+    "Escape closes an open disclosure or narrow navigation panel and restores logical focus.",
+    "Wide and narrow states preserve labels, destination targets and order.",
+    "No essential navigation destination disappears at narrow widths.",
+    "There is no horizontal overflow at 320 CSS px.",
+    "The navigation remains usable at 200% zoom.",
+    "Pointer targets satisfy WCAG 2.2 target-size minimum or a documented exception.",
+    "Sticky or overlay behavior does not completely obscure focused components.",
+    "The host page has a bypass mechanism for repeated navigation."
+  ],
+  "public": {
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
+    "source_repository": "https://github.com/blame76/how-to-web/tree/main/elements/navigation/navbar"
+  },
+  "examples": [
+    {
+      "id": "simple",
+      "data": "./examples/simple.json",
+      "human": "./examples/simple.html",
+      "note": "Direct global links with a narrow disclosure state."
+    },
+    {
+      "id": "with-disclosures",
+      "data": "./examples/with-disclosures.json",
+      "human": "./examples/with-disclosures.html",
+      "note": "Global navigation with explicit disclosure groups and nested links."
+    },
+    {
+      "id": "utility-plus-primary",
+      "data": "./examples/utility-plus-primary.json",
+      "human": "./examples/utility-plus-primary.html",
+      "note": "Primary and utility navigation kept distinct within one Navbar organism."
+    }
+  ]
+}
