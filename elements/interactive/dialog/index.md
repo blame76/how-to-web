@@ -36,6 +36,10 @@ The contract includes:
 - explicit close/cancel
 - focus return
 
+## Accessible description
+
+Use `aria-describedby` when a short, simple description benefits from being announced with the dialog. Do not flatten long structured content into one large description; let its headings, paragraphs and lists remain navigable.
+
 ## Initial-focus strategies
 
 ### Information / Long Content
@@ -54,9 +58,13 @@ Focus the less destructive action, usually Cancel.
 
 Escape closes the modal. There must also be a visible explicit close/cancel action.
 
+For explicit cancellation/dismissal, prefer `requestClose()` where supported so the same cancelable close-request path is used; fall back to `close()` for older browser targets. Successful task completion may close directly with a result value.
+
 After closing, return focus to the invoker unless the workflow has a documented better target.
 
-Backdrop-click dismissal is a product decision, not a default.
+Backdrop/light-dismiss is a product decision, not a default. `closedby="any"` can express it declaratively where supported, but `closedby` is not yet a baseline requirement.
+
+The Invoker Commands API (`commandfor` + `command="show-modal|request-close|close"`) is a valid progressive implementation option on current browsers; it does not change the Build DNA contract.
 
 ## Responsive
 
