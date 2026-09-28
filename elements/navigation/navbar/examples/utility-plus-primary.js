@@ -54,6 +54,5 @@ function reportHeight(){
   requestAnimationFrame(()=>window.parent.postMessage({type:'how-to-web:example-height',height:document.documentElement.scrollHeight},'*'));
 }
 
-bind();
-loadData().then(data=>{root.innerHTML=navigationMarkup(data);bind();}).catch(error=>console.warn('JSON konnte nicht geladen werden. Statischer Fallback bleibt aktiv.',error));
+loadData().then(data=>{root.innerHTML=navigationMarkup(data);bind();}).catch(error=>{console.warn('JSON konnte nicht geladen werden. Statischer Fallback bleibt aktiv.',error);bind();});
 window.addEventListener('resize',reportHeight);
