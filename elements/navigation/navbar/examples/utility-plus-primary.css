@@ -1,0 +1,33 @@
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111;background:#f3f1ec;line-height:1.45}
+*{box-sizing:border-box}
+body{margin:0}
+a{color:inherit}
+.skip-link{position:absolute;left:.75rem;top:.75rem;z-index:10;transform:translateY(-180%);background:#000;color:#fff;padding:.65rem .85rem}
+.skip-link:focus{transform:none}
+.demo-header{background:#fff;border-bottom:1px solid #aaa}
+.navbar{width:min(76rem,calc(100% - 2rem));min-height:6.2rem;margin:auto;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:2rem}
+.brand{font-size:1.35rem;font-weight:900;letter-spacing:-.05em;text-decoration:none}
+.nav-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:2rem}
+.nav-group{display:grid;gap:.2rem}
+.group-label{font-size:.62rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:#666}
+.primary-list,.utility-list{display:flex;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}
+.primary-list a,.utility-list a{display:flex;align-items:center;min-height:2.75rem;padding:.5rem .65rem;text-decoration:none}
+.primary-list a:hover,.utility-list a:hover{text-decoration:underline;text-underline-offset:.22em}
+.primary-list a[aria-current="page"]{font-weight:850;text-decoration:underline;text-decoration-thickness:.15em;text-underline-offset:.32em}
+.utility-list a{font-size:.88rem}
+.utility-list .emphasis{border:1px solid #000;padding-inline:.8rem;font-weight:800}
+.menu-toggle{display:none;min-height:2.75rem;font:inherit;font-weight:750;background:#fff;color:#000;border:1px solid #000;padding:.55rem .8rem}
+.demo-content{width:min(76rem,calc(100% - 2rem));min-height:20rem;margin:auto;padding:clamp(2rem,7vw,5rem) 0}
+.demo-content h1{max-width:18ch;margin:.2rem 0 1rem;font-size:clamp(2rem,5.8vw,4.2rem);line-height:1;letter-spacing:-.05em}
+.demo-content p{max-width:44rem}
+.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+:focus-visible{outline:3px solid #000;outline-offset:3px}
+@media(max-width:48rem){
+  .navbar{width:calc(100% - 1rem);min-height:4.5rem;display:flex;flex-wrap:wrap;gap:.5rem}
+  .menu-toggle{display:block;margin-left:auto}
+  .nav-panel{flex:0 0 100%;display:grid;grid-template-columns:1fr;gap:1rem;padding:.5rem 0 1rem}
+  .nav-panel[hidden]{display:none}
+  .primary-list,.utility-list{display:grid;gap:.1rem}
+  .primary-list a,.utility-list a{border-bottom:1px solid #ddd;padding:.65rem .25rem}
+  .utility-list .emphasis{border:1px solid #000;padding:.65rem}
+}

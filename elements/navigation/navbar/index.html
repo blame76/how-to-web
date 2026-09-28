@@ -1,1 +1,181 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Navbar – how-to-web</title><link rel="stylesheet" href="./styles.css"><script src="./script.js" defer></script></head><body><main><header><p class="eyebrow">how-to-web · organism</p><h1>Navbar</h1><p><strong>Wie finden Menschen die wichtigsten Bereiche ohne nachdenken zu müssen?</strong></p><p>Schwarz-Weiß-Gerüst. Beispiele werden später aus dem lokalen Manifest geladen.</p></header><section><h2>Showcase</h2><div class="stage"><div class="stage-toolbar" data-stage-toolbar></div><div class="stage-frame" data-stage-frame></div></div><h3>Geplante Darstellungen</h3><ul data-variants></ul></section><section><h2>Anatomie</h2><ul><li><code>navigation-landmark</code></li><li><code>brand-or-home-link</code></li><li><code>primary-links</code></li><li><code>optional-disclosure-buttons</code></li><li><code>optional-utility-actions</code></li></ul></section><section><h2>Best-Practice-Leitplanken</h2><ul><li>Typische Webnavigation braucht normalerweise keine ARIA menu/menubar-Rollen.</li><li>Benanntes Navigation-Landmark, echte Links, Listenstruktur und Disclosure-Buttons für aufklappbare Gruppen verwenden.</li><li>Aktuelle Seite und Tastaturverhalten müssen ohne Hover erkennbar bleiben.</li></ul><p><a href="./RESEARCH.md">Recherche und Quellen</a></p></section><section><h2>Was musst du entscheiden?</h2><div class="grid"><div class="panel">Inhalt</div><div class="panel">Hierarchie</div><div class="panel">Interaktion</div><div class="panel">Darstellung</div></div></section><section><h2>Review it yourself</h2><ul><li>Wichtigste Information sofort verständlich?</li><li>Tastatur und kein Hover nötig?</li><li>Schmale Ansicht logisch?</li><li>Lange oder fehlende Inhalte robust?</li></ul></section><section><h2>Maschinenlesbar</h2><a href="./examples/variants.json">Beispielvarianten (JSON)</a><p><code>/specs/elements/navbar.json</code></p></section></main></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Navbar – how-to-web</title>
+  <meta name="description" content="Interaktive Referenz für globale Website-Navigation: Struktur, Verhalten, Responsive Transformation und Accessibility.">
+  <meta name="how-to-web:build-dna" content="./build-dna.json">
+  <link rel="alternate" type="text/markdown" href="./index.md" title="Navbar – Markdown">
+  <link rel="describedby" type="text/markdown" href="./llms.txt">
+  <link rel="alternate" type="application/json" href="./build-dna.json" title="how-to-web Build DNA">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="site-intro">
+    <p class="eyebrow">how-to-web · organism</p>
+    <h1>Navbar</h1>
+    <p class="lead"><strong>Wie finden Menschen die wichtigsten Bereiche, ohne die Struktur der Website erst lernen zu müssen?</strong></p>
+    <p>Eine Navbar bildet die globale primäre Navigation ab. Sie hält Informationsarchitektur, aktuelle Position und notwendige Zustände über unterschiedliche Viewports hinweg verständlich.</p>
+  </header>
+
+  <section aria-labelledby="live-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">01 · Erst sehen</p>
+        <h2 id="live-title">Showcase</h2>
+      </div>
+      <p>Drei Varianten zeigen dieselbe Grundidee mit unterschiedlicher Hierarchie. Mobile ist dabei keine eigene Variante, sondern der responsive Zustand derselben Navigation.</p>
+    </div>
+    <div class="stage" data-stage>
+      <div class="stage-toolbar" data-stage-toolbar aria-label="Navbar-Beispiele wechseln">
+        <button type="button" aria-pressed="true">Simple</button>
+      </div>
+      <div class="stage-frame" data-stage-frame>
+        <iframe src="./examples/simple.html" title="Simple Navbar"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="variants-title">
+    <p class="eyebrow">02 · Varianten erkennen</p>
+    <h2 id="variants-title">Drei sinnvolle Ausprägungen</h2>
+    <ul class="variant-list" data-variants>
+      <li><strong>Simple</strong> – wenige globale Ziele ohne Unterebenen.</li>
+      <li><strong>With Disclosures</strong> – Linkgruppen werden bewusst per Button geöffnet.</li>
+      <li><strong>Utility + Primary</strong> – primäre Ziele und ergänzende Service-Links bleiben hierarchisch getrennt.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="anatomy-title">
+    <p class="eyebrow">03 · Benennen</p>
+    <h2 id="anatomy-title">Anatomie</h2>
+    <div class="anatomy-grid">
+      <div class="panel"><code>navigation-landmark</code><p>Das semantische Gebiet der globalen Navigation.</p></div>
+      <div class="panel"><code>home-link</code><p>Brand oder Website-Name als echter Link zur Startseite.</p></div>
+      <div class="panel"><code>primary-links</code><p>Die wichtigsten globalen Ziele in nachvollziehbarer Reihenfolge.</p></div>
+      <div class="panel"><code>current-page</code><p>Orientierung über <code>aria-current="page"</code> plus sichtbaren Zustand.</p></div>
+      <div class="panel"><code>disclosure-trigger</code><p>Optionaler Button für Linkgruppen; kein Link und kein ARIA-Menü.</p></div>
+      <div class="panel"><code>mobile-trigger</code><p>Optionaler Button, der dieselbe Navigation auf schmalen Viewports zugänglich macht.</p></div>
+      <div class="panel"><code>utility-links</code><p>Optionale ergänzende Ziele, klar von der primären Navigation unterschieden.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="research-title">
+    <p class="eyebrow">04 · Verstehen</p>
+    <h2 id="research-title">Best-Practice-Leitplanken</h2>
+    <ul class="research-list">
+      <li><strong>Semantik vor Widget:</strong> Typische Website-Navigation verwendet echte Links, Listen und bei Bedarf Disclosure-Buttons – normalerweise keine <code>menu</code>/<code>menubar</code>-Rollen.</li>
+      <li><strong>Zustand:</strong> Disclosure-Buttons exponieren ihren Zustand mit <code>aria-expanded</code>; die aktuelle Seite wird mit <code>aria-current="page"</code> ausgezeichnet.</li>
+      <li><strong>Responsive Kontinuität:</strong> Begriffe, Reihenfolge und Ziele bleiben über Breakpoints konsistent. Mobile ist eine andere Darstellung derselben Informationsarchitektur.</li>
+      <li><strong>Kein Hover-Zwang:</strong> Alle Navigationsebenen müssen mit Tastatur und Pointer erreichbar sein.</li>
+      <li><strong>Fokus:</strong> Fokus bleibt sichtbar und darf durch sticky oder überlagernde Navigation nicht vollständig verdeckt werden.</li>
+      <li><strong>Zielgrößen:</strong> Interaktive Ziele erfüllen WCAG&nbsp;2.2 Target Size Minimum oder eine zulässige Ausnahme.</li>
+      <li><strong>Seitenintegration:</strong> Wiederkehrende globale Navigation braucht auf der Seite einen Mechanismus zum Überspringen, typischerweise einen Skip-Link vor dem Header.</li>
+    </ul>
+    <p><a href="./RESEARCH.md">Recherche, Quellen und Ableitungen öffnen</a></p>
+  </section>
+
+  <section aria-labelledby="decide-title">
+    <p class="eyebrow">05 · Entscheiden</p>
+    <h2 id="decide-title">Was musst du festlegen?</h2>
+    <div class="grid">
+      <div class="panel"><h3>Informationsarchitektur</h3><p>Welche wenigen Ziele sind wirklich global und in welcher Reihenfolge brauchen Menschen sie?</p></div>
+      <div class="panel"><h3>Hierarchietiefe</h3><p>Reichen direkte Links oder brauchen einzelne Bereiche echte Untergruppen?</p></div>
+      <div class="panel"><h3>Responsive Verhalten</h3><p>Ab wann wird verdichtet, und wie bleibt dieselbe Struktur auf schmalen Viewports erreichbar?</p></div>
+      <div class="panel"><h3>Utility</h3><p>Welche ergänzenden Links gehören noch zur Navigation – und was ist bereits ein eigener Header-Baustein?</p></div>
+      <div class="panel"><h3>Persistenz</h3><p>Ist sticky Verhalten wirklich nötig? Wenn ja, darf es fokussierte Inhalte nicht verdecken.</p></div>
+      <div class="panel"><h3>Disclosure-Regeln</h3><p>Welche Gruppen sind aufklappbar, darf mehr als eine offen sein und wie werden Escape/Fokusrückgabe behandelt?</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="review-title">
+    <p class="eyebrow">06 · Selbst prüfen</p>
+    <h2 id="review-title">Review it yourself</h2>
+    <ul class="check-list">
+      <li>Kannst du alle globalen Ziele allein mit <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>, <kbd>Enter</kbd> und <kbd>Space</kbd> erreichen?</li>
+      <li>Öffnen Disclosure-Buttons nur Inhalte und navigieren nicht gleichzeitig?</li>
+      <li>Schließt <kbd>Escape</kbd> einen geöffneten Bereich sinnvoll und bleibt bzw. kehrt der Fokus logisch zurück?</li>
+      <li>Ist die aktuelle Seite sichtbar und programmatisch ausgezeichnet?</li>
+      <li>Bleiben Wortlaut, Reihenfolge und Ziele auf schmalen und breiten Viewports konsistent?</li>
+      <li>Funktioniert die Navigation vollständig ohne Hover?</li>
+      <li>Bleibt Fokus bei sticky/overlay Verhalten sichtbar?</li>
+      <li>Hat die Seite vor wiederkehrender Navigation einen Bypass-Mechanismus?</li>
+      <li>Ist jedes Pointer-Ziel mindestens 24×24 CSS-Pixel groß oder ausreichend getrennt?</li>
+    </ul>
+  </section>
+
+  <section class="machine-section" aria-labelledby="machine-title">
+    <p class="eyebrow">07 · Weitergeben</p>
+    <h2 id="machine-title">Maschinenlesbar</h2>
+    <p class="machine-lead">Die Build DNA beschreibt nicht unseren Beispielcode, sondern den Rekonstruktionsvertrag einer globalen Navbar: Semantik, Informationshierarchie, Zustände, Responsive Transformation und Accessibility.</p>
+
+    <div class="build-dna-panel">
+      <div>
+        <p class="eyebrow">how-to-web · Build DNA 0.1</p>
+        <h3>Portable Reconstruction Contract</h3>
+        <p>Ein Coding-Agent darf Framework, CSS-System und visuelle Tokens austauschen. Die Navigation muss aber dieselben Ziele, Rollen, Zustände, Responsive-Regeln und Accessibility-Verträge bewahren.</p>
+      </div>
+      <ul class="machine-links">
+        <li><a href="./build-dna.json"><strong>Build DNA öffnen</strong> · JSON</a></li>
+        <li><a href="./index.md">LLM-freundliche Referenz · Markdown</a></li>
+        <li><a href="./llms.txt">Agent Discovery · llms.txt</a></li>
+        <li><a href="./examples/variants.json">Varianten · JSON</a></li>
+        <li><a href="https://github.com/blame76/how-to-web/tree/main/elements/navigation/navbar">Source im GitHub-Repository</a></li>
+      </ul>
+    </div>
+
+    <div class="agent-prompts">
+      <h3>Für Coding-Agenten</h3>
+      <p>Die Build DNA ist der Vertrag. Diese Aufträge sind nur typische Einstiegspunkte – je nachdem, wie konkret die gewünschte Umsetzung schon feststeht.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <p class="eyebrow">Generisch</p>
+          <h4>Navbar aus der Referenz bauen</h4>
+          <pre><code>Baue mir eine Navbar nach
+https://blame76.github.io/how-to-web/elements/navigation/navbar/
+
+Nutze die Build DNA als Rekonstruktionsvertrag.
+Übernimm Informationsarchitektur, Semantik, Zustände,
+Responsive- und Accessibility-Constraints.
+Passe die Umsetzung an meinen Stack an.</code></pre>
+        </article>
+
+        <article class="prompt-card">
+          <p class="eyebrow">Variantenbezogen</p>
+          <h4>Disclosure-Navigation bauen</h4>
+          <pre><code>Baue mir die Variante „With Disclosures“ nach
+https://blame76.github.io/how-to-web/elements/navigation/navbar/
+
+Nutze die Build DNA als Vertrag und das Beispiel nur
+als Referenz für diese Ausprägung.
+Erfinde keine zusätzlichen Navigationsebenen.</code></pre>
+        </article>
+
+        <article class="prompt-card">
+          <p class="eyebrow">Projektbezogen</p>
+          <h4>In bestehende Anwendung übertragen</h4>
+          <pre><code>Übertrage die Navbar nach
+https://blame76.github.io/how-to-web/elements/navigation/navbar/
+in mein bestehendes Projekt.
+
+Bewahre die dort beschriebenen Semantik-, Responsive-,
+Focus- und Disclosure-Regeln.
+Nutze meine vorhandenen Design Tokens und Komponenten.
+Liste fehlende Informationsarchitektur-Entscheidungen auf,
+statt sie selbst zu erfinden.</code></pre>
+        </article>
+      </div>
+    </div>
+
+    <div class="grid machine-contract">
+      <div class="panel"><h3>Muss erhalten bleiben</h3><p>Navigation-Ziele, Reihenfolge, Semantik, Disclosure-Verhalten, Current-State, Responsive Kontinuität und Accessibility.</p></div>
+      <div class="panel"><h3>Darf angepasst werden</h3><p>Framework, Breakpoint-Wert, CSS-Methodik, Typografie, Farben, Abstände und visuelle Behandlung.</p></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,24 +1,31 @@
 {
   "id": "navbar",
   "kind": "organism",
-  "status": "structure-only",
+  "status": "ready",
   "variants": [
     {
       "id": "simple",
       "label": "Simple",
-      "example": null
+      "description": "Wenige globale Links ohne Unterebenen; Narrow-State als ein einfaches Disclosure.",
+      "example": "simple.html",
+      "status": "ready"
     },
     {
       "id": "with-disclosures",
       "label": "With Disclosures",
-      "example": null
+      "description": "Primäre Bereiche mit explizit aufklappbaren Linkgruppen; kein Hover-Zwang.",
+      "example": "with-disclosures.html",
+      "status": "ready"
     },
     {
       "id": "utility-plus-primary",
-      "label": "Utility Plus Primary",
-      "example": null
+      "label": "Utility + Primary",
+      "description": "Primäre Ziele und ergänzende Service-Links in klarer Hierarchie.",
+      "example": "utility-plus-primary.html",
+      "status": "ready"
     }
   ],
+  "responsive_rule": "Mobile is a responsive state of each variant, not a separate variant.",
   "stage": {
     "manifest": "manifest.json",
     "autoload": true

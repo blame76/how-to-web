@@ -126,6 +126,18 @@ Each public feature should expose:
 
 The repository root should maintain a concise `llms.txt` index.
 
+## Agent request examples
+
+A public feature may expose several concise request examples for coding agents, for example:
+
+- generic reconstruction,
+- a named documented variant,
+- adaptation into an existing project or design system.
+
+These examples are **not** separate specifications. They all resolve to the same Build DNA. The Build DNA stays normative; examples only demonstrate different user intents.
+
+When useful, `agent_contract.request_examples` may expose the same entry points machine-readably.
+
 ## Reconstruction test
 
 A Build DNA is not accepted merely because it validates as JSON.

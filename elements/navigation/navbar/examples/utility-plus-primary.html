@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Utility + Primary Navbar – how-to-web</title>
+  <link rel="stylesheet" href="./utility-plus-primary.css">
+  <script src="./utility-plus-primary.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#demo-content">Zum Inhalt springen</a>
+<header class="demo-header" data-navbar>
+  <div class="navbar">
+    <a class="brand" href="#start">how-to-web</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="utility-navigation">Navigation</button>
+    <nav class="nav-panel" id="utility-navigation" aria-label="Hauptnavigation">
+      <div class="nav-group">
+        <span class="group-label" id="primary-label">Primär</span>
+        <ul class="primary-list" aria-labelledby="primary-label">
+          <li><a href="#bausteine" aria-current="page">Bausteine</a></li>
+          <li><a href="#patterns">Patterns</a></li>
+          <li><a href="#lernen">Lernen</a></li>
+        </ul>
+      </div>
+      <div class="nav-group utility-group">
+        <span class="group-label" id="utility-label">Service</span>
+        <ul class="utility-list" aria-labelledby="utility-label">
+          <li><a href="#hilfe">Hilfe</a></li>
+          <li><a href="#github">GitHub</a></li>
+          <li><a class="emphasis" href="#mitmachen">Mitmachen</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="demo-content" id="demo-content" tabindex="-1">
+  <p class="eyebrow">Utility + Primary</p>
+  <h1>Zwei Ebenen der Wichtigkeit, nicht zwei Navigationsmodelle.</h1>
+  <p>Service-Ziele bleiben erreichbar, konkurrieren aber visuell nicht mit der primären Informationsarchitektur.</p>
+</main>
+</body>
+</html>

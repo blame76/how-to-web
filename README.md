@@ -34,6 +34,21 @@ https://blame76.github.io/how-to-web/blocks/product-card/
 
 The agent should discover the Build DNA from the page and reconstruct the component for the requested stack instead of copying the reference HTML.
 
+### Navbar
+
+- Human reference: `elements/navigation/navbar/index.html`
+- LLM-friendly reference: `elements/navigation/navbar/index.md`
+- Build DNA: `elements/navigation/navbar/build-dna.json`
+- Agent discovery: `elements/navigation/navbar/llms.txt`
+- Research: `elements/navigation/navbar/RESEARCH.md`
+- Examples: `elements/navigation/navbar/examples/` (`simple`, `with-disclosures`, `utility-plus-primary`)
+
+Public target:
+
+```text
+https://blame76.github.io/how-to-web/elements/navigation/navbar/
+```
+
 ## Build DNA
 
 Build DNA is the how-to-web machine-readable layer.
@@ -52,4 +67,4 @@ The repository publishes `llms.txt`. Individual component paths may provide a mo
 
 ## Status
 
-The Product Card is the reference feature and baseline for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.
+Product Card and Navbar are the first reference features for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.

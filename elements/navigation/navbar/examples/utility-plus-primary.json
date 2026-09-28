@@ -1,0 +1,54 @@
+{
+  "id": "utility-plus-primary",
+  "label": "Utility + Primary",
+  "status": "ready",
+  "demo_content": true,
+  "context": "Global navigation with distinct primary and service destinations",
+  "conforms_to": "../build-dna.json",
+  "navigation": {
+    "label": "Hauptnavigation",
+    "home": {
+      "label": "how-to-web",
+      "href": "#start"
+    },
+    "primary": [
+      {
+        "label": "Bausteine",
+        "href": "#bausteine",
+        "current": true
+      },
+      {
+        "label": "Patterns",
+        "href": "#patterns"
+      },
+      {
+        "label": "Lernen",
+        "href": "#lernen"
+      }
+    ],
+    "utility": [
+      {
+        "label": "Hilfe",
+        "href": "#hilfe"
+      },
+      {
+        "label": "GitHub",
+        "href": "#github"
+      },
+      {
+        "label": "Mitmachen",
+        "href": "#mitmachen",
+        "emphasis": true
+      }
+    ],
+    "mobile_label": "Navigation"
+  },
+  "decisions": {
+    "hierarchy_depth": 1,
+    "disclosures": false,
+    "utility_links": true,
+    "utility_separate_from_primary": true,
+    "sticky": false,
+    "collapse_at": "48rem"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "simple",
+  "label": "Simple",
+  "status": "ready",
+  "demo_content": true,
+  "context": "Global navigation with a shallow information architecture",
+  "conforms_to": "../build-dna.json",
+  "navigation": {
+    "label": "Hauptnavigation",
+    "home": {
+      "label": "how-to-web",
+      "href": "#start"
+    },
+    "primary": [
+      {
+        "label": "Start",
+        "href": "#start"
+      },
+      {
+        "label": "Bausteine",
+        "href": "#bausteine",
+        "current": true
+      },
+      {
+        "label": "Patterns",
+        "href": "#patterns"
+      },
+      {
+        "label": "Referenz",
+        "href": "#referenz"
+      }
+    ],
+    "mobile_label": "Navigation"
+  },
+  "decisions": {
+    "hierarchy_depth": 1,
+    "disclosures": false,
+    "utility_links": false,
+    "sticky": false,
+    "collapse_at": "48rem"
+  }
+}
