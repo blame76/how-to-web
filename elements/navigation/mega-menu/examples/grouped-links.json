@@ -1,0 +1,84 @@
+{
+  "id": "grouped-links",
+  "label": "Grouped Links",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "navigation": {
+    "label": "Northstar Hauptnavigation",
+    "interaction": {
+      "hover": false,
+      "max_open_panels": 1,
+      "escape": true,
+      "close_on_focus_leave": true
+    },
+    "items": [
+      {
+        "id": "platform",
+        "label": "Platform",
+        "href": "#platform",
+        "groups": [
+          {
+            "label": "Build",
+            "links": [
+              "Web Apps",
+              "APIs",
+              "Automation"
+            ]
+          },
+          {
+            "label": "Operate",
+            "links": [
+              "Observability",
+              "Security",
+              "Deployments"
+            ]
+          },
+          {
+            "label": "Learn",
+            "links": [
+              "Documentation",
+              "Examples",
+              "Changelog"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "solutions",
+        "label": "Solutions",
+        "href": "#solutions",
+        "groups": [
+          {
+            "label": "Teams",
+            "links": [
+              "Engineering",
+              "Product",
+              "Operations"
+            ]
+          },
+          {
+            "label": "Use Cases",
+            "links": [
+              "Modernize",
+              "Integrate",
+              "Scale"
+            ]
+          },
+          {
+            "label": "Resources",
+            "links": [
+              "Guides",
+              "Customer stories",
+              "Architecture"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "decisions": {
+    "top_level": "link plus separate disclosure button",
+    "hover": false,
+    "mobile": "stacked disclosures"
+  }
+}
