@@ -1,22 +1,28 @@
 {
   "id": "mega-menu",
   "kind": "organism",
-  "status": "structure-only",
+  "status": "ready",
   "variants": [
     {
       "id": "grouped-links",
       "label": "Grouped Links",
-      "example": null
+      "description": "Klassische Kategorien in klar benannten, scanbaren Linkgruppen.",
+      "example": "grouped-links.html",
+      "status": "ready"
     },
     {
       "id": "task-based",
       "label": "Task Based",
-      "example": null
+      "description": "Navigation nach Nutzeraufgaben statt nach interner Organisationsstruktur.",
+      "example": "task-based.html",
+      "status": "ready"
     },
     {
       "id": "featured-content",
       "label": "Featured Content",
-      "example": null
+      "description": "Linkgruppen plus ein einzelner untergeordneter visueller Teaser.",
+      "example": "featured-content.html",
+      "status": "ready"
     }
   ],
   "stage": {

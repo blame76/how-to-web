@@ -1,0 +1,60 @@
+{
+  "id": "featured-content",
+  "label": "Featured Content",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "navigation": {
+    "label": "Future Objects Hauptnavigation",
+    "interaction": {
+      "hover": false,
+      "max_open_panels": 1,
+      "escape": true,
+      "close_on_focus_leave": true
+    },
+    "items": [
+      {
+        "id": "shop",
+        "label": "Shop",
+        "href": "#shop",
+        "groups": [
+          {
+            "label": "Wear",
+            "links": [
+              "Signal Ring",
+              "Pulse Band",
+              "Quiet Pin"
+            ]
+          },
+          {
+            "label": "Carry",
+            "links": [
+              "Orbit Charm",
+              "Pocket Relay",
+              "Field Clip"
+            ]
+          },
+          {
+            "label": "Explore",
+            "links": [
+              "All objects",
+              "Field notes",
+              "Material guide"
+            ]
+          }
+        ],
+        "featured": {
+          "eyebrow": "Featured object",
+          "title": "Orbit Charm",
+          "body": "A small object between jewelry, interface and companion.",
+          "href": "#orbit-charm"
+        }
+      }
+    ]
+  },
+  "decisions": {
+    "featured_count": 1,
+    "featured_priority": "secondary",
+    "hover": false,
+    "mobile": "featured teaser follows link groups"
+  }
+}

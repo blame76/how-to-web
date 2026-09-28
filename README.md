@@ -68,6 +68,15 @@ https://blame76.github.io/how-to-web/elements/navigation/navbar/
 - Research: `elements/interactive/dialog/RESEARCH.md`
 - Examples: `elements/interactive/dialog/examples/` (`information`, `form`, `confirmation`)
 
+### Mega Menu
+
+- Human reference: `elements/navigation/mega-menu/index.html`
+- LLM-friendly reference: `elements/navigation/mega-menu/index.md`
+- Build DNA: `elements/navigation/mega-menu/build-dna.json`
+- Agent discovery: `elements/navigation/mega-menu/llms.txt`
+- Research: `elements/navigation/mega-menu/RESEARCH.md`
+- Examples: `elements/navigation/mega-menu/examples/` (`grouped-links`, `task-based`, `featured-content`)
+
 ## Build DNA
 
 Build DNA is the how-to-web machine-readable layer.
@@ -86,4 +95,4 @@ The repository publishes `llms.txt`. Individual component paths may provide a mo
 
 ## Status
 
-Product Card, Navbar, Carousel and Dialog are reference features for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.
+Product Card, Navbar, Carousel, Dialog and Mega Menu are reference features for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.

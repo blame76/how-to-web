@@ -1,0 +1,53 @@
+{
+  "id": "task-based",
+  "label": "Task Based",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "navigation": {
+    "label": "Workshop Hauptnavigation",
+    "interaction": {
+      "hover": false,
+      "max_open_panels": 1,
+      "escape": true,
+      "close_on_focus_leave": true
+    },
+    "items": [
+      {
+        "id": "tasks",
+        "label": "What do you need?",
+        "groups": [
+          {
+            "label": "Start something",
+            "links": [
+              "Plan a new product",
+              "Validate an idea",
+              "Choose a stack"
+            ]
+          },
+          {
+            "label": "Improve something",
+            "links": [
+              "Fix performance",
+              "Improve accessibility",
+              "Modernize legacy"
+            ]
+          },
+          {
+            "label": "Keep it healthy",
+            "links": [
+              "Review security",
+              "Add monitoring",
+              "Prepare operations"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "decisions": {
+    "grouping": "user tasks",
+    "top_level": "disclosure button only",
+    "hover": false,
+    "mobile": "same task groups stacked"
+  }
+}
