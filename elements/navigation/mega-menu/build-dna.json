@@ -1,0 +1,270 @@
+{
+  "format": "how-to-web-build-dna",
+  "version": "0.1",
+  "id": "mega-menu",
+  "kind": "organism",
+  "title": "Mega Menu",
+  "status": "ready",
+  "purpose": "Expose a large set of site-navigation destinations in scanable groups when a simple dropdown would not provide enough hierarchy or overview.",
+  "reconstruction_priority": [
+    "purpose",
+    "constraints",
+    "behavior",
+    "composition",
+    "responsive",
+    "accessibility",
+    "visual"
+  ],
+  "composition": [
+    {
+      "id": "navigation-landmark",
+      "role": "contains the site navigation",
+      "required": true,
+      "semantics": "nav"
+    },
+    {
+      "id": "top-level-link",
+      "role": "navigates to a category landing page when such a destination exists",
+      "required": false,
+      "semantics": "a"
+    },
+    {
+      "id": "disclosure-trigger",
+      "role": "shows and hides one mega panel",
+      "required": true,
+      "semantics": "button with aria-expanded and optional aria-controls"
+    },
+    {
+      "id": "mega-panel",
+      "role": "contains grouped navigation destinations",
+      "required": true,
+      "semantics": "structured section inside navigation"
+    },
+    {
+      "id": "group-heading",
+      "role": "names a scanable link group",
+      "required": true,
+      "semantics": "heading or equivalent group label"
+    },
+    {
+      "id": "links",
+      "role": "actual navigation destinations",
+      "required": true,
+      "semantics": "links in semantic lists"
+    },
+    {
+      "id": "featured-content",
+      "role": "optional secondary teaser that supports navigation",
+      "required": false,
+      "semantics": "linked article/card-like teaser"
+    }
+  ],
+  "data_contract": {
+    "required": [
+      "navigation.label",
+      "items[].label",
+      "items[].groups[].label",
+      "items[].groups[].links[].label",
+      "items[].groups[].links[].href"
+    ],
+    "optional": [
+      "items[].href",
+      "items[].featured",
+      "current_href",
+      "interaction.hover"
+    ],
+    "prohibit_invention": [
+      "information architecture",
+      "link destinations",
+      "hover behavior",
+      "featured promotion",
+      "current page",
+      "mobile hierarchy"
+    ]
+  },
+  "behavior": {
+    "trigger": {
+      "baseline": "click/tap and Enter/Space on native button",
+      "state": "aria-expanded reflects panel visibility",
+      "link_separation": "If the top-level category navigates, keep its link separate from the disclosure button."
+    },
+    "open_panels": {
+      "maximum_simultaneous": 1,
+      "new_trigger": "opening another panel closes the previous panel"
+    },
+    "dismiss": {
+      "escape": "close the open panel and return focus to its disclosure trigger",
+      "focus_leaving_navigation": "close any open panel",
+      "pointer_outside": "may close when explicitly implemented; must not be the only dismiss path"
+    },
+    "keyboard": {
+      "tab": "normal document tab order through top-level controls and visible panel links",
+      "shift_tab": "normal reverse document tab order",
+      "arrow_keys": "optional enhancement only; never replace Tab/Shift+Tab unless the complete alternate keyboard contract is intentionally implemented"
+    },
+    "hover": {
+      "default": false,
+      "if_enabled": [
+        "click/tap remains fully functional",
+        "the pointer can move from trigger into panel without closing it",
+        "Escape can dismiss the panel",
+        "avoid immediate flicker; 300–500 ms is an evidence-based starting range, not a mandatory constant",
+        "meet WCAG 1.4.13 dismissible, hoverable and persistent requirements"
+      ]
+    },
+    "current_page": "Use aria-current on the destination link, not on the disclosure trigger."
+  },
+  "layout": {
+    "desktop": "two-dimensional panel with clearly separated groups",
+    "grouping": "group related links into manageable chunks; do not create an undifferentiated link wall",
+    "featured_content": "at most subordinate to the navigation groups; do not turn the panel into a mini application"
+  },
+  "visual": {
+    "preserve": "clear distinction between top-level navigation, disclosure state, group labels and links",
+    "adaptable_tokens": [
+      "color",
+      "typeface",
+      "spacing",
+      "grid",
+      "panel width",
+      "border",
+      "shadow",
+      "featured-teaser treatment"
+    ]
+  },
+  "responsive": {
+    "strategy": "preserve information architecture while changing presentation",
+    "narrow_viewport": "stack groups/disclosures vertically instead of squeezing desktop columns",
+    "sequence_order_preserved": true,
+    "minimum_test_viewport_css_px": 320,
+    "zoom_test_percent": 200,
+    "horizontal_page_overflow": false,
+    "focus_must_not_be_obscured": true
+  },
+  "accessibility": {
+    "navigation_semantics": true,
+    "no_menu_or_menubar_roles_for_typical_site_navigation": true,
+    "native_buttons_for_disclosures": true,
+    "link_semantics_preserved": true,
+    "visible_focus": true,
+    "keyboard_operable": true,
+    "hover_required": false,
+    "target_size_minimum_css_px": 24,
+    "current_page": "aria-current=page on the link",
+    "escape_focus_return": true
+  },
+  "performance": {
+    "panel_content": "navigation content should be lightweight and immediately available",
+    "featured_media": "optional teaser media should not block navigation usability"
+  },
+  "constraints": [
+    "Do not use role=menu, role=menubar or role=menuitem merely because the component is called a Mega Menu.",
+    "Do not combine navigation and disclosure into one ambiguous control when the top-level category itself is a destination.",
+    "Do not require hover to reveal navigation.",
+    "Do not add instant hover switching that causes accidental flicker.",
+    "Do not replace normal Tab navigation with custom arrow-key behavior by default.",
+    "Do not mark a disclosure trigger as aria-current=page.",
+    "Do not overload the panel with forms, carousels, tabs or other complex application widgets.",
+    "Do not change the information architecture between desktop and mobile unless explicitly required."
+  ],
+  "adaptation_contract": {
+    "may_change": [
+      "framework",
+      "template language",
+      "CSS architecture",
+      "class names",
+      "design tokens",
+      "colors",
+      "typography",
+      "spacing",
+      "grid columns",
+      "panel placement",
+      "visual teaser style",
+      "popover vs ordinary disclosure implementation"
+    ],
+    "must_preserve": [
+      "site-navigation semantics",
+      "link vs trigger distinction",
+      "group structure",
+      "disclosure state",
+      "click/tap path",
+      "Escape behavior",
+      "focus-leaving close behavior",
+      "normal Tab path",
+      "current-page semantics",
+      "responsive information hierarchy"
+    ]
+  },
+  "agent_contract": {
+    "instruction": "Reconstruct from this Build DNA rather than copying reference HTML. Preserve navigation semantics and information hierarchy. Ask for missing IA, hover and dismiss decisions instead of inventing them.",
+    "when_conflicting": "Purpose, constraints, behavior and accessibility override visual resemblance.",
+    "output_expectation": "Production-appropriate Mega Menu code for the requested stack plus explicitly listed unresolved IA or interaction decisions.",
+    "request_examples": [
+      {
+        "id": "generic-reconstruction",
+        "intent": "Build a generic Mega Menu.",
+        "prompt": "Baue mir ein Mega Menu nach https://blame76.github.io/how-to-web/elements/navigation/mega-menu/ und nutze die Build DNA als Rekonstruktionsvertrag. Behandle Website-Navigation nicht als ARIA-Menubar."
+      },
+      {
+        "id": "grouped-links",
+        "intent": "Build the category-grouped variant.",
+        "prompt": "Baue mir die Variante \"Grouped Links\". Erhalte Linkhierarchie, Disclosure-Zustand, Escape und die mobile Informationsarchitektur."
+      },
+      {
+        "id": "task-based",
+        "intent": "Build the task-based variant.",
+        "prompt": "Baue mir die Variante \"Task Based\". Gruppiere Ziele nach Nutzeraufgaben statt internen Abteilungen."
+      },
+      {
+        "id": "featured-content",
+        "intent": "Build the featured-content variant.",
+        "prompt": "Baue mir die Variante \"Featured Content\". Ein visueller Teaser darf Navigation unterstützen, aber Links und Gruppen nicht verdrängen."
+      },
+      {
+        "id": "project-adaptation",
+        "intent": "Adapt the Mega Menu contract to an existing navigation.",
+        "prompt": "Übertrage das how-to-web Mega Menu in mein bestehendes Projekt. Nutze vorhandene Navigation und Tokens und erfinde keine Hover-, Dismiss- oder IA-Regeln."
+      }
+    ]
+  },
+  "acceptance": [
+    "Typical site navigation uses navigation/link/disclosure semantics rather than ARIA menu or menubar roles.",
+    "Every panel can be opened by click/tap and keyboard without hover.",
+    "aria-expanded matches visible disclosure state.",
+    "Escape closes the open panel and returns focus to its trigger.",
+    "Moving focus fully outside the navigation closes the open panel.",
+    "Normal Tab and Shift+Tab navigation remains available.",
+    "At most one mega panel is open at a time in the documented variants.",
+    "Current-page state is applied to the destination link, not the trigger.",
+    "Grouped links remain scanable and semantically structured.",
+    "Mobile preserves the same information architecture.",
+    "The navigation remains usable at 320 CSS px and 200% zoom."
+  ],
+  "public": {
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
+    "source_repository": "https://github.com/blame76/how-to-web/tree/main/elements/navigation/mega-menu"
+  },
+  "examples": [
+    {
+      "id": "grouped-links",
+      "data": "./examples/grouped-links.json",
+      "human": "./examples/grouped-links.html",
+      "note": "Classic category grouping with hybrid top-level link plus disclosure button."
+    },
+    {
+      "id": "task-based",
+      "data": "./examples/task-based.json",
+      "human": "./examples/task-based.html",
+      "note": "Navigation groups organized around user tasks."
+    },
+    {
+      "id": "featured-content",
+      "data": "./examples/featured-content.json",
+      "human": "./examples/featured-content.html",
+      "note": "Grouped navigation plus one subordinate visual teaser."
+    }
+  ]
+}
