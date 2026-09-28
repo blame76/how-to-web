@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Information Dialog – how-to-web</title><link rel="stylesheet" href="./information.css"><script src="./information.js" defer></script></head>
+<body>
+<main class="demo">
+  <p class="eyebrow">Dialog · Information / Long Content</p>
+  <h1>Was ein Screenshot nicht zeigt.</h1>
+  <p class="intro">Dieses Beispiel öffnet längeren strukturierten Inhalt modal. Der Fokus startet bewusst auf der Überschrift, nicht auf dem Schließen-Button.</p>
+  <button class="open-button" type="button" data-open>Information öffnen</button>
+
+  <dialog class="modal" aria-labelledby="info-title" data-dialog>
+    <div class="dialog-shell">
+      <header class="dialog-header">
+        <p class="eyebrow">how-to-web · Dialog</p>
+        <h2 id="info-title" tabindex="-1" data-initial-focus>Was ändert sich mit Build DNA?</h2>
+      </header>
+      <div class="dialog-content" data-content>
+        <section><h3>Der sichtbare Teil</h3><p>Ein Dialog ist schnell gezeichnet: Box, Titel, Text, Button. Für die Rekonstruktion reicht das nicht.</p></section>
+        <section><h3>Der unsichtbare Vertrag</h3><p>Initialfokus, Tab-Reihenfolge, Escape, Hintergrund-Inertheit und Fokusrückgabe bestimmen, ob sich die Oberfläche wie ein modaler Dialog verhält.</p></section>
+        <section><h3>Warum statischer Initialfokus?</h3><p>Bei längerem strukturiertem Inhalt soll zuerst der Anfang wahrnehmbar sein, statt direkt zu einer Aktion am Ende zu springen.</p></section>
+      </div>
+      <footer class="dialog-actions"><button type="button" data-close>Verstanden</button></footer>
+    </div>
+  </dialog>
+</main>
+</body></html>
