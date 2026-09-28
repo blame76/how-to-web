@@ -5,10 +5,11 @@ const confirmButton=dialog.querySelector('[data-confirm]');
 const project=document.querySelector('[data-project]');
 const result=document.querySelector('[data-result]');
 let invoker=null;
+function requestCloseDialog(value=''){if(typeof dialog.requestClose==='function')dialog.requestClose(value);else dialog.close(value)}
 async function load(){const r=await fetch('./confirmation.json',{cache:'no-store'});if(!r.ok)throw new Error(String(r.status));return r.json()}
 function open(){invoker=document.activeElement;dialog.showModal();requestAnimationFrame(()=>cancelButton.focus());report()}
 openButton.addEventListener('click',open);
-cancelButton.addEventListener('click',()=>dialog.close('cancel'));
+cancelButton.addEventListener('click',()=>requestCloseDialog('cancel'));
 confirmButton.addEventListener('click',()=>dialog.close('confirm'));
 dialog.addEventListener('close',()=>{
   if(dialog.returnValue==='confirm'){
