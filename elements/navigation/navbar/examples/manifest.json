@@ -1,0 +1,19 @@
+{
+  "examples": [
+    {
+      "id": "simple",
+      "label": "Simple",
+      "file": "simple.html"
+    },
+    {
+      "id": "with-disclosures",
+      "label": "With Disclosures",
+      "file": "with-disclosures.html"
+    },
+    {
+      "id": "utility-plus-primary",
+      "label": "Utility + Primary",
+      "file": "utility-plus-primary.html"
+    }
+  ]
+}
