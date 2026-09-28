@@ -56,3 +56,12 @@ section{border-top:1px solid #000;padding:2.5rem 0}
 @media(max-width:48rem){
   .build-dna-panel{grid-template-columns:1fr}
 }
+
+.contract-hierarchy{max-width:58rem;margin:1.25rem 0;border-left:4px solid #000;padding:.1rem 0 .1rem 1rem}
+.contract-hierarchy p{margin:.35rem 0}
+.build-dna-inline{margin:1.5rem 0;border:2px solid #000;background:#fff}
+.build-dna-inline summary{cursor:pointer;min-height:2.75rem;padding:.8rem 1rem;font-weight:750}
+.build-dna-inline[open] summary{border-bottom:1px solid #000}
+.build-dna-inline__intro{padding:1rem 1rem 0}
+.build-dna-inline__intro p{margin:.35rem 0}
+.build-dna-inline pre{max-height:32rem;margin:1rem;overflow:auto;border:1px solid #000;padding:1rem;background:#f7f7f7;font-size:.78rem;line-height:1.45;white-space:pre}
