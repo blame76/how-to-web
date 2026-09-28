@@ -1,0 +1,23 @@
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#0a0a0a;background:#fff;line-height:1.4}
+*{box-sizing:border-box}
+body{margin:0}
+.example-shell{width:min(100%,68rem);margin:0 auto;padding:clamp(1rem,4vw,3rem);display:grid;justify-items:center}
+.example-label,.example-note,[data-product-card]{width:min(100%,32rem)}
+.example-label{margin:0 0 .75rem;font-size:.78rem;font-weight:750;letter-spacing:.06em;text-transform:uppercase}
+.example-note{margin:1rem 0 0;font-size:.78rem}
+.product-card{display:grid;grid-template-columns:7.5rem minmax(0,1fr);width:100%;min-height:7.5rem;border:1px solid #111;background:#fff}
+.product-card__media{aspect-ratio:1/1;background:#f2f2f2;border-right:1px solid #111;overflow:hidden}
+.product-card__media img{display:block;width:100%;height:100%;object-fit:contain;padding:.45rem}
+.product-card__body{display:flex;min-width:0;flex-direction:column;padding:.85rem}
+.product-card__brand{margin:0 0 .25rem;font-size:.65rem;font-weight:800;letter-spacing:.08em}
+h2{margin:0;font-size:1.05rem;line-height:1.15}
+.product-card__variation{margin:.3rem 0 .65rem;font-size:.78rem}
+.product-card__footer{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-top:auto}
+.product-card__footer strong{font-size:1rem}
+.product-card__footer a{color:#000;font-weight:800;text-underline-offset:.18em}
+.product-card__footer a:focus-visible{outline:3px solid #000;outline-offset:3px}
+@media(max-width:23rem){
+  .product-card{grid-template-columns:6rem minmax(0,1fr)}
+  .product-card__body{padding:.65rem}
+  .product-card__footer{align-items:start;flex-direction:column;gap:.25rem}
+}

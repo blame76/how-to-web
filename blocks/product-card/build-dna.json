@@ -1,0 +1,236 @@
+{
+  "format": "how-to-web-build-dna",
+  "version": "0.1",
+  "id": "product-card",
+  "kind": "block",
+  "title": "Product Card",
+  "status": "ready",
+  "purpose": "Help a user identify and compare a product in a collection and decide whether to inspect its detail page.",
+  "reconstruction_priority": [
+    "purpose",
+    "constraints",
+    "behavior",
+    "composition",
+    "responsive",
+    "accessibility",
+    "visual"
+  ],
+  "composition": [
+    {
+      "id": "media",
+      "role": "product media",
+      "required": true,
+      "semantics": "image or picture"
+    },
+    {
+      "id": "product-name",
+      "role": "product identification",
+      "required": true,
+      "semantics": "heading"
+    },
+    {
+      "id": "price",
+      "role": "purchase comparison",
+      "required": true,
+      "semantics": "text"
+    },
+    {
+      "id": "rating-or-proof",
+      "role": "optional decision support",
+      "required": false,
+      "semantics": "text with accessible description"
+    },
+    {
+      "id": "variation-cue",
+      "role": "optional variation summary",
+      "required": false,
+      "semantics": "text"
+    },
+    {
+      "id": "image-switcher",
+      "role": "optional alternate views",
+      "required": false,
+      "semantics": "list of buttons"
+    },
+    {
+      "id": "primary-action",
+      "role": "open product detail",
+      "required": true,
+      "semantics": "link"
+    }
+  ],
+  "data_contract": {
+    "required": [
+      "product.name",
+      "product.price.display",
+      "product.product_url",
+      "product.images[0].alt",
+      "product.images[0].fallback"
+    ],
+    "optional": [
+      "product.brand",
+      "product.rating",
+      "product.variation_cue",
+      "product.images[1..n]"
+    ],
+    "prohibit_invention": [
+      "discount",
+      "availability",
+      "stock",
+      "shipping promise",
+      "sustainability claim",
+      "rating or review count unless supplied"
+    ]
+  },
+  "layout": {
+    "flow": "vertical",
+    "inline_size": "100% of assigned slot",
+    "max_inline_size": "25rem",
+    "media_position": "top",
+    "media_aspect_ratio": "1:1",
+    "content_alignment": "start",
+    "geometry_invariant_on_media_change": true,
+    "rule": "Switching product images MUST NOT change the outer card width or media aspect ratio."
+  },
+  "visual": {
+    "hierarchy": [
+      "media",
+      "product-name",
+      "price",
+      "secondary-information",
+      "primary-action"
+    ],
+    "density": "comfortable",
+    "example_shape": "rounded",
+    "example_surface": "bordered with restrained shadow",
+    "adaptable_tokens": [
+      "color",
+      "typeface",
+      "font-size",
+      "radius",
+      "border",
+      "shadow",
+      "spacing"
+    ],
+    "preserve": "visual hierarchy and stable geometry"
+  },
+  "behavior": {
+    "whole_card_clickable": false,
+    "primary_action": "link to product detail",
+    "image_switching": {
+      "enabled_when": "more than one useful product view is available",
+      "trigger": "button",
+      "hover_only": false,
+      "active_state": "aria-pressed",
+      "focus_behavior": "focus remains on the activated thumbnail",
+      "geometry_change": false
+    },
+    "quick_add": {
+      "default": false,
+      "rule": "Only add when the product model and variant selection make the action unambiguous."
+    }
+  },
+  "responsive": {
+    "strategy": "fluid card with capped inline size",
+    "minimum_test_viewport_css_px": 320,
+    "zoom_test_percent": 200,
+    "horizontal_scroll": false,
+    "media_ratio_preserved": true,
+    "content_order_preserved": true
+  },
+  "accessibility": {
+    "native_controls": true,
+    "visible_focus": true,
+    "keyboard_operable": true,
+    "hover_required": false,
+    "image_alternatives": true,
+    "thumbnail_accessible_names": true,
+    "minimum_pointer_target_css_px": 24,
+    "primary_action_context": "accessible name includes the product identity when needed"
+  },
+  "performance": {
+    "responsive_images": true,
+    "preferred_formats": [
+      "AVIF",
+      "WebP"
+    ],
+    "srcset": true,
+    "sizes": true,
+    "intrinsic_dimensions": true,
+    "layout_shift_prevention": "reserve image geometry before image load"
+  },
+  "constraints": [
+    "Do not turn the entire card into a JavaScript pseudo-link.",
+    "Do not make essential product information hover-only.",
+    "Do not place UI text, prices, badges, or product claims inside generated image assets.",
+    "Do not duplicate one product into multiple list items merely to represent normal size or color variants.",
+    "Do not let alternate image intrinsic dimensions resize the card.",
+    "Do not invent commercial or trust claims that are absent from the supplied data."
+  ],
+  "adaptation_contract": {
+    "may_change": [
+      "framework",
+      "template language",
+      "CSS architecture",
+      "class names",
+      "design tokens",
+      "colors",
+      "typography",
+      "radius",
+      "shadow",
+      "exact spacing"
+    ],
+    "must_preserve": [
+      "purpose",
+      "information hierarchy",
+      "semantic roles",
+      "interaction contract",
+      "stable media geometry",
+      "responsive behavior",
+      "accessibility constraints",
+      "data honesty constraints"
+    ]
+  },
+  "agent_contract": {
+    "instruction": "Reconstruct the component from this Build DNA rather than copying the reference HTML. Adapt implementation details to the target stack. Ask for missing product decisions instead of inventing them.",
+    "when_conflicting": "Purpose, constraints, behavior and accessibility override visual resemblance.",
+    "output_expectation": "Production-appropriate component code for the user's requested stack, plus any explicit unresolved decisions."
+  },
+  "acceptance": [
+    "Product name, price, primary image and primary action are understandable without opening the detail page.",
+    "If alternate views exist, every view is keyboard reachable and the active view is programmatically exposed.",
+    "Switching views does not change card width or media aspect ratio.",
+    "The card works without hover.",
+    "No horizontal overflow at 320 CSS px.",
+    "Content remains usable at 200% zoom.",
+    "Responsive image candidates are available and intrinsic dimensions reserve layout space.",
+    "No unsupported product claims are invented."
+  ],
+  "public": {
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
+    "source_repository": "https://github.com/blame76/how-to-web/tree/main/blocks/product-card"
+  },
+  "examples": [
+    {
+      "id": "premium-retail",
+      "data": "./examples/premium-retail.json",
+      "human": "./examples/premium-retail.html",
+      "note": "Fashion/streetwear example with multiple visual product views."
+    },
+    {
+      "id": "technical-retail",
+      "data": "./examples/technical-retail.json",
+      "human": "./examples/technical-retail.html",
+      "note": "Spec-forward example for products where structured attributes drive comparison."
+    },
+    {
+      "id": "compact",
+      "data": "./examples/compact.json",
+      "human": "./examples/compact.html",
+      "note": "Dense listing example that preserves the core contract while reducing secondary information."
+    }
+  ]
+}

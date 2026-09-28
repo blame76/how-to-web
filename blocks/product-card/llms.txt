@@ -1,0 +1,24 @@
+# how-to-web Product Card
+
+> Machine-readable reconstruction guidance for the how-to-web Product Card block.
+
+This path documents a framework-independent Product Card. Coding agents should use the Build DNA as the primary reconstruction contract. The visual example demonstrates one implementation and should not be copied as the specification.
+
+## Primary
+
+- [Build DNA](./build-dna.json): Canonical machine-readable reconstruction contract. Read this first.
+- [Product Card reference](./index.md): Concise LLM-friendly explanation of anatomy, behavior, responsive rules, accessibility and constraints.
+- [Human reference](./): Interactive showcase and review guidance.
+
+## Example
+
+- [Premium Retail example data](./examples/premium-retail.json): Concrete fictional hoodie data conforming to the Build DNA.
+- [Premium Retail example](./examples/premium-retail.html): Rendered example.
+
+## Source
+
+- [GitHub source](https://github.com/blame76/how-to-web/tree/main/blocks/product-card): Source files and research.
+
+## Agent instruction
+
+Reconstruct from Build DNA rather than copying HTML. Preserve purpose, constraints, behavior, stable geometry, responsive rules, accessibility and data honesty. Adapt framework and visual tokens to the target project. Ask for missing product requirements instead of inventing them.
