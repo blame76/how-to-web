@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Navbar With Disclosures – how-to-web</title>
+  <link rel="stylesheet" href="./with-disclosures.css">
+  <script src="./with-disclosures.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#demo-content">Zum Inhalt springen</a>
+<header class="demo-header" data-navbar>
+  <div class="navbar">
+    <a class="brand" href="#start">how-to-web</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="disclosure-navigation">Navigation</button>
+    <nav class="nav-panel" id="disclosure-navigation" aria-label="Hauptnavigation">
+      <ul class="nav-list">
+        <li class="nav-item has-disclosure">
+          <button class="disclosure-button" type="button" aria-expanded="false" aria-controls="group-bausteine">Bausteine <span aria-hidden="true">↓</span></button>
+          <ul class="subnav" id="group-bausteine" hidden>
+            <li><a href="#elements">Elements</a></li>
+            <li><a href="#blocks">Blocks</a></li>
+            <li><a href="#organismen" aria-current="page">Organismen</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="top-link" href="#patterns">Patterns</a></li>
+        <li class="nav-item has-disclosure">
+          <button class="disclosure-button" type="button" aria-expanded="false" aria-controls="group-lernen">Lernen <span aria-hidden="true">↓</span></button>
+          <ul class="subnav" id="group-lernen" hidden>
+            <li><a href="#anatomie">Anatomie</a></li>
+            <li><a href="#accessibility">Accessibility</a></li>
+            <li><a href="#performance">Performance</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="top-link" href="#ueber">Über</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="demo-content" id="demo-content" tabindex="-1">
+  <p class="eyebrow">With Disclosures</p>
+  <h1>Unterebenen ohne Menü-Widget.</h1>
+  <p>Buttons öffnen Linkgruppen. Links navigieren. Hover ist für keine Funktion erforderlich.</p>
+</main>
+</body>
+</html>
