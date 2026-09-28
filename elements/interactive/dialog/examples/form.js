@@ -6,7 +6,7 @@ const initial=dialog.querySelector('[data-initial-focus]');
 const status=document.querySelector('[data-status]');
 let invoker=null;
 async function load(){const r=await fetch('./form.json',{cache:'no-store'});if(!r.ok)throw new Error(String(r.status));return r.json()}
-function open(){invoker=document.activeElement;status.textContent='';dialog.showModal();requestAnimationFrame(()=>initial.focus());report()}
+function open(){invoker=document.activeElement;status.textContent='';dialog.returnValue='';dialog.showModal();requestAnimationFrame(()=>initial.focus());report()}
 openButton.addEventListener('click',open);
 cancelButton.addEventListener('click',()=>dialog.close('cancel'));
 form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;dialog.close('save')});
