@@ -1,0 +1,12 @@
+const input=document.querySelector('[data-input]');const list=document.querySelector('[data-list]');const form=document.querySelector('[data-form]');const status=document.querySelector('[data-status]');
+const options=['Signal Ring','Orbit Charm','Pocket Relay','Field Clip','Quiet Pin'];let active=-1;let selectedValue=null;
+function matches(){const q=input.value.trim().toLowerCase();return q?options.filter(x=>x.toLowerCase().includes(q)):options}
+function close(){list.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1}
+function render(){const items=matches();if(active>=items.length)active=-1;list.hidden=false;input.setAttribute('aria-expanded','true');if(!items.length){list.innerHTML='<li class="empty">No matching object — your text is still valid.</li>';input.removeAttribute('aria-activedescendant');return}list.innerHTML=items.map((x,i)=>`<li id="free-option-${i}" role="option" aria-selected="${i===active?'true':'false'}" data-index="${i}">${x}</li>`).join('');if(active>=0){input.setAttribute('aria-activedescendant','free-option-'+active);requestAnimationFrame(()=>document.getElementById('free-option-'+active)?.scrollIntoView({block:'nearest'}))}else input.removeAttribute('aria-activedescendant')}
+function commit(index){const item=matches()[index];if(!item)return;input.value=item;selectedValue=item;close();status.textContent=`Suggestion committed: ${item}`}
+input.addEventListener('input',()=>{if(input.value!==selectedValue)selectedValue=null;active=-1;render()});
+input.addEventListener('focus',render);
+input.addEventListener('keydown',e=>{const items=matches();if(e.key==='ArrowDown'){e.preventDefault();if(list.hidden)render();active=items.length?(active+1+items.length)%items.length:-1;render()}else if(e.key==='ArrowUp'){e.preventDefault();if(list.hidden)render();active=items.length?(active-1+items.length)%items.length:-1;render()}else if(e.key==='Enter'&&active>=0){e.preventDefault();commit(active)}else if(e.key==='Escape'&&!list.hidden){e.preventDefault();close()}});
+list.addEventListener('pointerdown',e=>{if(e.target.closest('[role=option]'))e.preventDefault()});list.addEventListener('click',e=>{const item=e.target.closest('[role=option]');if(item)commit(Number(item.dataset.index))});
+form.addEventListener('submit',e=>{e.preventDefault();close();status.textContent=input.value.trim()?`Accepted value: "${input.value.trim()}"`:'Enter a value first.'});
+input.addEventListener('blur',()=>requestAnimationFrame(()=>{if(document.activeElement!==input)close()}));
