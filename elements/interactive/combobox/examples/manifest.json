@@ -1,0 +1,19 @@
+{
+  "examples": [
+    {
+      "id": "free-text",
+      "label": "Free Text Suggestions",
+      "file": "free-text.html"
+    },
+    {
+      "id": "restricted",
+      "label": "Restricted Selection",
+      "file": "restricted.html"
+    },
+    {
+      "id": "rich-suggestions",
+      "label": "Rich Suggestions",
+      "file": "rich-suggestions.html"
+    }
+  ]
+}

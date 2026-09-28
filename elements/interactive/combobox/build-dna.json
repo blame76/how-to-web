@@ -1,0 +1,336 @@
+{
+  "format": "how-to-web-build-dna",
+  "version": "0.1",
+  "id": "combobox",
+  "kind": "organism",
+  "title": "Combobox",
+  "status": "ready",
+  "purpose": "Help a user enter or select a value through an editable text field with a related popup of suggestions when a simpler native choice control does not satisfy the task.",
+  "reconstruction_priority": [
+    "purpose",
+    "constraints",
+    "behavior",
+    "composition",
+    "responsive",
+    "accessibility",
+    "visual"
+  ],
+  "selection_gate": {
+    "question": "Does this task need a custom editable combobox, or can a simpler native control satisfy it?",
+    "alternatives": {
+      "select": {
+        "prefer_when": [
+          "valid values are closed and known",
+          "user selects one existing value",
+          "custom text filtering is not required"
+        ],
+        "benefit": "browser and operating system own most semantics, keyboard and mobile interaction"
+      },
+      "datalist": {
+        "consider_when": [
+          "free text is valid",
+          "suggestions are simple recommendations",
+          "target browser and assistive-technology support has been tested"
+        ],
+        "caveat": "datalist has current support, styling and accessibility limitations and is not a universal shortcut"
+      },
+      "combobox": {
+        "justify_when": [
+          "suggestions are dynamically filtered or loaded from the query",
+          "active suggestion state must be controlled",
+          "free-text versus restricted-value policy must be explicit",
+          "popup presentation needs controlled listbox semantics"
+        ]
+      }
+    },
+    "rule": "Prefer the simplest control that satisfies the real value and interaction contract. Visual customization alone is not sufficient justification for a custom combobox."
+  },
+  "composition": [
+    {
+      "id": "label",
+      "role": "names the field",
+      "required": true,
+      "semantics": "label associated with the input"
+    },
+    {
+      "id": "input",
+      "role": "editable value and DOM focus owner",
+      "required": true,
+      "semantics": "input with role=combobox"
+    },
+    {
+      "id": "popup",
+      "role": "presents candidate values",
+      "required": true,
+      "semantics": "listbox for this reference"
+    },
+    {
+      "id": "option",
+      "role": "one candidate value",
+      "required": true,
+      "semantics": "role=option"
+    },
+    {
+      "id": "status",
+      "role": "optional concise result/validation feedback",
+      "required": false,
+      "semantics": "status or descriptive text"
+    }
+  ],
+  "state_contract": {
+    "query": {
+      "meaning": "the current text in the input",
+      "required": true
+    },
+    "popup_open": {
+      "meaning": "whether the suggestion popup is visible",
+      "required": true
+    },
+    "active_option": {
+      "meaning": "the suggestion currently navigated in the popup; it may carry aria-selected=true and be referenced by aria-activedescendant while still not being the committed combobox value",
+      "required": true,
+      "nullable": true
+    },
+    "selected_value": {
+      "meaning": "the value explicitly committed into the combobox value model according to the variant contract; distinct from popup option selection/highlight",
+      "required": true,
+      "nullable": true
+    },
+    "filtered_options": {
+      "meaning": "the candidate set derived from the current query",
+      "required": true
+    },
+    "value_policy": {
+      "meaning": "whether arbitrary text is valid or a listed value must be committed",
+      "required": true,
+      "values": [
+        "free-text",
+        "restricted"
+      ]
+    },
+    "invariants": [
+      "active_option is not automatically selected_value",
+      "changing query may clear a previously committed selected_value when the text no longer represents it",
+      "closing the popup does not by itself commit the active option",
+      "selected_value changes only through an explicit commit path defined by the variant"
+    ]
+  },
+  "data_contract": {
+    "required": [
+      "combobox.label",
+      "combobox.value_policy",
+      "combobox.options[].id",
+      "combobox.options[].value",
+      "combobox.options[].label"
+    ],
+    "optional": [
+      "combobox.placeholder",
+      "combobox.options[].description",
+      "combobox.minimum_query_length",
+      "combobox.empty_message"
+    ],
+    "prohibit_invention": [
+      "valid value policy",
+      "option values",
+      "automatic selection",
+      "submission side effects",
+      "async endpoint",
+      "minimum query length"
+    ]
+  },
+  "behavior": {
+    "autocomplete": "list with manual selection",
+    "filtering": {
+      "source": "variant-defined local or remote candidate set",
+      "rule": "query changes recompute candidate visibility without implicitly selecting the first option"
+    },
+    "popup": {
+      "opens_when": "variant rule says suggestions are available for the current query or the user explicitly invokes them",
+      "closes_on": [
+        "Escape",
+        "successful commit",
+        "focus leaving the complete combobox widget where appropriate"
+      ],
+      "no_results": "must be distinguishable from a closed popup"
+    },
+    "keyboard": {
+      "text_editing": "preserve native single-line text editing behavior; do not intercept keys such as Home/End merely to emulate a select-only widget",
+      "arrow_down": "when suggestions are available, move active_option forward and keep DOM focus on input",
+      "arrow_up": "move active_option backward and keep DOM focus on input",
+      "enter": "commit active_option when one exists; otherwise follow the variant's normal input/form behavior",
+      "escape": "close the popup without committing active_option",
+      "tab": "remain normal page focus navigation; do not require Tab to choose a suggestion"
+    },
+    "focus": {
+      "dom_focus": "remains on editable input while navigating a listbox popup",
+      "active_descendant": "input aria-activedescendant identifies active option while one exists",
+      "visibility": "scroll active option into view when keyboard navigation changes it"
+    },
+    "pointer": "pointer activation of an option commits that option without making hover a required path",
+    "commit": {
+      "free_text": "listed option may be committed, but unlisted text remains valid when the task allows it",
+      "restricted": "only an explicitly committed listed option is a valid selected_value"
+    }
+  },
+  "layout": {
+    "input_and_popup": "popup visually belongs to the input and does not alter surrounding document geometry unnecessarily",
+    "popup_width": "may follow input or content needs",
+    "popup_max_height": "bounded; overflow scrolls inside popup",
+    "rich_options": "secondary descriptive text may appear, but each option remains one selectable value"
+  },
+  "visual": {
+    "preserve": "clear distinction among input focus, active option, committed value feedback and disabled/empty states",
+    "adaptable_tokens": [
+      "color",
+      "typeface",
+      "spacing",
+      "border",
+      "radius",
+      "shadow",
+      "popup width",
+      "option density"
+    ]
+  },
+  "responsive": {
+    "minimum_test_viewport_css_px": 320,
+    "zoom_test_percent": 200,
+    "horizontal_page_overflow": false,
+    "popup_remains_visible": true,
+    "active_option_remains_visible": true
+  },
+  "accessibility": {
+    "accessible_name": true,
+    "role_combobox_on_input": true,
+    "aria_expanded_reflects_popup": true,
+    "aria_controls_references_listbox": true,
+    "aria_autocomplete": "list",
+    "aria_activedescendant": "present only while an active option exists",
+    "listbox_option_semantics": true,
+    "visible_focus": true,
+    "keyboard_operable": true,
+    "hover_required": false,
+    "preserve_native_text_editing": true,
+    "active_option_scrolled_into_view": true,
+    "popup_selection": "The active listbox option may use aria-selected=true as the popup selection/focus indication. This does not by itself mean the combobox selected_value has been committed."
+  },
+  "performance": {
+    "local_filtering": "avoid unnecessary work for small static sets",
+    "remote_suggestions": "out of scope for reference implementation; production integrations should debounce/cancel stale requests and expose loading/error state without changing the core state contract"
+  },
+  "constraints": [
+    "Do not build a custom combobox merely to restyle a closed native select.",
+    "Do not treat active_option as selected_value before an explicit commit.",
+    "Do not move DOM focus into a listbox option in the documented editable-listbox variant.",
+    "Do not intercept native text-editing keys unnecessarily.",
+    "Do not require hover to reveal or choose suggestions.",
+    "Do not use interactive descendants such as buttons or links inside a listbox option in the Rich Suggestions variant.",
+    "Do not silently accept arbitrary text in a restricted-value combobox.",
+    "Do not silently restrict free text when the documented value policy allows arbitrary input.",
+    "Do not allow aria-activedescendant to reference a missing or hidden option.",
+    "Do not leave a keyboard-active option scrolled out of view.",
+    "Do not confuse aria-selected on the active popup option with the committed combobox selected_value."
+  ],
+  "adaptation_contract": {
+    "may_change": [
+      "framework",
+      "template language",
+      "CSS architecture",
+      "class names",
+      "design tokens",
+      "colors",
+      "typography",
+      "spacing",
+      "popup positioning technique",
+      "local data representation"
+    ],
+    "must_preserve": [
+      "purpose",
+      "selection gate outcome when pattern choice is open",
+      "state distinctions",
+      "value policy",
+      "manual-selection behavior",
+      "keyboard contract",
+      "DOM-focus strategy",
+      "active-descendant semantics",
+      "visibility of active option",
+      "accessibility constraints"
+    ]
+  },
+  "agent_contract": {
+    "instruction": "If the control type is still a design decision, evaluate selection_gate before building a custom combobox. When a combobox is justified, reconstruct from this Build DNA rather than copying reference HTML. Keep query, active option and selected value as distinct states and ask for missing value-policy decisions instead of inventing them.",
+    "when_conflicting": "Purpose, constraints, behavior, state contract and accessibility override visual resemblance.",
+    "output_expectation": "Production-appropriate combobox code for the target stack plus any explicit unresolved value, filtering or commit decisions.",
+    "request_examples": [
+      {
+        "id": "pattern-selection",
+        "intent": "Decide whether select, datalist or custom combobox fits the task.",
+        "prompt": "Prüfe zuerst anhand des Selection Gate, ob mein Feld ein natives select, datalist oder eine echte Combobox braucht. Baue erst danach."
+      },
+      {
+        "id": "generic-reconstruction",
+        "intent": "Build the documented editable manual-selection combobox.",
+        "prompt": "Baue mir eine Combobox nach https://blame76.github.io/how-to-web/elements/interactive/combobox/ und nutze die Build DNA als Rekonstruktionsvertrag."
+      },
+      {
+        "id": "free-text",
+        "intent": "Build suggestions where arbitrary text stays valid.",
+        "prompt": "Baue mir die Variante \"Free Text Suggestions\". Vorschläge helfen, aber freie Eingabe bleibt gültig."
+      },
+      {
+        "id": "restricted",
+        "intent": "Build filtering where a listed value must be committed.",
+        "prompt": "Baue mir die Variante \"Restricted Selection\". Nur explizit ausgewählte Listenwerte sind gültig."
+      },
+      {
+        "id": "rich-suggestions",
+        "intent": "Build listbox suggestions with secondary descriptive metadata.",
+        "prompt": "Baue mir die Variante \"Rich Suggestions\". Optionen dürfen sekundäre Information zeigen, bleiben aber je eine einzelne auswählbare Option ohne interaktive Kinder."
+      },
+      {
+        "id": "project-adaptation",
+        "intent": "Adapt the Combobox contract to an existing project.",
+        "prompt": "Übertrage die how-to-web Combobox in mein Projekt. Bewahre State-, Value-, Keyboard- und Accessibility-Vertrag und nutze meine vorhandenen Tokens und Komponenten."
+      }
+    ]
+  },
+  "acceptance": [
+    "Pattern choice is justified against select and datalist when that choice is still open.",
+    "Query, active option and selected value are observable as distinct states in implementation logic.",
+    "Input retains DOM focus while listbox options are navigated.",
+    "aria-expanded matches popup visibility and aria-controls references the popup.",
+    "aria-activedescendant references only the current visible active option and is removed when none is active.",
+    "Arrow navigation keeps the active option visible.",
+    "Enter commits only the active option; Escape closes without committing it.",
+    "Tab remains normal page focus navigation.",
+    "Native text editing behavior remains intact.",
+    "Free-text and restricted variants enforce their documented value policies.",
+    "The component remains usable at 320 CSS px and 200% zoom."
+  ],
+  "public": {
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
+    "source_repository": "https://github.com/blame76/how-to-web/tree/main/elements/interactive/combobox"
+  },
+  "examples": [
+    {
+      "id": "free-text",
+      "data": "./examples/free-text.json",
+      "human": "./examples/free-text.html",
+      "note": "Manual list autocomplete where arbitrary text remains valid."
+    },
+    {
+      "id": "restricted",
+      "data": "./examples/restricted.json",
+      "human": "./examples/restricted.html",
+      "note": "Filtered known-value set where a list option must be explicitly committed."
+    },
+    {
+      "id": "rich-suggestions",
+      "data": "./examples/rich-suggestions.json",
+      "human": "./examples/rich-suggestions.html",
+      "note": "Listbox options with secondary descriptive metadata but no interactive descendants."
+    }
+  ]
+}

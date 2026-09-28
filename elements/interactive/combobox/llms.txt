@@ -1,0 +1,25 @@
+# how-to-web Combobox
+
+> Reconstruction guidance for an editable Combobox with a listbox popup.
+
+Use [Build DNA](./build-dna.json) as the normative contract. If the control type is still a product/design decision, evaluate `selection_gate` before implementing custom ARIA.
+
+## Primary
+
+- [Build DNA](./build-dna.json)
+- [Combobox reference](./index.md)
+- [Research](./RESEARCH.md)
+- [Human reference](./)
+
+## Variants
+
+- [Free Text data](./examples/free-text.json)
+- [Free Text example](./examples/free-text.html)
+- [Restricted Selection data](./examples/restricted.json)
+- [Restricted Selection example](./examples/restricted.html)
+- [Rich Suggestions data](./examples/rich-suggestions.json)
+- [Rich Suggestions example](./examples/rich-suggestions.html)
+
+## Agent instruction
+
+Keep query, popup state, active option, selected value and value policy distinct. Preserve DOM focus on the editable input while navigating the listbox, keep aria-activedescendant valid and visible, and do not override native text-editing behavior unnecessarily. Do not invent automatic selection or free-text/restricted policy.

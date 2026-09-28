@@ -1,0 +1,45 @@
+{
+  "id": "restricted",
+  "label": "Restricted Selection",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "combobox": {
+    "label": "Assign inventory object",
+    "value_policy": "restricted",
+    "placeholder": "Start typing an object name",
+    "minimum_query_length": 0,
+    "empty_message": "No valid object matches.",
+    "options": [
+      {
+        "id": "signal-ring",
+        "value": "Signal Ring",
+        "label": "Signal Ring"
+      },
+      {
+        "id": "orbit-charm",
+        "value": "Orbit Charm",
+        "label": "Orbit Charm"
+      },
+      {
+        "id": "pocket-relay",
+        "value": "Pocket Relay",
+        "label": "Pocket Relay"
+      },
+      {
+        "id": "field-clip",
+        "value": "Field Clip",
+        "label": "Field Clip"
+      },
+      {
+        "id": "quiet-pin",
+        "value": "Quiet Pin",
+        "label": "Quiet Pin"
+      }
+    ]
+  },
+  "decisions": {
+    "autocomplete": "list/manual",
+    "free_text_valid": false,
+    "validation": "explicit listed option must be committed"
+  }
+}

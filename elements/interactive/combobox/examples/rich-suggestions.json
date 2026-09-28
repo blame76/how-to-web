@@ -1,0 +1,50 @@
+{
+  "id": "rich-suggestions",
+  "label": "Rich Suggestions",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "combobox": {
+    "label": "Find an object",
+    "value_policy": "restricted",
+    "placeholder": "Search Future Objects",
+    "minimum_query_length": 0,
+    "empty_message": "No object matches.",
+    "options": [
+      {
+        "id": "signal-ring",
+        "value": "Signal Ring",
+        "label": "Signal Ring",
+        "description": "Wearable · voice + gesture · jewelry-first"
+      },
+      {
+        "id": "orbit-charm",
+        "value": "Orbit Charm",
+        "label": "Orbit Charm",
+        "description": "Carry · ambient companion · bag or keychain"
+      },
+      {
+        "id": "pocket-relay",
+        "value": "Pocket Relay",
+        "label": "Pocket Relay",
+        "description": "Carry · agent controller · screen-light"
+      },
+      {
+        "id": "field-clip",
+        "value": "Field Clip",
+        "label": "Field Clip",
+        "description": "Wearable · quick access · technical"
+      },
+      {
+        "id": "quiet-pin",
+        "value": "Quiet Pin",
+        "label": "Quiet Pin",
+        "description": "Wearable · discreet capture · minimal"
+      }
+    ]
+  },
+  "decisions": {
+    "autocomplete": "list/manual",
+    "option_content": "label plus non-interactive secondary description",
+    "popup_role": "listbox"
+  }
+}
