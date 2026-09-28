@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mega Menu – how-to-web</title>
+<meta name="description" content="Entscheidungs- und Referenzseite für Mega Menus: Wann sie helfen, wann nicht und welcher Interaktionsvertrag daraus folgt.">
 <meta name="how-to-web:build-dna" content="./build-dna.json">
 <link rel="alternate" type="text/markdown" href="./index.md" title="Mega Menu – Markdown">
 <link rel="describedby" type="text/markdown" href="./llms.txt">
@@ -10,33 +11,175 @@
 <link rel="stylesheet" href="./styles.css"><script src="./script.js" defer></script>
 </head>
 <body><main>
-<header class="site-intro"><p class="eyebrow">how-to-web · organism</p><h1>Mega Menu</h1><p class="lead"><strong>Großes Menü – oder nur gut strukturierte Navigation?</strong></p><p>Ein Mega Menu lohnt sich nicht wegen seiner Fläche. Sein Wert entsteht, wenn viele relevante Ziele gleichzeitig scanbar werden, ohne Linksemantik, Tastaturbedienung oder Orientierung zu verlieren.</p></header>
+<header class="site-intro">
+  <p class="eyebrow">how-to-web · organism</p>
+  <h1>Mega Menu</h1>
+  <p class="lead"><strong>Ein Mega Menu verdient seine Fläche nur, wenn die Fläche Überblick erzeugt.</strong></p>
+  <p>Die erste Frage ist deshalb nicht „Wie bauen wir eins?“, sondern: <strong>Welches Navigationsproblem löst es besser als eine einfachere Alternative?</strong></p>
+</header>
 
-<section><div class="section-heading"><div><p class="eyebrow">01 · Erst sehen</p><h2>Showcase</h2></div><p>Drei Varianten testen Kategorien, Nutzeraufgaben und Navigation mit untergeordnetem Featured Content.</p></div><div class="stage"><div class="stage-toolbar" data-stage-toolbar><button type="button" aria-pressed="true">Grouped Links</button></div><div class="stage-frame" data-stage-frame><iframe src="./examples/grouped-links.html" title="Grouped Links"></iframe></div></div></section>
+<section class="decision-section" aria-labelledby="decision-title">
+  <p class="eyebrow">01 · Erst entscheiden</p>
+  <h2 id="decision-title">Brauchen wir überhaupt ein Mega Menu?</h2>
+  <p class="section-lead">Vergleiche dieselben neun Ziele in drei Navigationsformen. Inhalt und Hierarchie bleiben gleich – nur der Zugang ändert sich.</p>
 
-<section><p class="eyebrow">02 · Varianten erkennen</p><h2>Drei Gründe für dieselbe große Fläche</h2><ul class="variant-list" data-variants><li><strong>Grouped Links</strong> – klassische Kategorien in scanbaren Gruppen.</li><li><strong>Task Based</strong> – Navigation nach Nutzeraufgaben.</li><li><strong>Featured Content</strong> – Linkgruppen plus ein klar untergeordneter visueller Teaser.</li></ul></section>
+  <div class="decision-lab" data-decision-lab>
+    <div class="decision-source">
+      <p class="eyebrow">Dieselbe Informationsarchitektur</p>
+      <div class="source-groups">
+        <div><strong>Hardware</strong><span>Charm · Ring · Clip</span></div>
+        <div><strong>Software</strong><span>Desktop · Mobile · API</span></div>
+        <div><strong>Services</strong><span>Beratung · Integration · Support</span></div>
+      </div>
+    </div>
 
-<section><p class="eyebrow">03 · Benennen</p><h2>Anatomie</h2><div class="grid"><div class="panel"><code>top-level-link</code><p>Navigiert, wenn die Kategorie selbst ein Ziel hat.</p></div><div class="panel"><code>disclosure-trigger</code><p>Separater Button mit <code>aria-expanded</code>.</p></div><div class="panel"><code>mega-panel</code><p>Großflächiger, nicht-modaler Navigationsbereich.</p></div><div class="panel"><code>group-heading</code><p>Benennt eine scanbare Linkgruppe.</p></div><div class="panel"><code>links</code><p>Echte Navigationsziele in semantischen Listen.</p></div><div class="panel"><code>featured-content</code><p>Optionaler Teaser, der Links unterstützt statt verdrängt.</p></div></div></section>
+    <div class="pattern-switch" role="group" aria-label="Navigationsform vergleichen">
+      <button type="button" data-pattern="simple" aria-pressed="true">Simple Dropdown</button>
+      <button type="button" data-pattern="cascade" aria-pressed="false">Cascading</button>
+      <button type="button" data-pattern="mega" aria-pressed="false">Mega Menu</button>
+    </div>
 
-<section><p class="eyebrow">04 · Verstehen</p><h2>Best-Practice-Leitplanken</h2><ul class="research-list"><li><strong>Kein ARIA-Menubar:</strong> Website-Navigation bleibt Links + Listen + Disclosure-Buttons.</li><li><strong>Click/Tap zuerst:</strong> Hover darf ergänzen, nie ersetzen.</li><li><strong>Hover braucht Disziplin:</strong> dismissible, hoverable, persistent; keine Sofortwechsel.</li><li><strong>Escape:</strong> schließt und gibt Fokus zum Trigger zurück.</li><li><strong>Tab bleibt normal:</strong> optionale Pfeiltasten ersetzen Tab/Shift+Tab nicht.</li><li><strong>Gruppieren statt anhäufen:</strong> Fläche dient Scanbarkeit, nicht maximaler Linkdichte.</li><li><strong>Mobile Reflow:</strong> gleiche IA, gestapelte Disclosure-Gruppen statt gequetschtem Desktop-Panel.</li></ul><p><a href="./RESEARCH.md">Recherche und Quellen öffnen</a></p></section>
+    <div class="decision-output">
+      <div class="pattern-demo" data-pattern-demo aria-live="polite"></div>
+      <aside class="pattern-analysis" data-pattern-analysis></aside>
+    </div>
+  </div>
 
-<section><p class="eyebrow">05 · Entscheiden</p><h2>Was musst du festlegen?</h2><div class="grid"><div class="panel"><h3>Warum Mega?</h3><p>Welche Menge und Hierarchie rechtfertigt mehr als ein normales Dropdown?</p></div><div class="panel"><h3>Link oder Trigger?</h3><p>Navigiert die Top-Level-Kategorie selbst, bleiben Link und Disclosure getrennte Controls.</p></div><div class="panel"><h3>Gruppierung</h3><p>Taxonomie, Aufgabe oder Zielgruppe?</p></div><div class="panel"><h3>Hover</h3><p>Gar nicht, verzögert oder Intent-Algorithmus? Click/Tap bleibt Baseline.</p></div><div class="panel"><h3>Dismiss</h3><p>Escape, Focus Leaving und Pointer außerhalb konsistent definieren.</p></div><div class="panel"><h3>Mobile</h3><p>Wie bleibt die Hierarchie verständlich, wenn die zweidimensionale Fläche verschwindet?</p></div></div></section>
+  <div class="tradeoff-grid">
+    <article><p class="eyebrow">Was Mega gewinnt</p><h3>Überblick</h3><p>Mehrere Gruppen und ihre wichtigsten Ziele werden gleichzeitig sichtbar. Beziehungen lassen sich schneller scannen und vergleichen.</p></article>
+    <article><p class="eyebrow">Was Mega kostet</p><h3>Komplexität</h3><p>Mehr Fläche, mehr Zustände, mehr Responsive-Arbeit und höhere Anforderungen an Informationsarchitektur, Fokus und Dismiss-Verhalten.</p></article>
+  </div>
 
-<section><p class="eyebrow">06 · Selbst prüfen</p><h2>Review it yourself</h2><ul class="check-list"><li>Funktioniert alles per Click/Tap und Tastatur ohne Hover?</li><li>Ist jeder Disclosure-Zustand programmatisch nachvollziehbar?</li><li>Schließt Escape und landet Fokus wieder auf dem Trigger?</li><li>Schließt das Panel, wenn Fokus die Navigation vollständig verlässt?</li><li>Ist der aktuelle Link per <code>aria-current</code> markiert – nicht der Trigger?</li><li>Sind Gruppen schnell scanbar und nicht überladen?</li><li>Bleibt Mobile dieselbe Informationsarchitektur?</li></ul></section>
+  <div class="decision-gate">
+    <p class="eyebrow">Decision Gate</p>
+    <h3>Verteidige das Pattern vor dem Build.</h3>
+    <ol>
+      <li><strong>Menge:</strong> Gibt es wirklich genug relevante Ziele, dass ein kleines Dropdown den Überblick verliert?</li>
+      <li><strong>Gruppierbarkeit:</strong> Lassen sich die Ziele in verständliche, stabile Gruppen teilen?</li>
+      <li><strong>Überblicksbedarf:</strong> Hilft es Nutzern, mehrere Bereiche gleichzeitig zu sehen oder zu vergleichen?</li>
+      <li><strong>Kosten:</strong> Ist dieser Gewinn die zusätzliche Interaktions-, Accessibility- und Mobile-Komplexität wert?</li>
+    </ol>
+    <p><strong>Keine magische Linkzahl.</strong> Wenn eine einfachere Navigation dieselben Aufgaben genauso gut erfüllt, gewinnt die einfachere Navigation.</p>
+  </div>
+</section>
 
-<section class="machine-section"><p class="eyebrow">07 · Weitergeben</p><h2>Maschinenlesbar</h2><p class="machine-lead">Build DNA beschreibt Informationsarchitektur und Interaktionsvertrag. Ein Screenshot zeigt nur, dass das Panel groß ist.</p><div class="build-dna-panel"><div><p class="eyebrow">how-to-web · Build DNA 0.1</p><h3>Portable Reconstruction Contract</h3><p>Stack, Grid und Styling dürfen sich ändern. Linksemantik, Disclosure-Zustand, Dismiss-Regeln, Gruppierung und Responsive-Hierarchie müssen erhalten bleiben.</p></div><ul class="machine-links"><li><a href="./build-dna.json"><strong>Build DNA öffnen</strong> · JSON</a></li><li><a href="./index.md">LLM-Referenz · Markdown</a></li><li><a href="./llms.txt">Agent Discovery · llms.txt</a></li><li><a href="./examples/grouped-links.json">Grouped Links · JSON</a></li><li><a href="./examples/task-based.json">Task Based · JSON</a></li><li><a href="./examples/featured-content.json">Featured Content · JSON</a></li></ul></div>
+<section aria-labelledby="ia-title">
+  <p class="eyebrow">02 · Pattern ≠ Informationsarchitektur</p>
+  <h2 id="ia-title">Ein Mega Menu repariert keine schlechten Gruppen.</h2>
+  <p class="section-lead">Die große Fläche macht Struktur sichtbarer – auch schlechte Struktur.</p>
 
-<div class="agent-prompts"><h3>Für Coding-Agenten</h3><div class="prompt-grid"><article class="prompt-card"><p class="eyebrow">Generisch</p><h4>Mega Menu bauen</h4><pre><code>Baue mir ein Mega Menu nach
+  <div class="ia-compare">
+    <article class="ia-card ia-card--weak">
+      <p class="eyebrow">Schwer zu verteidigen</p>
+      <h3>Interne Sicht</h3>
+      <div class="mini-mega">
+        <section><h4>Produkte</h4><a href="#">Plattform</a><a href="#">Suite</a><a href="#">Tools</a></section>
+        <section><h4>Lösungen</h4><a href="#">Angebote</a><a href="#">Services</a><a href="#">Themen</a></section>
+        <section><h4>Mehr</h4><a href="#">Entdecken</a><a href="#">Ressourcen</a><a href="#">Sonstiges</a></section>
+      </div>
+      <p>Die Fläche ist groß, aber die Gruppen helfen kaum bei einer Entscheidung.</p>
+    </article>
+
+    <article class="ia-card ia-card--strong">
+      <p class="eyebrow">Besser begründbar</p>
+      <h3>Aufgaben-Sicht</h3>
+      <div class="mini-mega">
+        <section><h4>Etwas starten</h4><a href="#">Idee validieren</a><a href="#">Produkt planen</a><a href="#">Stack wählen</a></section>
+        <section><h4>Etwas verbessern</h4><a href="#">Performance</a><a href="#">Accessibility</a><a href="#">Legacy modernisieren</a></section>
+        <section><h4>Etwas betreiben</h4><a href="#">Security</a><a href="#">Monitoring</a><a href="#">Operations</a></section>
+      </div>
+      <p>Dasselbe Pattern wird nützlich, weil die Gruppierung einen realen Nutzerweg unterstützt.</p>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="showcase-title">
+  <div class="section-heading">
+    <div><p class="eyebrow">03 · Wenn Mega das Gate besteht</p><h2 id="showcase-title">Showcase</h2></div>
+    <p>Erst jetzt lohnt sich die Frage, welche Ausprägung zur Informationsarchitektur passt.</p>
+  </div>
+  <div class="stage"><div class="stage-toolbar" data-stage-toolbar aria-label="Mega-Menu-Beispiele wechseln"><button type="button" aria-pressed="true">Grouped Links</button></div><div class="stage-frame" data-stage-frame><iframe src="./examples/grouped-links.html" title="Grouped Links"></iframe></div></div>
+  <ul class="variant-list" data-variants><li><strong>Grouped Links</strong> – klassische Kategorien in scanbaren Gruppen.</li><li><strong>Task Based</strong> – Navigation nach Nutzeraufgaben.</li><li><strong>Featured Content</strong> – Linkgruppen plus ein klar untergeordneter visueller Teaser.</li></ul>
+</section>
+
+<section aria-labelledby="semantics-title">
+  <p class="eyebrow">04 · Dann richtig bauen</p>
+  <h2 id="semantics-title">Website-Navigation bleibt Website-Navigation.</h2>
+  <div class="verb-example">
+    <div><code>SHOP</code><span>navigiert</span><strong>Link</strong></div>
+    <div><code>⌄</code><span>öffnet etwas</span><strong>Button</strong></div>
+  </div>
+  <p>Zwei Verben, zwei Controls. Wenn „Shop“ selbst eine Landingpage hat, bleibt es ein Link; ein separater Disclosure-Button öffnet das Mega Panel. Nur weil das Pattern „Menu“ heißt, wird daraus kein ARIA-<code>menubar</code>.</p>
+
+  <div class="grid anatomy-grid">
+    <div class="panel"><code>top-level-link</code><p>Navigiert, wenn die Kategorie selbst ein Ziel hat.</p></div>
+    <div class="panel"><code>disclosure-trigger</code><p>Separater Button mit <code>aria-expanded</code>.</p></div>
+    <div class="panel"><code>mega-panel</code><p>Großflächiger, nicht-modaler Navigationsbereich.</p></div>
+    <div class="panel"><code>group-heading</code><p>Benennt eine scanbare Linkgruppe.</p></div>
+    <div class="panel"><code>links</code><p>Echte Navigationsziele in semantischen Listen.</p></div>
+    <div class="panel"><code>featured-content</code><p>Optionaler Teaser, der Links unterstützt statt verdrängt.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="behavior-title">
+  <p class="eyebrow">05 · Unsichtbarer Vertrag</p>
+  <h2 id="behavior-title">Hover ist Komfort. Nicht der Vertrag.</h2>
+  <ul class="research-list">
+    <li><strong>Click/Tap zuerst:</strong> jede Navigation funktioniert ohne Hover.</li>
+    <li><strong>Escape:</strong> schließt das offene Panel und gibt Fokus zum Trigger zurück.</li>
+    <li><strong>Focus Leaving:</strong> verlässt Fokus die Navigation vollständig, wird aufgeräumt.</li>
+    <li><strong>Tab bleibt normal:</strong> Pfeiltasten sind kein Ersatz für normalen Dokumentfluss.</li>
+    <li><strong>Hover optional:</strong> falls ergänzt, muss das Panel erreichbar, dismissible und persistent bleiben; Sofort-Flicker vermeiden.</li>
+    <li><strong>Mobile:</strong> Informationsarchitektur erhalten, Darstellung reflowen.</li>
+  </ul>
+  <p><a href="./RESEARCH.md">Recherche, Quellen und Herleitung öffnen</a></p>
+</section>
+
+<section aria-labelledby="review-title">
+  <p class="eyebrow">06 · Beweisen statt behaupten</p>
+  <h2 id="review-title">Kannst du das Mega Menu verteidigen?</h2>
+  <div class="proof-grid">
+    <article><h3>Vor dem Build</h3><p>Formuliere, welchen Überblick oder welche Orientierung das Mega Menu gegenüber der einfacheren Alternative verbessert.</p></article>
+    <article><h3>Im Prototyp</h3><p>Teste dieselben realen Findability-Aufgaben mit einfacher Navigation und Mega Menu. Beobachte Fehlklicks, Umwege und Orientierung – nicht nur Gefallen.</p></article>
+    <article><h3>Im Review</h3><p>Prüfe Tastatur, Touch, 320&nbsp;px, 200&nbsp;% Zoom und die echte mobile Informationsarchitektur.</p></article>
+  </div>
+  <ul class="check-list">
+    <li>Funktioniert alles per Click/Tap und Tastatur ohne Hover?</li>
+    <li>Ist jeder Disclosure-Zustand programmatisch nachvollziehbar?</li>
+    <li>Schließt Escape und landet Fokus wieder auf dem Trigger?</li>
+    <li>Sind Gruppen wirklich hilfreich – oder nur eine schön formatierte Linkwand?</li>
+    <li>Bleibt Mobile dieselbe Informationsarchitektur?</li>
+  </ul>
+</section>
+
+<section class="machine-section" aria-labelledby="machine-title">
+  <p class="eyebrow">07 · Weitergeben</p>
+  <h2 id="machine-title">Maschinenlesbar</h2>
+  <p class="machine-lead">Build DNA beschreibt jetzt nicht nur den Bauvertrag, sondern auch das **Selection Gate**: Ein Coding-Agent soll nicht automatisch ein Mega Menu produzieren, nur weil es angefordert wurde.</p>
+  <div class="build-dna-panel"><div><p class="eyebrow">how-to-web · Build DNA 0.1</p><h3>Portable Reconstruction Contract</h3><p>Stack, Grid und Styling dürfen sich ändern. Zweck, Informationsarchitektur, Linksemantik, Disclosure-Zustand, Dismiss-Regeln und Responsive-Hierarchie müssen erhalten bleiben.</p></div><ul class="machine-links"><li><a href="./build-dna.json"><strong>Build DNA öffnen</strong> · JSON</a></li><li><a href="./index.md">LLM-Referenz · Markdown</a></li><li><a href="./llms.txt">Agent Discovery · llms.txt</a></li><li><a href="./examples/grouped-links.json">Grouped Links · JSON</a></li><li><a href="./examples/task-based.json">Task Based · JSON</a></li><li><a href="./examples/featured-content.json">Featured Content · JSON</a></li></ul></div>
+
+  <div class="agent-prompts"><h3>Für Coding-Agenten</h3><div class="prompt-grid">
+    <article class="prompt-card"><p class="eyebrow">Entscheidung zuerst</p><h4>Pattern prüfen</h4><pre><code>Prüfe zuerst, ob ein Mega Menu für meine Navigation
+gegenüber einer einfacheren Navigation begründbar ist.
+
+Nutze dafür das Selection Gate aus
+https://blame76.github.io/how-to-web/elements/navigation/mega-menu/
+
+Baue erst danach.</code></pre></article>
+    <article class="prompt-card"><p class="eyebrow">Generisch</p><h4>Mega Menu bauen</h4><pre><code>Baue mir ein Mega Menu nach
 https://blame76.github.io/how-to-web/elements/navigation/mega-menu/
 
 Nutze die Build DNA als Rekonstruktionsvertrag.
-Behandle Website-Navigation nicht als ARIA-Menubar.</code></pre></article><article class="prompt-card"><p class="eyebrow">Grouped</p><h4>Kategorien gruppieren</h4><pre><code>Baue mir die Variante „Grouped Links“.
-Erhalte Linkhierarchie, Disclosure-Zustand,
-Escape und mobile Informationsarchitektur.</code></pre></article><article class="prompt-card"><p class="eyebrow">Task Based</p><h4>Nach Aufgaben strukturieren</h4><pre><code>Baue mir die Variante „Task Based“.
+Behandle Website-Navigation nicht als ARIA-Menubar.</code></pre></article>
+    <article class="prompt-card"><p class="eyebrow">Task Based</p><h4>Nach Aufgaben strukturieren</h4><pre><code>Baue mir die Variante „Task Based“.
 Gruppiere nach Nutzeraufgaben,
-nicht nach internen Abteilungen.</code></pre></article><article class="prompt-card"><p class="eyebrow">Featured</p><h4>Teaser ergänzen</h4><pre><code>Baue mir die Variante „Featured Content“.
+nicht nach internen Abteilungen.</code></pre></article>
+    <article class="prompt-card"><p class="eyebrow">Featured</p><h4>Teaser ergänzen</h4><pre><code>Baue mir die Variante „Featured Content“.
 Der Teaser unterstützt Navigation,
-aber verdrängt Links und Gruppen nicht.</code></pre></article><article class="prompt-card"><p class="eyebrow">Projektbezogen</p><h4>Übertragen</h4><pre><code>Übertrage das how-to-web Mega Menu in mein Projekt.
+aber verdrängt Links und Gruppen nicht.</code></pre></article>
+    <article class="prompt-card"><p class="eyebrow">Projektbezogen</p><h4>Übertragen</h4><pre><code>Übertrage das how-to-web Mega Menu in mein Projekt.
 Nutze vorhandene Navigation und Tokens.
-Erfinde keine Hover-, Dismiss- oder IA-Regeln.</code></pre></article></div></div></section>
+Erfinde keine Hover-, Dismiss- oder IA-Regeln.</code></pre></article>
+  </div></div>
+</section>
 </main></body></html>
