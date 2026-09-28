@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Editorial / Visual Story Carousel – how-to-web</title>
+  <link rel="stylesheet" href="./editorial-story.css">
+  <script src="./editorial-story.js" defer></script>
+</head>
+<body>
+<main class="story" aria-roledescription="carousel" aria-label="Future Objects – Editorial Gadget Story" data-carousel>
+  <div class="slides" data-slides>
+    <article class="slide is-active" role="group" aria-roledescription="slide" aria-label="1 von 4">
+      <picture class="slide__media">
+        <source type="image/avif" srcset="../assets/generated/gadget-charm-640.avif 640w, ../assets/generated/gadget-charm-836.avif 836w" sizes="100vw">
+        <source type="image/webp" srcset="../assets/generated/gadget-charm-640.webp 640w, ../assets/generated/gadget-charm-836.webp 836w" sizes="100vw">
+        <img src="../assets/generated/gadget-charm-836.webp" alt="Heller futuristischer Gadget-Charm an einer schwarzen Ledertasche vor einer Stadt im Sonnenuntergang." fetchpriority="high">
+      </picture>
+      <div class="slide__veil"></div>
+      <div class="slide__copy slide__copy--right">
+        <p class="kicker">01 · Carry</p><h1>Orbit Charm</h1>
+        <p>Ein kleines Objekt zwischen Schmuck, Interface und Begleiter.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="chrome">
+    <a class="back-link" href="../">← Referenz</a>
+    <div class="controls">
+      <button type="button" class="arrow" data-prev aria-label="Vorheriger Slide">←</button>
+      <div class="pickers" data-pickers aria-label="Slide auswählen"></div>
+      <button type="button" class="arrow" data-next aria-label="Nächster Slide">→</button>
+    </div>
+    <p class="position" data-position aria-live="polite">1 von 4</p>
+  </div>
+</main>
+</body>
+</html>
