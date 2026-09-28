@@ -2,7 +2,7 @@
 
 > Machine-readable reconstruction guidance for the how-to-web Product Card block.
 
-This path documents a framework-independent Product Card. Coding agents should use the Build DNA as the primary reconstruction contract. The visual example demonstrates one implementation and should not be copied as the specification.
+This path documents a framework-independent Product Card. Coding agents should use the Build DNA as the primary reconstruction contract. The examples demonstrate three documented variants and must not replace the generic contract.
 
 ## Primary
 
@@ -10,10 +10,26 @@ This path documents a framework-independent Product Card. Coding agents should u
 - [Product Card reference](./index.md): Concise LLM-friendly explanation of anatomy, behavior, responsive rules, accessibility and constraints.
 - [Human reference](./): Interactive showcase and review guidance.
 
-## Example
+## Variants
 
-- [Premium Retail example data](./examples/premium-retail.json): Concrete fictional hoodie data conforming to the Build DNA.
-- [Premium Retail example](./examples/premium-retail.html): Rendered example.
+- [Premium Retail data](./examples/premium-retail.json): Image-led retail variant with multiple product views.
+- [Premium Retail example](./examples/premium-retail.html): Rendered Premium Retail reference.
+- [Technical Retail data](./examples/technical-retail.json): Specification-heavy comparison variant.
+- [Technical Retail example](./examples/technical-retail.html): Rendered Technical Retail reference.
+- [Compact data](./examples/compact.json): Dense listing variant with reduced secondary information.
+- [Compact example](./examples/compact.html): Rendered Compact reference.
+
+## Agent request patterns
+
+Supported entry points include:
+
+- generic Product Card reconstruction,
+- Premium Retail,
+- Technical Retail,
+- Compact,
+- adaptation into an existing project.
+
+All entry points resolve to the same Build DNA. A named variant narrows the desired presentation but does not override Purpose, Constraints, Behavior, Responsive or Accessibility.
 
 ## Source
 

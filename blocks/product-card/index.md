@@ -77,11 +77,51 @@ Each variant has its own JSON data source. The examples demonstrate the contract
 
 ## Coding-agent instruction
 
-Given this page or its Build DNA:
+The Build DNA is the contract. Prompt examples are entry points, not alternate specifications.
+
+### Generic reconstruction
+
+```text
+Baue mir eine Product Card nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+```
+
+### Premium Retail
+
+```text
+Baue mir die Variante "Premium Retail" nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+```
+
+### Technical Retail
+
+```text
+Baue mir die Variante "Technical Retail" nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+```
+
+### Compact
+
+```text
+Baue mir die Variante "Compact" nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+```
+
+### Project adaptation
+
+```text
+Übertrage die Product Card nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+in mein bestehendes Projekt.
+Nutze meine vorhandenen Tokens und Komponenten.
+```
+
+For all five entry points:
 
 1. Read `build-dna.json` first.
 2. Treat Purpose, Constraints, Behavior and Accessibility as normative.
 3. Adapt framework, CSS methodology and design tokens to the target project.
-4. Do not copy reference HTML unless the user explicitly asks for the exact implementation.
-5. Ask for missing product decisions instead of inventing them.
-6. Report unresolved decisions separately from implementation details.
+4. Use a named variant only as an implementation direction, not as a replacement for the generic contract.
+5. Do not copy reference HTML unless the user explicitly asks for the exact implementation.
+6. Ask for missing product decisions instead of inventing them.
+7. Report unresolved decisions separately from implementation details.

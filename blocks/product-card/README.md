@@ -55,14 +55,17 @@ Die Beispielimplementierung ist **nicht** die Spezifikation.
 
 ## Coding-Agent-Workflow
 
-Ein Agent sollte bei einer Anfrage wie
+Der sichtbare Bereich „Für Coding-Agenten“ zeigt fünf typische Auftragsformen:
 
-```text
-Baue mir eine Product Card nach
-https://blame76.github.io/how-to-web/blocks/product-card/
-```
+- generische Product Card,
+- Premium Retail,
+- Technical Retail,
+- Compact,
+- Übertragung in ein bestehendes Projekt.
 
-folgendermaßen arbeiten:
+Alle fünf sind Einstiegspunkte in dieselbe Build DNA. Die Varianten sind Beispiele für unterschiedliche Ausprägungen, keine konkurrierenden Spezifikationen.
+
+Ein Agent sollte unabhängig vom Einstieg folgendermaßen arbeiten:
 
 1. `llms.txt` bzw. die Discovery-Links der Seite lesen.
 2. `build-dna.json` als primären Rekonstruktionsvertrag verwenden.
