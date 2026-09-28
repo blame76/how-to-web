@@ -68,7 +68,7 @@ Alle fünf sind Einstiegspunkte in dieselbe Build DNA. Die Varianten sind Beispi
 Ein Agent sollte unabhängig vom Einstieg folgendermaßen arbeiten:
 
 1. `llms.txt` bzw. die Discovery-Links der Seite lesen.
-2. `build-dna.json` als primären Rekonstruktionsvertrag verwenden.
+2. `build-dna.json` als primären Rekonstruktionsvertrag verwenden. Die Human Reference trägt zusätzlich eine daraus generierte Inline-Kopie für Single-Pass-Reader.
 3. Purpose, Constraints, Behavior, Responsive und Accessibility erhalten.
 4. Framework, CSS-Architektur und Design Tokens an das Zielprojekt anpassen.
 5. Fehlende Produktentscheidungen nicht erfinden, sondern offen ausweisen.
@@ -140,3 +140,22 @@ Ein Feature ist erst bereit als Vorlage für die Serie, wenn:
 - llms.txt Discovery vorhanden ist,
 - ein fremdes LLM aus der Build DNA eine funktional äquivalente Umsetzung erzeugen kann,
 - Review-Gate und Acceptance erfüllt sind.
+
+
+## Experiment: Inline Build DNA
+
+Für die Product Card wird die kanonische `build-dna.json` zusätzlich als geschlossener `<details><pre>`-Block in `index.html` eingebettet.
+
+Ziel des isolierten Experiments:
+
+- Single-Pass-Scraper bekommen den normativen Vertrag ohne zweiten HTTP-Request.
+- Die Seite kennzeichnet explizit: Build DNA = normativ; Research/Best Practices/Showcase = informativ.
+- `build-dna.json` bleibt die einzige gepflegte Quelle.
+
+Nach Änderungen an der Build DNA:
+
+```bash
+bash blocks/product-card/sync-build-dna.sh
+```
+
+Das Script validiert das JSON und ersetzt ausschließlich den markierten Inline-Block in `index.html`.
