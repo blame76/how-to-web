@@ -1,0 +1,70 @@
+{
+  "id": "with-disclosures",
+  "label": "With Disclosures",
+  "status": "ready",
+  "demo_content": true,
+  "context": "Global navigation with a small number of grouped child destinations",
+  "conforms_to": "../build-dna.json",
+  "navigation": {
+    "label": "Hauptnavigation",
+    "home": {
+      "label": "how-to-web",
+      "href": "#start"
+    },
+    "primary": [
+      {
+        "label": "Bausteine",
+        "children": [
+          {
+            "label": "Elements",
+            "href": "#elements"
+          },
+          {
+            "label": "Blocks",
+            "href": "#blocks"
+          },
+          {
+            "label": "Organismen",
+            "href": "#organismen",
+            "current": true
+          }
+        ]
+      },
+      {
+        "label": "Patterns",
+        "href": "#patterns"
+      },
+      {
+        "label": "Lernen",
+        "children": [
+          {
+            "label": "Anatomie",
+            "href": "#anatomie"
+          },
+          {
+            "label": "Accessibility",
+            "href": "#accessibility"
+          },
+          {
+            "label": "Performance",
+            "href": "#performance"
+          }
+        ]
+      },
+      {
+        "label": "Über",
+        "href": "#ueber"
+      }
+    ],
+    "mobile_label": "Navigation"
+  },
+  "decisions": {
+    "hierarchy_depth": 2,
+    "disclosures": true,
+    "utility_links": false,
+    "single_open_group": true,
+    "hover_opens": false,
+    "sticky": false,
+    "collapse_at": "48rem"
+  }
+}
