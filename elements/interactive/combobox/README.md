@@ -56,7 +56,6 @@ combobox/
 ├── README.md
 ├── styles.css
 ├── script.js
-├── sync-build-dna.sh
 └── examples/
     ├── manifest.json
     ├── variants.json
@@ -66,7 +65,7 @@ combobox/
     └── rich-suggestions.{html,css,js,json}
 ```
 
-## Experiment: Inline Build DNA + Drift Gate
+## Inline Build DNA + Drift Gate
 
 Wie bei der Product Card wird `build-dna.json` zusätzlich inline in `index.html` gespiegelt, damit Single-Pass-Reader den normativen Vertrag ohne zweiten Request erhalten.
 
@@ -75,16 +74,22 @@ Die kanonische Quelle bleibt ausschließlich `build-dna.json`.
 Synchronisieren:
 
 ```bash
-bash elements/interactive/combobox/sync-build-dna.sh
+python3 bin/sync-build-dna elements/interactive/combobox
 ```
 
 Nur prüfen:
 
 ```bash
-bash elements/interactive/combobox/sync-build-dna.sh --check
+python3 bin/sync-build-dna --check elements/interactive/combobox
 ```
 
-Der Check schlägt fehl, wenn die Inline-Kopie nicht exakt aus der aktuellen Build DNA erzeugt wurde. Damit testen wir beim zweiten Feature zusätzlich, ob sich die Single-Pass-Idee ohne Vertragsdrift betreiben lässt.
+Repository-weit:
+
+```bash
+python3 bin/sync-build-dna --check-all
+```
+
+Der Check schlägt fehl, wenn eine Inline-Kopie nicht exakt aus der aktuellen Build DNA erzeugt wurde. Das zentrale Tool ist die einzige Sync-Implementierung; lokale Kopien werden nicht mehr gepflegt.
 
 ## Serien-Gate
 
@@ -96,5 +101,5 @@ Das Feature gilt als bereit für Review, wenn:
 - alle drei Value-Policy-Beispiele funktionieren,
 - Keyboard- und `aria-activedescendant`-Vertrag nachvollziehbar sind,
 - JSON/JS mechanisch valide sind,
-- Inline Build DNA mit `--check` synchron ist,
+- Inline Build DNA mit dem zentralen `--check` synchron ist,
 - ein fremdes LLM aus der normativen DNA eine äquivalente Umsetzung rekonstruieren kann.
