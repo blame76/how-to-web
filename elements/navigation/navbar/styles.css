@@ -37,8 +37,11 @@ section{border-top:1px solid #000;padding:2.5rem 0}
 .build-dna-panel{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(16rem,.8fr);gap:2rem;border:3px solid #000;padding:clamp(1rem,3vw,2rem);margin:1.5rem 0}
 .build-dna-panel h3{font-size:clamp(1.35rem,3vw,2rem);margin-bottom:.75rem}
 .machine-links{display:grid;align-content:start;gap:.55rem;margin:0;padding-left:1.2rem}
-.agent-prompt{margin-top:2rem;border-top:1px solid #000;padding-top:2rem}
-.agent-prompt pre{white-space:pre-wrap;overflow:auto;border:1px solid #000;padding:1rem;background:#fff}
+.agent-prompts{margin-top:2rem;border-top:1px solid #000;padding-top:2rem}
+.prompt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem;margin-top:1rem}
+.prompt-card{border:1px solid #000;padding:1rem}
+.prompt-card h4{margin:.15rem 0 .75rem;font-size:1rem}
+.prompt-card pre{white-space:pre-wrap;overflow:auto;margin:0;border-top:1px solid #000;padding-top:1rem;background:#fff;font-size:.86rem}
 .machine-contract{margin-top:1.5rem}
 :focus-visible{outline:3px solid #000;outline-offset:3px}
 @media(max-width:48rem){
