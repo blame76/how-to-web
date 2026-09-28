@@ -18,6 +18,9 @@ Use the most specific `llms.txt` available for a component path. Build DNA is th
 - [Dialog](./elements/interactive/dialog/index.md): Human/agent reference for modal dialogs and focus behavior.
 - [Dialog Build DNA](./elements/interactive/dialog/build-dna.json): Canonical Dialog reconstruction contract.
 - [Dialog llms.txt](./elements/interactive/dialog/llms.txt): Dialog-specific agent guidance.
+- [Mega Menu](./elements/navigation/mega-menu/index.md): Human/agent reference for large grouped site navigation.
+- [Mega Menu Build DNA](./elements/navigation/mega-menu/build-dna.json): Canonical Mega Menu reconstruction contract.
+- [Mega Menu llms.txt](./elements/navigation/mega-menu/llms.txt): Mega-Menu-specific agent guidance.
 
 ## Source
 
