@@ -1,0 +1,52 @@
+{
+  "id": "content-rail",
+  "label": "Content Rail",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "carousel": {
+    "label": "Future Objects Content Rail",
+    "autoplay": false,
+    "wrap": false,
+    "items": [
+      {
+        "id": "charm",
+        "eyebrow": "Carry",
+        "title": "Orbit Charm",
+        "body": "Schmuckstück, Interface oder einfach nur ein neues Ding am Schlüsselbund?",
+        "image": "gadget-charm",
+        "width": 836
+      },
+      {
+        "id": "ring",
+        "eyebrow": "Wear",
+        "title": "Signal Ring",
+        "body": "Technik, die zuerst wie Schmuck gelesen wird.",
+        "image": "gadget-ring",
+        "width": 813
+      },
+      {
+        "id": "pocket",
+        "eyebrow": "Keep",
+        "title": "Pocket Relay",
+        "body": "Ein Agenten-Controller im Taschenformat – ganz ohne weiteren Bildschirm.",
+        "image": "gadget-pocket",
+        "width": 836
+      },
+      {
+        "id": "clip",
+        "eyebrow": "Move",
+        "title": "Field Clip",
+        "body": "Nah genug für schnellen Zugriff, klein genug für den Hintergrund.",
+        "image": "gadget-clip",
+        "width": 835
+      }
+    ]
+  },
+  "decisions": {
+    "visible_count": "responsive 1.15–3",
+    "native_scroll": true,
+    "scroll_snap": true,
+    "autoplay": false,
+    "wrap": false
+  }
+}
