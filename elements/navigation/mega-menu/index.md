@@ -1,13 +1,40 @@
 # Mega Menu
 
-> A Mega Menu exposes many site-navigation destinations in scanable groups when a simple dropdown no longer provides enough hierarchy or overview.
+> A Mega Menu is justified by the overview it creates, not by the amount of screen space it can occupy.
 
-## Build first from the DNA
+## Decide before you build
 
-- [Build DNA](./build-dna.json)
-- [Agent discovery](./llms.txt)
-- [Human reference](./)
-- [Research](./RESEARCH.md)
+The first question is not “How do I build a Mega Menu?” but:
+
+**Does a Mega Menu solve this navigation task better than a simpler pattern?**
+
+Use the [Build DNA selection gate](./build-dna.json).
+
+A Mega Menu is easier to justify when:
+
+- there are many relevant destinations,
+- those destinations form meaningful, stable groups,
+- users benefit from seeing several groups at the same time,
+- reduced drill-down or better scanability improves the task,
+- the same information architecture still makes sense on narrow viewports.
+
+It is harder to justify when:
+
+- a small dropdown already exposes the relevant destinations clearly,
+- groups are forced or mostly mirror the organization chart,
+- the real problem is unclear/deep information architecture,
+- the goal is to put nearly every site page into one panel,
+- the main argument is visual impact.
+
+There is **no universal link-count threshold** in this contract.
+
+When the choice matters, compare the Mega Menu with the simplest credible alternative using the same information architecture and realistic findability tasks. Prefer the simpler pattern when it serves the tasks equally well.
+
+## Pattern vs information architecture
+
+A Mega Menu makes grouping visible. That helps only when the groups themselves help users decide.
+
+A large panel cannot repair weak labels or an internal organization model that users do not understand.
 
 ## Baseline semantics
 
@@ -53,10 +80,18 @@ If a project adds hover:
 
 Preserve the information architecture. On narrow viewports, stack groups/disclosures vertically instead of squeezing the desktop grid.
 
+## Build first from the DNA
+
+- [Build DNA](./build-dna.json)
+- [Agent discovery](./llms.txt)
+- [Human reference](./)
+- [Research](./RESEARCH.md)
+
 ## Coding-agent entry points
 
 The Build DNA is normative:
 
+- pattern selection / Mega Menu justification
 - generic Mega Menu
 - Grouped Links
 - Task Based
