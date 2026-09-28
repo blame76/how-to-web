@@ -93,9 +93,36 @@ Each variant owns its own responsive state. The examples demonstrate the contrac
 
 ## Coding-agent instruction
 
+The Build DNA is the contract. Prompt examples are entry points, not alternate specifications.
+
+### Generic reconstruction
+
+```text
+Baue mir eine Navbar nach
+https://blame76.github.io/how-to-web/elements/navigation/navbar/
+```
+
+### Variant reconstruction
+
+```text
+Baue mir die Variante "With Disclosures" nach
+https://blame76.github.io/how-to-web/elements/navigation/navbar/
+```
+
+### Project adaptation
+
+```text
+Übertrage die Navbar nach
+https://blame76.github.io/how-to-web/elements/navigation/navbar/
+in mein bestehendes Projekt.
+Nutze meine vorhandenen Tokens und Komponenten.
+```
+
+For all three:
+
 1. Read `build-dna.json` first.
 2. Treat Purpose, Constraints, Behavior and Accessibility as normative.
 3. Preserve supplied labels, destinations, ordering and hierarchy.
 4. Adapt framework, CSS methodology, visual tokens and exact breakpoint to the target project.
-5. Do not infer missing navigation groups from the screenshots or examples.
+5. Do not infer missing navigation groups from screenshots or examples.
 6. Report missing information-architecture decisions rather than inventing them.
