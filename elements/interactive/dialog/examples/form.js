@@ -5,10 +5,11 @@ const cancelButton=dialog.querySelector('[data-cancel]');
 const initial=dialog.querySelector('[data-initial-focus]');
 const status=document.querySelector('[data-status]');
 let invoker=null;
+function requestCloseDialog(value=''){if(typeof dialog.requestClose==='function')dialog.requestClose(value);else dialog.close(value)}
 async function load(){const r=await fetch('./form.json',{cache:'no-store'});if(!r.ok)throw new Error(String(r.status));return r.json()}
 function open(){invoker=document.activeElement;status.textContent='';dialog.returnValue='';dialog.showModal();requestAnimationFrame(()=>initial.focus());report()}
 openButton.addEventListener('click',open);
-cancelButton.addEventListener('click',()=>dialog.close('cancel'));
+cancelButton.addEventListener('click',()=>requestCloseDialog('cancel'));
 form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;dialog.close('save')});
 dialog.addEventListener('close',()=>{if(dialog.returnValue==='save')status.textContent='Demo: Kontakt würde jetzt gespeichert.';if(invoker?.isConnected)invoker.focus();report()});
 function report(){requestAnimationFrame(()=>window.parent.postMessage({type:'how-to-web:example-height',height:document.documentElement.scrollHeight},'*'))}
