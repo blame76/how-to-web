@@ -1,85 +1,110 @@
 # Carousel
 
-Feature-Baseline für die nächste vollständige how-to-web Organismus-Referenz.
+Vollständige **how-to-web Showcase + Build-DNA-Referenz** für das Carousel-Organism.
 
-## Zielbild
+## Varianten
 
-Der erste visuell starke Showcase wird **Editorial / Visual Story**: ein eigenständiges Full-Bleed-Carousel mit bildschirmfüllenden Gadget-Motiven.
+1. **Editorial / Visual Story** – eigenständige Full-Bleed-Seite mit einem sichtbaren Slide.
+2. **Content Rail** – mehrere Cards gleichzeitig sichtbar, native horizontale Scrollbarkeit plus Prev/Next.
+3. **Media Gallery** – großes Medium mit direkter Thumbnail-Auswahl.
 
-Die normale how-to-web Referenzseite bleibt separat. Sie erklärt Anatomie, Entscheidungen, Research und Build DNA und verlinkt auf die Fullscreen-Demo.
+Autoplay ist in keiner Referenzvariante aktiv. Es bleibt eine explizite Produktentscheidung mit eigenem Accessibility-Vertrag.
 
-Weitere Varianten werden erst zusammen mit der eigentlichen Umsetzung final festgelegt.
+## Kanonische Dateien
+
+```text
+carousel/
+├── index.html
+├── index.md
+├── build-dna.json
+├── llms.txt
+├── RESEARCH.md
+├── README.md
+├── styles.css
+├── script.js
+├── assets/
+│   ├── source/
+│   ├── generated/
+│   └── process-images.sh
+└── examples/
+    ├── manifest.json
+    ├── variants.json
+    ├── build-manifest.sh
+    ├── editorial-story.{html,css,js,json}
+    ├── content-rail.{html,css,js,json}
+    └── media-gallery.{html,css,js,json}
+```
+
+## Full-Bleed Showcase
+
+Direkt lokal:
+
+```text
+/elements/interactive/carousel/examples/editorial-story.html
+```
+
+Öffentlich nach Merge:
+
+```text
+https://blame76.github.io/how-to-web/elements/interactive/carousel/examples/editorial-story.html
+```
+
+Die Referenzseite verlinkt diese Demo ausdrücklich separat, damit die visuelle Story nicht in die normale how-to-web-Bühne gezwängt wird.
 
 ## Asset-Workflow
 
-Source Images bleiben unverändert unter:
+Originale:
 
 ```text
-elements/interactive/carousel/assets/source/
-```
-
-Empfohlene, aber nicht technisch erzwungene Namen:
-
-```text
+assets/source/
 gadget-charm.png
 gadget-ring.png
 gadget-pocket.png
 gadget-clip.png
 ```
 
-Das Script verarbeitet alle PNG/JPG/JPEG/WebP/AVIF/TIFF-Dateien im Source-Ordner.
-
-### Lokal erzeugen
+Responsive Assets:
 
 ```bash
 bash elements/interactive/carousel/assets/process-images.sh
 ```
 
-Ergebnis:
+Das Script unterstützt ImageMagick 6/7, WebP und optional AVIF, skaliert nie hoch und croppt nicht. Focal Point und `object-position` werden pro Slide im jeweiligen JSON festgelegt.
 
-```text
-elements/interactive/carousel/assets/generated/
-```
+## Build DNA
 
-Erzeugt werden responsive WebP-Dateien sowie AVIF, falls die lokale ImageMagick-Installation AVIF unterstützt.
+`build-dna.json` beschreibt den generischen Carousel-Vertrag:
 
-Zielbreiten:
+- Sequenz und Slide-Composition
+- Previous/Next Controls
+- optionaler Picker
+- Fokusverhalten
+- Hidden-Content-Regeln
+- Autoplay-Entscheidung
+- Reduced Motion
+- Responsive Verhalten
+- Acceptance
 
-```text
-640
-960
-1440
-1920
-2560
-```
+Beispiel-JSONs sind Ausprägungen dieses Vertrags, nicht die Spezifikation selbst.
 
-Das Script:
+## Coding-Agent-Einstiege
 
-- unterstützt ImageMagick 7 (`magick`) und ImageMagick 6 (`convert` + `identify`),
-- skaliert nie über die Breite des Originals hinaus,
-- erzeugt zusätzlich immer eine Variante in Originalbreite,
-- erhält das Original-Seitenverhältnis,
-- entfernt Metadaten,
-- erzeugt keine Crops.
+- generisches Carousel
+- Editorial / Visual Story
+- Content Rail
+- Media Gallery
+- Übertragung in ein bestehendes Projekt
 
-**Wichtig:** Der Fullscreen-Showcase wird später mit `object-fit: cover` arbeiten. Focal Point / `object-position` wird deshalb pro Slide in JSON definiert und nicht beim Asset-Build fest eingebrannt.
+Alle Einstiegspunkte lösen auf dieselbe Build DNA auf.
 
-## Danach
+## Serien-Gate
 
-Nach lokaler Asset-Erzeugung:
+Das Feature gilt als abgeschlossen, wenn:
 
-```bash
-git add elements/interactive/carousel/assets/
-git commit -m "assets: add editorial carousel gadget images"
-git push
-```
-
-Danach bauen wir auf den echten Assets:
-
-1. Research und Scope,
-2. Build DNA,
-3. how-to-web Referenzseite,
-4. separate Full-Bleed Editorial / Visual Story Demo,
-5. weitere Carousel-Varianten,
-6. Accessibility/Keyboard/Reduced-Motion Review,
-7. Cross-LLM Reconstruction.
+- alle drei Varianten funktionieren,
+- Editorial Story separat Full-Bleed nutzbar ist,
+- JSON/JS mechanisch valide sind,
+- Tastaturpfade und Fokusverhalten nachvollziehbar sind,
+- Reduced Motion berücksichtigt wird,
+- Build DNA ohne Beispielcode rekonstruierbar ist,
+- Cross-LLM-Reconstruction im fremden Agenten sinnvoll konvergiert.
