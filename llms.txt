@@ -9,6 +9,9 @@ Use the most specific `llms.txt` available for a component path. Build DNA is th
 - [Product Card](./blocks/product-card/index.md): Human/agent reference for a product-listing card.
 - [Product Card Build DNA](./blocks/product-card/build-dna.json): Canonical reconstruction contract.
 - [Product Card llms.txt](./blocks/product-card/llms.txt): Component-specific agent guidance.
+- [Navbar](./elements/navigation/navbar/index.md): Human/agent reference for global site navigation.
+- [Navbar Build DNA](./elements/navigation/navbar/build-dna.json): Canonical Navbar reconstruction contract.
+- [Navbar llms.txt](./elements/navigation/navbar/llms.txt): Navbar-specific agent guidance.
 
 ## Source
 
