@@ -1,6 +1,14 @@
 # Mega Menu
 
-Vollständige **how-to-web Showcase + Build-DNA-Referenz** für großflächige Website-Navigation.
+Vollständige **how-to-web Entscheidungs-, Showcase- und Build-DNA-Referenz** für großflächige Website-Navigation.
+
+## Decision-first
+
+Die öffentliche Seite beginnt bewusst nicht mit dem fertigen Organismus. Sie vergleicht dieselbe Informationsarchitektur als Simple Dropdown, Cascading Navigation und Mega Menu und macht Gewinn und Kosten sichtbar.
+
+Das Selection Gate fragt nach Menge, Gruppierbarkeit, Überblicksbedarf und Komplexitätskosten. Es gibt absichtlich keine universelle Linkzahl, ab der ein Mega Menu „richtig“ wäre.
+
+Ein zweites Gegenbeispiel trennt Pattern und Informationsarchitektur: Eine große Fläche repariert keine schwachen Gruppen oder Labels.
 
 ## Varianten
 
