@@ -142,7 +142,7 @@ Ein Feature ist erst bereit als Vorlage für die Serie, wenn:
 - Review-Gate und Acceptance erfüllt sind.
 
 
-## Experiment: Inline Build DNA
+## Inline Build DNA
 
 Für die Product Card wird die kanonische `build-dna.json` zusätzlich als geschlossener `<details><pre>`-Block in `index.html` eingebettet.
 
@@ -155,7 +155,13 @@ Ziel des isolierten Experiments:
 Nach Änderungen an der Build DNA:
 
 ```bash
-bash blocks/product-card/sync-build-dna.sh
+python3 bin/sync-build-dna blocks/product-card
 ```
 
-Das Script validiert das JSON und ersetzt ausschließlich den markierten Inline-Block in `index.html`.
+Nur prüfen:
+
+```bash
+python3 bin/sync-build-dna --check blocks/product-card
+```
+
+Das zentrale Repo-Tool validiert das JSON und ersetzt ausschließlich den markierten Inline-Block in `index.html`. `build-dna.json` bleibt die einzige gepflegte Quelle; die Inline-Kopie wird nie manuell editiert.

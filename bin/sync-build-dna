@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import html
+import json
+import re
+import sys
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+START_TOKEN = "<!-- BUILD_DNA_INLINE:START -->"
+END_TOKEN = "<!-- BUILD_DNA_INLINE:END -->"
+
+START_RE = re.compile(r"(?m)^([ \t]*)<!-- BUILD_DNA_INLINE:START -->[ \t]*$")
+END_RE = re.compile(r"(?m)^([ \t]*)<!-- BUILD_DNA_INLINE:END -->[ \t]*$")
+
+
+def fail(message):
+    raise SystemExit(message)
+
+
+def relative(path):
+    return path.relative_to(REPO_ROOT).as_posix()
+
+
+def resolve_feature(raw):
+    candidate = Path(raw)
+    if not candidate.is_absolute():
+        candidate = REPO_ROOT / candidate
+    candidate = candidate.resolve()
+
+    try:
+        candidate.relative_to(REPO_ROOT)
+    except ValueError:
+        fail(f"Feature path must stay inside repository: {raw}")
+
+    if not candidate.is_dir():
+        fail(f"Feature directory not found: {raw}")
+
+    return candidate
+
+
+def read_contract(feature):
+    dna_path = feature / "build-dna.json"
+    html_path = feature / "index.html"
+
+    if not dna_path.is_file():
+        fail(f"{relative(feature)}: build-dna.json missing")
+    if not html_path.is_file():
+        fail(f"{relative(feature)}: index.html missing")
+
+    dna_raw = dna_path.read_text(encoding="utf-8")
+    try:
+        json.loads(dna_raw)
+    except json.JSONDecodeError as exc:
+        fail(f"{relative(dna_path)}: invalid JSON: {exc}")
+
+    return dna_raw, html_path.read_text(encoding="utf-8")
+
+
+def marker_matches(feature, page):
+    starts = list(START_RE.finditer(page))
+    ends = list(END_RE.finditer(page))
+
+    if len(starts) != 1 or len(ends) != 1:
+        fail(
+            f"{relative(feature / 'index.html')}: expected exactly one "
+            "BUILD_DNA_INLINE marker pair"
+        )
+
+    start, end = starts[0], ends[0]
+    if start.start() >= end.start():
+        fail(f"{relative(feature / 'index.html')}: inline markers are out of order")
+
+    return start, end
+
+
+def render_block(indent, end_indent, dna_raw):
+    escaped = html.escape(dna_raw.strip(), quote=False)
+    child = indent + "  "
+    grandchild = child + "  "
+
+    return "\n".join([
+        f"{indent}{START_TOKEN}",
+        f'{indent}<details class="build-dna-inline">',
+        f"{child}<summary>Build DNA · normative reconstruction contract</summary>",
+        f'{child}<div class="build-dna-inline__intro">',
+        f"{grandchild}<p><strong>NORMATIVE BUILD CONTRACT.</strong> Read this before reconstructing the component.</p>",
+        f"{grandchild}<p>This contract overrides visual examples, research recommendations and explanatory prose unless the contract explicitly references them.</p>",
+        f'{grandchild}<p>Canonical source: <a href="./build-dna.json"><code>build-dna.json</code></a>. This inline copy is generated from that file for single-pass readers and agents.</p>',
+        f"{child}</div>",
+        f'{child}<pre><code class="language-json">{escaped}</code></pre>',
+        f"{indent}</details>",
+        f"{end_indent}{END_TOKEN}",
+    ])
+
+
+def process_feature(feature, check_only):
+    dna_raw, page = read_contract(feature)
+    start, end = marker_matches(feature, page)
+
+    expected = render_block(start.group(1), end.group(1), dna_raw)
+    current = page[start.start():end.end()]
+
+    if current == expected:
+        print(f"OK   {relative(feature)}")
+        return True
+
+    if check_only:
+        print(
+            f"FAIL {relative(feature)}: inline Build DNA is stale\n"
+            f"     run: python3 bin/sync-build-dna {relative(feature)}",
+            file=sys.stderr,
+        )
+        return False
+
+    html_path = feature / "index.html"
+    html_path.write_text(
+        page[:start.start()] + expected + page[end.end():],
+        encoding="utf-8",
+    )
+    print(f"SYNC {relative(feature)}")
+    return True
+
+
+def discover_inline_features():
+    features = []
+
+    for html_path in sorted(REPO_ROOT.rglob("index.html")):
+        if ".git" in html_path.parts:
+            continue
+
+        page = html_path.read_text(encoding="utf-8")
+        if START_TOKEN in page or END_TOKEN in page:
+            features.append(html_path.parent)
+
+    return features
+
+
+def usage():
+    fail(
+        "usage:\n"
+        "  python3 bin/sync-build-dna <feature-path>\n"
+        "  python3 bin/sync-build-dna --check <feature-path>\n"
+        "  python3 bin/sync-build-dna --check-all"
+    )
+
+
+def main():
+    args = sys.argv[1:]
+
+    if args == ["--check-all"]:
+        features = discover_inline_features()
+        if not features:
+            fail("No inline Build DNA features found.")
+
+        ok = True
+        for feature in features:
+            ok = process_feature(feature, check_only=True) and ok
+
+        if not ok:
+            raise SystemExit(1)
+
+        print(f"All {len(features)} inline Build DNA copies are in sync.")
+        return
+
+    if len(args) == 2 and args[0] == "--check":
+        if not process_feature(resolve_feature(args[1]), check_only=True):
+            raise SystemExit(1)
+        return
+
+    if len(args) == 1 and not args[0].startswith("-"):
+        process_feature(resolve_feature(args[0]), check_only=False)
+        return
+
+    usage()
+
+
+if __name__ == "__main__":
+    main()
