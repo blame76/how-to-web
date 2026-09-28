@@ -108,21 +108,79 @@
         <li><a href="./build-dna.json"><strong>Build DNA öffnen</strong> · JSON</a></li>
         <li><a href="./index.md">LLM-freundliche Referenz · Markdown</a></li>
         <li><a href="./llms.txt">Agent Discovery · llms.txt</a></li>
-        <li><a href="./examples/premium-retail.json">Konkretes Hoodie-Beispiel · JSON</a></li>
+        <li><a href="./examples/premium-retail.json">Premium Retail · JSON</a></li>
+        <li><a href="./examples/technical-retail.json">Technical Retail · JSON</a></li>
+        <li><a href="./examples/compact.json">Compact · JSON</a></li>
         <li><a href="https://github.com/blame76/how-to-web/tree/main/blocks/product-card">Source im GitHub-Repository</a></li>
       </ul>
     </div>
 
-    <div class="agent-prompt">
+    <div class="agent-prompts">
       <h3>Für Coding-Agenten</h3>
-      <p>Ein Vibe-Coder soll später im Wesentlichen nur noch sagen müssen:</p>
-      <pre><code>Baue mir eine Product Card nach
+      <p>Die Build DNA ist der Vertrag. Diese Aufträge zeigen verschiedene Einstiegspunkte – generisch, je dokumentierter Variante oder als Übertragung in ein bestehendes Projekt.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <p class="eyebrow">Generisch</p>
+          <h4>Product Card aus der Referenz bauen</h4>
+          <pre><code>Baue mir eine Product Card nach
 https://blame76.github.io/how-to-web/blocks/product-card/
 
-Nutze die dort verlinkte Build DNA als Rekonstruktionsvertrag.
-Übernimm Zweck, Struktur, Verhalten, Responsive- und Accessibility-Constraints.
-Passe Framework, CSS und visuelle Tokens an mein Projekt an.
-Erfinde keine Produktanforderungen oder Claims, die nicht beschrieben sind.</code></pre>
+Nutze die Build DNA als Rekonstruktionsvertrag.
+Übernimm Zweck, Struktur, Verhalten, Responsive-
+und Accessibility-Constraints.
+Passe die Umsetzung an meinen Stack an.</code></pre>
+        </article>
+
+        <article class="prompt-card">
+          <p class="eyebrow">Premium Retail</p>
+          <h4>Bildstarke Retail Card</h4>
+          <pre><code>Baue mir die Variante „Premium Retail“ nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+
+Nutze die Build DNA als Vertrag und Premium Retail
+nur als Referenz für diese Ausprägung.
+Bewahre Bildwechsel, stabile Geometrie und
+die beschriebenen Accessibility-Regeln.</code></pre>
+        </article>
+
+        <article class="prompt-card">
+          <p class="eyebrow">Technical Retail</p>
+          <h4>Spezifikationsorientierte Card</h4>
+          <pre><code>Baue mir die Variante „Technical Retail“ nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+
+Nutze die Build DNA als Vertrag.
+Priorisiere strukturierte Produktspezifikationen
+und Vergleichbarkeit.
+Erfinde keine technischen Produktdaten.</code></pre>
+        </article>
+
+        <article class="prompt-card">
+          <p class="eyebrow">Compact</p>
+          <h4>Kompakte Listenansicht</h4>
+          <pre><code>Baue mir die Variante „Compact“ nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+
+Nutze die Build DNA als Vertrag.
+Reduziere Sekundärinformationen, aber nicht
+Semantik, Kerninformationen oder Accessibility.</code></pre>
+        </article>
+
+        <article class="prompt-card">
+          <p class="eyebrow">Projektbezogen</p>
+          <h4>In bestehende Anwendung übertragen</h4>
+          <pre><code>Übertrage die Product Card nach
+https://blame76.github.io/how-to-web/blocks/product-card/
+in mein bestehendes Projekt.
+
+Bewahre Purpose, Informationshierarchie,
+Interaktions-, Responsive- und Accessibility-Regeln.
+Nutze meine vorhandenen Tokens und Komponenten.
+Liste fehlende Produktentscheidungen auf,
+statt sie selbst zu erfinden.</code></pre>
+        </article>
+      </div>
     </div>
 
     <div class="grid machine-contract">
