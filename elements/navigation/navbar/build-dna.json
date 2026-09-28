@@ -204,7 +204,24 @@
   "agent_contract": {
     "instruction": "Reconstruct the Navbar from this Build DNA rather than copying reference HTML. Adapt implementation details to the target stack. Preserve the supplied information architecture and ask for missing navigation decisions instead of inventing them.",
     "when_conflicting": "Purpose, constraints, behavior and accessibility override visual resemblance.",
-    "output_expectation": "Production-appropriate navigation code for the requested stack, plus explicitly listed unresolved information-architecture decisions."
+    "output_expectation": "Production-appropriate navigation code for the requested stack, plus explicitly listed unresolved information-architecture decisions.",
+    "request_examples": [
+      {
+        "id": "generic-reconstruction",
+        "intent": "Build a Navbar from the generic how-to-web contract.",
+        "prompt": "Baue mir eine Navbar nach https://blame76.github.io/how-to-web/elements/navigation/navbar/ und nutze die Build DNA als Rekonstruktionsvertrag."
+      },
+      {
+        "id": "variant-reconstruction",
+        "intent": "Build one documented variant while keeping the generic contract normative.",
+        "prompt": "Baue mir die Variante \"With Disclosures\" nach der how-to-web Navbar-Referenz. Nutze die Build DNA als Vertrag und das Beispiel nur als Ausprägung."
+      },
+      {
+        "id": "project-adaptation",
+        "intent": "Adapt the Navbar contract to an existing stack and design system.",
+        "prompt": "Übertrage die how-to-web Navbar in mein bestehendes Projekt. Bewahre Semantik, Responsive-, Focus- und Disclosure-Regeln; nutze vorhandene Tokens und Komponenten und erfinde fehlende IA-Entscheidungen nicht."
+      }
+    ]
   },
   "acceptance": [
     "Every supplied global destination is reachable as a real link.",
