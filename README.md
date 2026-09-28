@@ -86,6 +86,17 @@ https://blame76.github.io/how-to-web/elements/navigation/navbar/
 - Research: `elements/interactive/combobox/RESEARCH.md`
 - Examples: `elements/interactive/combobox/examples/` (`free-text`, `restricted`, `rich-suggestions`)
 
+### Form Submission
+
+- Human reference: `patterns/form-submission/index.html`
+- LLM-friendly reference: `patterns/form-submission/index.md`
+- Build DNA: `patterns/form-submission/build-dna.json`
+- Agent discovery: `patterns/form-submission/llms.txt`
+- Research: `patterns/form-submission/RESEARCH.md`
+- Example: `patterns/form-submission/examples/contact-message.html`
+
+This is the first reference **pattern** in the series. Its Build DNA emphasizes task flow, error classes, recovery and retry instead of component anatomy.
+
 ## Build DNA
 
 Build DNA is the how-to-web machine-readable layer.
@@ -104,4 +115,4 @@ The repository publishes `llms.txt`. Individual component paths may provide a mo
 
 ## Status
 
-Product Card, Navbar, Carousel, Dialog, Mega Menu and Combobox are reference features for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.
+Product Card, Navbar, Carousel, Dialog, Mega Menu, Combobox and Form Submission are reference features for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.
