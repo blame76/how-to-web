@@ -15,6 +15,9 @@ Use the most specific `llms.txt` available for a component path. Build DNA is th
 - [Carousel](./elements/interactive/carousel/index.md): Human/agent reference for controlled content sequences.
 - [Carousel Build DNA](./elements/interactive/carousel/build-dna.json): Canonical Carousel reconstruction contract.
 - [Carousel llms.txt](./elements/interactive/carousel/llms.txt): Carousel-specific agent guidance.
+- [Dialog](./elements/interactive/dialog/index.md): Human/agent reference for modal dialogs and focus behavior.
+- [Dialog Build DNA](./elements/interactive/dialog/build-dna.json): Canonical Dialog reconstruction contract.
+- [Dialog llms.txt](./elements/interactive/dialog/llms.txt): Dialog-specific agent guidance.
 
 ## Source
 
