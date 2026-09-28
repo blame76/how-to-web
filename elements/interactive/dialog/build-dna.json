@@ -99,10 +99,27 @@
     "closing": {
       "explicit_control": true,
       "backdrop_click": "must be explicitly decided; default false",
-      "focus_return": "return to invoker when it still exists unless workflow requires another logical target"
+      "focus_return": "return to invoker when it still exists unless workflow requires another logical target",
+      "preferred_cancel_api": "HTMLDialogElement.requestClose() when available; fall back to close() for older targets.",
+      "light_dismiss": {
+        "default": false,
+        "rule": "Backdrop/light-dismiss is an explicit product decision, never inferred.",
+        "platform_note": "closedby=\"any\" can express light dismiss declaratively where supported, but closedby is not yet a Baseline requirement."
+      }
     },
     "stacking": {
       "multiple_modals": "avoid unless necessary; Escape closes only the topmost modal"
+    },
+    "platform_enhancements": {
+      "invoker_commands": {
+        "status": "optional progressive enhancement",
+        "commands": [
+          "show-modal",
+          "request-close",
+          "close"
+        ],
+        "rule": "May replace JavaScript wiring where target-browser support is acceptable; must not change the focus and workflow contract."
+      }
     }
   },
   "layout": {
@@ -141,7 +158,8 @@
     "background_inert": true,
     "initial_focus_required": true,
     "focus_return_required": true,
-    "dialog_tabindex": "Do not put tabindex on the dialog element itself; focus a suitable descendant or static content node."
+    "dialog_tabindex": "Do not put tabindex on the dialog element itself; focus a suitable descendant or static content node.",
+    "description_strategy": "Use aria-describedby for short/simple descriptive text when useful. Omit it for long or semantically structured content that should be read in its own structure."
   },
   "constraints": [
     "Do not use a modal dialog when interaction outside must remain available.",
@@ -151,7 +169,9 @@
     "Do not choose initial focus solely by DOM order.",
     "Do not move focus to a destructive action by default when the action is hard to reverse.",
     "Do not implement a custom focus trap when native dialog behavior already satisfies the contract.",
-    "Do not allow background interaction while a modal dialog is open."
+    "Do not allow background interaction while a modal dialog is open.",
+    "Do not require closedby or Invoker Commands API support unless the target browser matrix explicitly allows it.",
+    "Do not apply aria-describedby to long or semantically structured dialog content merely to force one large announcement."
   ],
   "adaptation_contract": {
     "may_change": [
