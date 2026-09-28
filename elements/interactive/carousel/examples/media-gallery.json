@@ -1,0 +1,51 @@
+{
+  "id": "media-gallery",
+  "label": "Media Gallery",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "carousel": {
+    "label": "Future Objects Media Gallery",
+    "autoplay": false,
+    "wrap": false,
+    "items": [
+      {
+        "id": "charm",
+        "label": "Charm",
+        "alt": "Heller futuristischer Gadget-Charm an einer schwarzen Ledertasche vor einer Stadt im Sonnenuntergang.",
+        "image": "gadget-charm",
+        "width": 836,
+        "position": "35% center"
+      },
+      {
+        "id": "ring",
+        "label": "Ring",
+        "alt": "Minimalistischer futuristischer Ring in einer dunklen editorialen Nahaufnahme.",
+        "image": "gadget-ring",
+        "width": 813,
+        "position": "58% center"
+      },
+      {
+        "id": "pocket",
+        "label": "Pocket",
+        "alt": "Kompaktes futuristisches Pocket-Gadget auf hellem Stein in warmem Licht.",
+        "image": "gadget-pocket",
+        "width": 836,
+        "position": "48% center"
+      },
+      {
+        "id": "clip",
+        "label": "Clip",
+        "alt": "Futuristischer Clip an einer hellen technischen Jacke vor einer Berglandschaft.",
+        "image": "gadget-clip",
+        "width": 835,
+        "position": "68% center"
+      }
+    ]
+  },
+  "decisions": {
+    "visible_count": 1,
+    "picker": "thumbnails",
+    "autoplay": false,
+    "wrap": false
+  }
+}
