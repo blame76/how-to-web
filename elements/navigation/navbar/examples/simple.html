@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simple Navbar – how-to-web</title>
+  <link rel="stylesheet" href="./simple.css">
+  <script src="./simple.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#demo-content">Zum Inhalt springen</a>
+<header class="demo-header" data-navbar>
+  <div class="navbar">
+    <a class="brand" href="#start">how-to-web</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="simple-navigation">Navigation</button>
+    <nav class="nav-panel" id="simple-navigation" aria-label="Hauptnavigation">
+      <ul class="nav-list">
+        <li><a href="#start">Start</a></li>
+        <li><a href="#bausteine" aria-current="page">Bausteine</a></li>
+        <li><a href="#patterns">Patterns</a></li>
+        <li><a href="#referenz">Referenz</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="demo-content" id="demo-content" tabindex="-1">
+  <p class="eyebrow">Simple</p>
+  <h1>Eine Ebene, klare Ziele.</h1>
+  <p>Die Navigation bleibt semantisch dieselbe. Auf schmalen Viewports wird nur ihre Darstellung verdichtet.</p>
+</main>
+</body>
+</html>
