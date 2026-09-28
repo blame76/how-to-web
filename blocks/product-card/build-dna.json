@@ -194,7 +194,34 @@
   "agent_contract": {
     "instruction": "Reconstruct the component from this Build DNA rather than copying the reference HTML. Adapt implementation details to the target stack. Ask for missing product decisions instead of inventing them.",
     "when_conflicting": "Purpose, constraints, behavior and accessibility override visual resemblance.",
-    "output_expectation": "Production-appropriate component code for the user's requested stack, plus any explicit unresolved decisions."
+    "output_expectation": "Production-appropriate component code for the user's requested stack, plus any explicit unresolved decisions.",
+    "request_examples": [
+      {
+        "id": "generic-reconstruction",
+        "intent": "Build a Product Card from the generic how-to-web contract.",
+        "prompt": "Baue mir eine Product Card nach https://blame76.github.io/how-to-web/blocks/product-card/ und nutze die Build DNA als Rekonstruktionsvertrag."
+      },
+      {
+        "id": "premium-retail",
+        "intent": "Build the documented Premium Retail variant.",
+        "prompt": "Baue mir die Variante \"Premium Retail\" nach der how-to-web Product-Card-Referenz. Nutze die Build DNA als Vertrag und Premium Retail nur als konkrete Ausprägung."
+      },
+      {
+        "id": "technical-retail",
+        "intent": "Build the documented Technical Retail variant.",
+        "prompt": "Baue mir die Variante \"Technical Retail\" nach der how-to-web Product-Card-Referenz. Nutze die Build DNA als Vertrag, priorisiere strukturierte Spezifikationen und erfinde keine Produktdaten."
+      },
+      {
+        "id": "compact",
+        "intent": "Build the documented Compact variant.",
+        "prompt": "Baue mir die Variante \"Compact\" nach der how-to-web Product-Card-Referenz. Nutze die Build DNA als Vertrag und reduziere Sekundärinformationen, nicht Semantik oder Accessibility."
+      },
+      {
+        "id": "project-adaptation",
+        "intent": "Adapt the Product Card contract to an existing stack and design system.",
+        "prompt": "Übertrage die how-to-web Product Card in mein bestehendes Projekt. Bewahre Purpose, Informationshierarchie, Interaktions-, Responsive- und Accessibility-Regeln; nutze vorhandene Tokens und Komponenten und erfinde fehlende Produktentscheidungen nicht."
+      }
+    ]
   },
   "acceptance": [
     "Product name, price, primary image and primary action are understandable without opening the detail page.",
