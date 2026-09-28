@@ -1,0 +1,19 @@
+{
+  "examples": [
+    {
+      "id": "grouped-links",
+      "label": "Grouped Links",
+      "file": "grouped-links.html"
+    },
+    {
+      "id": "task-based",
+      "label": "Task Based",
+      "file": "task-based.html"
+    },
+    {
+      "id": "featured-content",
+      "label": "Featured Content",
+      "file": "featured-content.html"
+    }
+  ]
+}
