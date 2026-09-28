@@ -1,22 +1,28 @@
 {
   "id": "carousel",
   "kind": "organism",
-  "status": "structure-only",
+  "status": "ready",
   "variants": [
     {
-      "id": "image-slides",
-      "label": "Image Slides",
-      "example": null
+      "id": "editorial-story",
+      "label": "Editorial / Visual Story",
+      "description": "Full-Bleed Story mit genau einem sichtbaren Slide und starken Safe-Area-Kompositionen.",
+      "example": "editorial-story.html",
+      "status": "ready"
     },
     {
-      "id": "cards",
-      "label": "Cards",
-      "example": null
+      "id": "content-rail",
+      "label": "Content Rail",
+      "description": "Mehrere Cards gleichzeitig sichtbar; native horizontale Scrollbarkeit plus Prev/Next.",
+      "example": "content-rail.html",
+      "status": "ready"
     },
     {
-      "id": "testimonials",
-      "label": "Testimonials",
-      "example": null
+      "id": "media-gallery",
+      "label": "Media Gallery",
+      "description": "Ein großes Medium mit direkter Thumbnail-Auswahl und klarer Positionsanzeige.",
+      "example": "media-gallery.html",
+      "status": "ready"
     }
   ],
   "stage": {
