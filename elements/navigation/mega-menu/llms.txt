@@ -1,0 +1,29 @@
+# how-to-web Mega Menu
+
+> Reconstruction guidance for the how-to-web Mega Menu organism.
+
+Use [Build DNA](./build-dna.json) as the normative contract. Examples demonstrate different information architectures; they do not replace the contract.
+
+## Primary
+
+- [Build DNA](./build-dna.json)
+- [Mega Menu reference](./index.md)
+- [Research](./RESEARCH.md)
+- [Human reference](./)
+
+## Variants
+
+- [Grouped Links data](./examples/grouped-links.json)
+- [Grouped Links example](./examples/grouped-links.html)
+- [Task Based data](./examples/task-based.json)
+- [Task Based example](./examples/task-based.html)
+- [Featured Content data](./examples/featured-content.json)
+- [Featured Content example](./examples/featured-content.html)
+
+## Platform note
+
+The Popover API is a valid current implementation option for overlay panels, but it is not the normative contract. A conventional disclosure implementation is equally valid when it preserves the same semantics, focus and dismiss behavior.
+
+## Agent instruction
+
+Preserve site-navigation semantics, link-vs-trigger distinction, group hierarchy, disclosure state, click/tap baseline, Escape behavior, normal Tab order, current-page semantics and responsive information architecture. Do not invent hover or navigation destinations.
