@@ -1,1 +1,154 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Carousel – how-to-web</title><link rel="stylesheet" href="./styles.css"><script src="./script.js" defer></script></head><body><main><header><p class="eyebrow">how-to-web · organism</p><h1>Carousel</h1><p><strong>Muss Inhalt rotieren oder wäre eine sichtbare Liste verständlicher?</strong></p><p>Schwarz-Weiß-Gerüst. Beispiele werden später aus dem lokalen Manifest geladen.</p></header><section><h2>Showcase</h2><div class="stage"><div class="stage-toolbar" data-stage-toolbar></div><div class="stage-frame" data-stage-frame></div></div><h3>Geplante Darstellungen</h3><ul data-variants></ul></section><section><h2>Anatomie</h2><ul><li><code>carousel-region</code></li><li><code>slides</code></li><li><code>previous-next-controls</code></li><li><code>optional-picker</code></li><li><code>optional-rotation-control</code></li></ul></section><section><h2>Best-Practice-Leitplanken</h2><ul><li>Automatische Rotation muss kontrollierbar sein und darf Nutzer nicht mit unerwarteten Inhaltswechseln überfahren.</li><li>Vor/Zurück sind echte Buttons mit verständlichen zugänglichen Namen; Fokus darf nicht unerwartet springen.</li><li>Vor einem Carousel immer prüfen, ob sichtbare Liste oder Grid einfacher und verständlicher wäre.</li></ul><p><a href="./RESEARCH.md">Recherche und Quellen</a></p></section><section><h2>Was musst du entscheiden?</h2><div class="grid"><div class="panel">Inhalt</div><div class="panel">Hierarchie</div><div class="panel">Interaktion</div><div class="panel">Darstellung</div></div></section><section><h2>Review it yourself</h2><ul><li>Mit Tastatur vollständig bedienbar?</li><li>Autoplay kontrollierbar oder gar nicht vorhanden?</li><li>Fokus bleibt nachvollziehbar?</li><li>Alternative ohne versteckte Inhalte möglich?</li></ul></section><section><h2>Maschinenlesbar</h2><a href="./examples/variants.json">Beispielvarianten (JSON)</a><p><code>/specs/elements/carousel.json</code></p></section></main></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Carousel – how-to-web</title>
+  <meta name="description" content="Interaktive Referenz für Carousels: Struktur, Navigation, Motion, Responsive-Verhalten und Accessibility.">
+  <meta name="how-to-web:build-dna" content="./build-dna.json">
+  <link rel="alternate" type="text/markdown" href="./index.md" title="Carousel – Markdown">
+  <link rel="describedby" type="text/markdown" href="./llms.txt">
+  <link rel="alternate" type="application/json" href="./build-dna.json" title="how-to-web Build DNA">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="site-intro">
+    <p class="eyebrow">how-to-web · organism</p>
+    <h1>Carousel</h1>
+    <p class="lead"><strong>Was muss zwischen „ein paar Slides“ und einem kontrollierbaren Carousel beschrieben werden?</strong></p>
+    <p>Ein Carousel zeigt mehrere zusammengehörige Inhalte in einem begrenzten Raum. Genau deshalb muss es Navigation, Zustand, Fokus, Motion und versteckte Inhalte bewusst behandeln.</p>
+  </header>
+
+  <section aria-labelledby="showcase-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">01 · Erst sehen</p><h2 id="showcase-title">Showcase</h2></div>
+      <p>Die Beispiele sind eigenständige Implementierungen. Die Editorial Story besitzt zusätzlich eine separate Full-Bleed-Seite.</p>
+    </div>
+    <div class="stage">
+      <div class="stage-toolbar" data-stage-toolbar aria-label="Carousel-Beispiele wechseln">
+        <button type="button" aria-pressed="true">Editorial / Visual Story</button>
+      </div>
+      <div class="stage-frame" data-stage-frame>
+        <iframe src="./examples/editorial-story.html" title="Editorial / Visual Story"></iframe>
+      </div>
+    </div>
+    <p><a class="fullscreen-link" href="./examples/editorial-story.html">Editorial / Visual Story im Vollbild öffnen ↗</a></p>
+  </section>
+
+  <section aria-labelledby="variants-title">
+    <p class="eyebrow">02 · Varianten erkennen</p>
+    <h2 id="variants-title">Drei unterschiedliche Carousel-Probleme</h2>
+    <ul class="variant-list" data-variants>
+      <li><strong>Editorial / Visual Story</strong> – ein bildschirmfüllender Slide zurzeit.</li>
+      <li><strong>Content Rail</strong> – mehrere Cards sichtbar und horizontal durchsuchbar.</li>
+      <li><strong>Media Gallery</strong> – großes Medium mit direkter Auswahl über Thumbnails.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="anatomy-title">
+    <p class="eyebrow">03 · Benennen</p>
+    <h2 id="anatomy-title">Anatomie</h2>
+    <div class="grid">
+      <div class="panel"><code>carousel-region</code><p>Benannter Bereich, der die zusammengehörigen Slides und Controls umfasst.</p></div>
+      <div class="panel"><code>slide</code><p>Ein Inhaltscontainer innerhalb der Sequenz – Bild, Text, Card oder Medienkombination.</p></div>
+      <div class="panel"><code>previous-next</code><p>Echte Buttons, die den sichtbaren Ausschnitt ändern, ohne Fokus mitzuschieben.</p></div>
+      <div class="panel"><code>slide-picker</code><p>Optionaler direkter Sprung zu einem bestimmten Slide.</p></div>
+      <div class="panel"><code>position-status</code><p>Visuelle und gegebenenfalls programmatische Orientierung wie „2 von 4“.</p></div>
+      <div class="panel"><code>rotation-control</code><p>Nur nötig, wenn automatische Rotation überhaupt existiert.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="research-title">
+    <p class="eyebrow">04 · Verstehen</p>
+    <h2 id="research-title">Best-Practice-Leitplanken</h2>
+    <ul class="research-list">
+      <li><strong>Kontrolle:</strong> Vor/Zurück bleiben per Tastatur erreichbar; Aktivierung verschiebt den Fokus nicht unerwartet.</li>
+      <li><strong>Autoplay:</strong> ist kein Default. Falls vorhanden, braucht es eine explizite Stop/Start-Kontrolle und muss bei Fokus pausieren.</li>
+      <li><strong>Zustand:</strong> Der aktuelle Slide bzw. Ausschnitt muss verständlich sein; Änderungen dürfen Screenreader nicht überraschend in neuen Kontext werfen.</li>
+      <li><strong>Motion:</strong> Nicht notwendige Bewegung wird bei <code>prefers-reduced-motion: reduce</code> reduziert oder entfernt.</li>
+      <li><strong>Native Scroll:</strong> Ein Content Rail darf CSS Scroll Snap nutzen, solange Controls und Semantik unabhängig davon funktionieren.</li>
+      <li><strong>Alternativen:</strong> Wenn eine sichtbare Liste oder ein Grid verständlicher ist, braucht es möglicherweise gar kein Carousel.</li>
+    </ul>
+    <p><a href="./RESEARCH.md">Recherche, Quellen und Ableitungen öffnen</a></p>
+  </section>
+
+  <section aria-labelledby="decide-title">
+    <p class="eyebrow">05 · Entscheiden</p>
+    <h2 id="decide-title">Was musst du festlegen?</h2>
+    <div class="grid">
+      <div class="panel"><h3>Sequenz</h3><p>Ist die Reihenfolge bedeutungsvoll oder nur eine Sammlung gleichwertiger Inhalte?</p></div>
+      <div class="panel"><h3>Sichtbarkeit</h3><p>Ein Slide, mehrere Cards oder ein Hauptmedium plus Picker?</p></div>
+      <div class="panel"><h3>Navigation</h3><p>Prev/Next, direkter Picker, Swipe/Scroll – welche Wege sind wirklich nötig?</p></div>
+      <div class="panel"><h3>Motion</h3><p>Keine Bewegung, kurze Transition oder automatische Rotation? Autoplay braucht einen konkreten Grund.</p></div>
+      <div class="panel"><h3>Fokus</h3><p>Was passiert beim Wechsel? Controls behalten Fokus; Inhalte werden nur fokussiert, wenn der Task das ausdrücklich verlangt.</p></div>
+      <div class="panel"><h3>Responsive</h3><p>Bleibt die Sequenz gleich? Wie viele Inhalte sind sichtbar und wo liegen Safe Areas für Text?</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="review-title">
+    <p class="eyebrow">06 · Selbst prüfen</p>
+    <h2 id="review-title">Review it yourself</h2>
+    <ul class="check-list">
+      <li>Sind alle Funktionen mit Tastatur erreichbar und bleiben Prev/Next nach Aktivierung fokussiert?</li>
+      <li>Funktioniert das Carousel vollständig ohne Hover und ohne Drag-only-Interaktion?</li>
+      <li>Ist der aktuelle Slide/Ausschnitt sichtbar und bei Bedarf programmatisch nachvollziehbar?</li>
+      <li>Werden unsichtbare interaktive Inhalte wirklich aus der Interaktion entfernt?</li>
+      <li>Respektiert die Umsetzung <code>prefers-reduced-motion</code>?</li>
+      <li>Wenn es Autoplay gäbe: könnte man es sofort stoppen und würde es bei Fokus pausieren?</li>
+      <li>Wäre dieselbe Information als Liste oder Grid eigentlich verständlicher?</li>
+    </ul>
+  </section>
+
+  <section class="machine-section" aria-labelledby="machine-title">
+    <p class="eyebrow">07 · Weitergeben</p>
+    <h2 id="machine-title">Maschinenlesbar</h2>
+    <p class="machine-lead">Build DNA beschreibt die Sequenz, Navigation, Zustände, Fokusregeln und Motion-Constraints – nicht den Beispielcode.</p>
+
+    <div class="build-dna-panel">
+      <div>
+        <p class="eyebrow">how-to-web · Build DNA 0.1</p>
+        <h3>Portable Reconstruction Contract</h3>
+        <p>Ein Coding-Agent darf Technologie, Layout und visuelle Tokens ändern. Kontrolle, Semantik, Fokus, Zustandskommunikation und Motion-Vertrag müssen erhalten bleiben.</p>
+      </div>
+      <ul class="machine-links">
+        <li><a href="./build-dna.json"><strong>Build DNA öffnen</strong> · JSON</a></li>
+        <li><a href="./index.md">LLM-freundliche Referenz · Markdown</a></li>
+        <li><a href="./llms.txt">Agent Discovery · llms.txt</a></li>
+        <li><a href="./examples/editorial-story.json">Editorial / Visual Story · JSON</a></li>
+        <li><a href="./examples/content-rail.json">Content Rail · JSON</a></li>
+        <li><a href="./examples/media-gallery.json">Media Gallery · JSON</a></li>
+      </ul>
+    </div>
+
+    <div class="agent-prompts">
+      <h3>Für Coding-Agenten</h3>
+      <p>Die Build DNA bleibt der Vertrag. Diese Prompts sind nur unterschiedliche Einstiegspunkte.</p>
+      <div class="prompt-grid">
+        <article class="prompt-card"><p class="eyebrow">Generisch</p><h4>Carousel bauen</h4><pre><code>Baue mir ein Carousel nach
+https://blame76.github.io/how-to-web/elements/interactive/carousel/
+
+Nutze die Build DNA als Rekonstruktionsvertrag.
+Passe die Umsetzung an meinen Stack an.</code></pre></article>
+        <article class="prompt-card"><p class="eyebrow">Editorial</p><h4>Visual Story bauen</h4><pre><code>Baue mir die Variante „Editorial / Visual Story“ nach
+https://blame76.github.io/how-to-web/elements/interactive/carousel/
+
+Nutze die Full-Bleed-Demo als visuelle Richtung,
+aber die Build DNA als normativen Vertrag.</code></pre></article>
+        <article class="prompt-card"><p class="eyebrow">Content Rail</p><h4>Card Rail bauen</h4><pre><code>Baue mir die Variante „Content Rail“ nach.
+Mehrere Cards dürfen sichtbar sein.
+Bewahre Tastatur-, Scroll- und Fokusregeln.</code></pre></article>
+        <article class="prompt-card"><p class="eyebrow">Media Gallery</p><h4>Gallery bauen</h4><pre><code>Baue mir die Variante „Media Gallery“ nach.
+Großes Medium plus direkte Auswahl.
+Bewahre den aktiven Zustand und Accessibility.</code></pre></article>
+        <article class="prompt-card"><p class="eyebrow">Projektbezogen</p><h4>In bestehendes Projekt übertragen</h4><pre><code>Übertrage das how-to-web Carousel in mein Projekt.
+Nutze meine vorhandenen Tokens und Komponenten.
+Erfinde keine Autoplay-, Fokus- oder Navigationsregeln,
+die nicht beschrieben sind.</code></pre></article>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
