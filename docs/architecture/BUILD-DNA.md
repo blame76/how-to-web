@@ -126,6 +126,44 @@ Each public feature should expose:
 
 The repository root should maintain a concise `llms.txt` index.
 
+
+## Inline delivery for single-pass readers
+
+A feature may mirror its canonical `build-dna.json` inside `index.html` so a single-pass reader or coding agent can receive the normative contract without following a second request.
+
+The source hierarchy is strict:
+
+1. **`build-dna.json` is the canonical normative source.**
+2. The inline HTML block is a **generated transport copy**.
+3. The inline copy must never be edited manually.
+4. Research, examples, Markdown reference and explanatory prose remain informative unless the Build DNA explicitly incorporates a rule.
+
+Inline copies are delimited by:
+
+```html
+<!-- BUILD_DNA_INLINE:START -->
+...
+<!-- BUILD_DNA_INLINE:END -->
+```
+
+The repository-level tool owns synchronization:
+
+```bash
+python3 bin/sync-build-dna blocks/product-card
+python3 bin/sync-build-dna --check blocks/product-card
+python3 bin/sync-build-dna --check-all
+```
+
+`--check-all` discovers every `index.html` that contains an inline Build DNA marker pair and fails when:
+
+- the matching `build-dna.json` is missing or invalid,
+- the marker pair is malformed,
+- the generated inline block differs from the canonical JSON.
+
+CI runs only `--check-all`. It never rewrites repository files.
+
+The sync tool intentionally does **not** generate `index.md`, research, examples or human-facing explanations. Those require semantic review rather than byte-level synchronization.
+
 ## Agent request examples
 
 A public feature may expose several concise request examples for coding agents, for example:
