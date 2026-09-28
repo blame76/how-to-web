@@ -1,0 +1,25 @@
+# how-to-web Carousel
+
+> Reconstruction guidance for the how-to-web Carousel organism.
+
+Use [Build DNA](./build-dna.json) as the normative contract. The three examples demonstrate different carousel problems; no example replaces the generic contract.
+
+## Primary
+
+- [Build DNA](./build-dna.json)
+- [Carousel reference](./index.md)
+- [Research](./RESEARCH.md)
+- [Human reference](./)
+
+## Variants
+
+- [Editorial / Visual Story data](./examples/editorial-story.json)
+- [Editorial / Visual Story](./examples/editorial-story.html)
+- [Content Rail data](./examples/content-rail.json)
+- [Content Rail](./examples/content-rail.html)
+- [Media Gallery data](./examples/media-gallery.json)
+- [Media Gallery](./examples/media-gallery.html)
+
+## Agent instruction
+
+Preserve sequence meaning, native controls, focus behavior, hidden-content accessibility, reduced-motion support and explicit autoplay/wrapping decisions. Adapt framework, layout and visual tokens to the target project. Do not infer interaction rules from visual examples.
