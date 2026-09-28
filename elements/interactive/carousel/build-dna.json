@@ -1,0 +1,247 @@
+{
+  "format": "how-to-web-build-dna",
+  "version": "0.1",
+  "id": "carousel",
+  "kind": "organism",
+  "title": "Carousel",
+  "status": "ready",
+  "purpose": "Present a controlled sequence of related content when showing all items at once would be impractical or would weaken the intended hierarchy.",
+  "reconstruction_priority": [
+    "purpose",
+    "constraints",
+    "behavior",
+    "composition",
+    "responsive",
+    "accessibility",
+    "visual"
+  ],
+  "composition": [
+    {
+      "id": "carousel-region",
+      "role": "named region containing slides and controls",
+      "required": true,
+      "semantics": "section or equivalent labelled region"
+    },
+    {
+      "id": "slides",
+      "role": "ordered content sequence",
+      "required": true,
+      "semantics": "grouped content containers"
+    },
+    {
+      "id": "previous-next-controls",
+      "role": "sequential navigation",
+      "required": true,
+      "semantics": "native buttons"
+    },
+    {
+      "id": "position-status",
+      "role": "orientation within the sequence",
+      "required": false,
+      "semantics": "visible text and optional polite live status"
+    },
+    {
+      "id": "slide-picker",
+      "role": "direct navigation to a slide",
+      "required": false,
+      "semantics": "buttons or tabs when full tab contract is implemented"
+    },
+    {
+      "id": "rotation-control",
+      "role": "stop/start automatic rotation",
+      "required": false,
+      "semantics": "native button"
+    }
+  ],
+  "data_contract": {
+    "required": [
+      "carousel.label",
+      "slides[0..n].id",
+      "slides[0..n].content"
+    ],
+    "optional": [
+      "slides[].media",
+      "slides[].heading",
+      "slides[].body",
+      "slides[].action",
+      "slides[].focal_point",
+      "decisions.visible_count",
+      "decisions.autoplay",
+      "decisions.wrap",
+      "decisions.picker"
+    ],
+    "prohibit_invention": [
+      "autoplay",
+      "infinite wrapping",
+      "slide order",
+      "slide labels",
+      "calls to action",
+      "motion style"
+    ]
+  },
+  "layout": {
+    "sequence_order_invariant": true,
+    "variants": {
+      "editorial_story": "one full-bleed slide visible",
+      "content_rail": "multiple cards may be visible in a horizontal scroll container",
+      "media_gallery": "one primary medium plus direct slide picker"
+    },
+    "focal_point": "Media cropping may adapt by viewport, but focal points and text-safe areas must remain intentional."
+  },
+  "behavior": {
+    "previous_next": {
+      "controls": "native buttons",
+      "focus_after_activation": "focus remains on the activated control",
+      "disabled_or_wrap": "must be explicitly decided; do not infer infinite wrapping"
+    },
+    "picker": {
+      "optional": true,
+      "active_state": "programmatically exposed",
+      "focus_after_activation": "remains on picker unless task explicitly requires moving it"
+    },
+    "autoplay": {
+      "default": false,
+      "if_enabled": [
+        "provide a stop/start control",
+        "stop when keyboard focus enters the carousel",
+        "do not resume automatically after focus-triggered pause",
+        "stop on pointer hover where relevant"
+      ]
+    },
+    "announcements": {
+      "user_initiated_single_slide_change": "short polite position update when useful",
+      "automatic_change": "must never silently replace the context for assistive-technology users"
+    },
+    "touch_and_scroll": "Swipe/native scrolling may supplement controls but must not be the only interaction path."
+  },
+  "responsive": {
+    "strategy": "preserve sequence and control semantics while visible slide count, crop and spacing adapt",
+    "minimum_test_viewport_css_px": 320,
+    "zoom_test_percent": 200,
+    "horizontal_page_overflow": false,
+    "slide_order_preserved": true,
+    "controls_remain_operable": true,
+    "media_safe_areas_preserved": true
+  },
+  "accessibility": {
+    "native_controls": true,
+    "keyboard_operable": true,
+    "visible_focus": true,
+    "hover_required": false,
+    "drag_required": false,
+    "reduced_motion": true,
+    "inactive_single_slide_content": "remove from interaction and accessibility tree, e.g. native hidden",
+    "minimum_pointer_target_css_px": 24,
+    "control_names": "Previous/next/picker controls have understandable accessible names."
+  },
+  "performance": {
+    "media": "use responsive sources appropriate to rendered size",
+    "lazy_loading": "non-initial media may load lazily when doing so does not break interaction",
+    "layout_shift": "reserve carousel geometry where practical"
+  },
+  "constraints": [
+    "Do not add autoplay unless the requirement explicitly asks for it.",
+    "Do not make swipe or drag the only way to navigate.",
+    "Do not move keyboard focus merely because the visible slide changed.",
+    "Do not leave interactive content from visually hidden single-slide panels keyboard reachable.",
+    "Do not implement ordinary previous/next controls as links.",
+    "Do not assume infinite wrapping.",
+    "Do not use dramatic motion when prefers-reduced-motion requests reduced motion.",
+    "Before using a carousel, consider whether a visible list or grid communicates the content better."
+  ],
+  "adaptation_contract": {
+    "may_change": [
+      "framework",
+      "template language",
+      "CSS architecture",
+      "class names",
+      "design tokens",
+      "colors",
+      "typography",
+      "spacing",
+      "transition style",
+      "visible slide count by viewport"
+    ],
+    "must_preserve": [
+      "sequence meaning and order",
+      "control semantics",
+      "focus contract",
+      "manual navigation path",
+      "active/position state",
+      "reduced-motion behavior",
+      "hidden-content accessibility",
+      "explicit autoplay decision"
+    ]
+  },
+  "agent_contract": {
+    "instruction": "Reconstruct from this Build DNA rather than copying reference HTML. Ask for missing carousel decisions such as wrapping, visible count or autoplay instead of inventing them.",
+    "when_conflicting": "Purpose, constraints, behavior and accessibility override visual resemblance.",
+    "output_expectation": "Production-appropriate carousel code for the requested stack plus explicitly listed unresolved interaction decisions.",
+    "request_examples": [
+      {
+        "id": "generic-reconstruction",
+        "intent": "Build a generic Carousel from the shared contract.",
+        "prompt": "Baue mir ein Carousel nach https://blame76.github.io/how-to-web/elements/interactive/carousel/ und nutze die Build DNA als Rekonstruktionsvertrag."
+      },
+      {
+        "id": "editorial-story",
+        "intent": "Build the documented full-bleed Editorial / Visual Story.",
+        "prompt": "Baue mir die Variante \"Editorial / Visual Story\" nach. Nutze die Full-Bleed-Demo als visuelle Richtung und die Build DNA als normativen Vertrag."
+      },
+      {
+        "id": "content-rail",
+        "intent": "Build the documented multi-card Content Rail.",
+        "prompt": "Baue mir die Variante \"Content Rail\" nach. Mehrere Cards dürfen sichtbar sein; bewahre Tastatur-, Scroll- und Fokusregeln."
+      },
+      {
+        "id": "media-gallery",
+        "intent": "Build the documented Media Gallery.",
+        "prompt": "Baue mir die Variante \"Media Gallery\" nach. Großes Medium plus direkte Auswahl; bewahre aktiven Zustand und Accessibility."
+      },
+      {
+        "id": "project-adaptation",
+        "intent": "Adapt the Carousel contract to an existing stack.",
+        "prompt": "Übertrage das how-to-web Carousel in mein bestehendes Projekt. Nutze vorhandene Tokens und Komponenten und erfinde keine Autoplay-, Fokus- oder Navigationsregeln."
+      }
+    ]
+  },
+  "acceptance": [
+    "Every carousel can be fully operated with keyboard without requiring hover, swipe or drag.",
+    "Previous and next controls are native buttons with understandable names.",
+    "Using previous/next does not unexpectedly move keyboard focus.",
+    "Single-slide variants remove inactive interactive slide content from keyboard and accessibility interaction.",
+    "The current slide or viewport position is understandable where the variant needs explicit orientation.",
+    "The implementation honors prefers-reduced-motion.",
+    "No autoplay occurs unless explicitly configured.",
+    "If autoplay is configured, stop/start and focus-pause behavior are implemented.",
+    "The sequence remains usable at 320 CSS px and 200% zoom.",
+    "The host page does not gain unintended horizontal overflow."
+  ],
+  "public": {
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
+    "source_repository": "https://github.com/blame76/how-to-web/tree/main/elements/interactive/carousel"
+  },
+  "examples": [
+    {
+      "id": "editorial-story",
+      "data": "./examples/editorial-story.json",
+      "human": "./examples/editorial-story.html",
+      "note": "Full-bleed gadget editorial story; no autoplay."
+    },
+    {
+      "id": "content-rail",
+      "data": "./examples/content-rail.json",
+      "human": "./examples/content-rail.html",
+      "note": "Multi-card horizontal rail with native scroll and scroll snap."
+    },
+    {
+      "id": "media-gallery",
+      "data": "./examples/media-gallery.json",
+      "human": "./examples/media-gallery.html",
+      "note": "Primary media with thumbnail picker."
+    }
+  ]
+}

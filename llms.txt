@@ -12,6 +12,9 @@ Use the most specific `llms.txt` available for a component path. Build DNA is th
 - [Navbar](./elements/navigation/navbar/index.md): Human/agent reference for global site navigation.
 - [Navbar Build DNA](./elements/navigation/navbar/build-dna.json): Canonical Navbar reconstruction contract.
 - [Navbar llms.txt](./elements/navigation/navbar/llms.txt): Navbar-specific agent guidance.
+- [Carousel](./elements/interactive/carousel/index.md): Human/agent reference for controlled content sequences.
+- [Carousel Build DNA](./elements/interactive/carousel/build-dna.json): Canonical Carousel reconstruction contract.
+- [Carousel llms.txt](./elements/interactive/carousel/llms.txt): Carousel-specific agent guidance.
 
 ## Source
 

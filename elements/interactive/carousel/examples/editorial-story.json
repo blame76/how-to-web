@@ -1,0 +1,77 @@
+{
+  "id": "editorial-story",
+  "label": "Editorial / Visual Story",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "carousel": {
+    "label": "Future Objects – Editorial Gadget Story",
+    "wrap": false,
+    "autoplay": false,
+    "slides": [
+      {
+        "id": "charm",
+        "kicker": "01 · Carry",
+        "heading": "Orbit Charm",
+        "body": "Ein kleines Objekt zwischen Schmuck, Interface und Begleiter.",
+        "image": {
+          "alt": "Heller futuristischer Gadget-Charm an einer schwarzen Ledertasche vor einer Stadt im Sonnenuntergang.",
+          "avif": "../assets/generated/gadget-charm-640.avif 640w, ../assets/generated/gadget-charm-836.avif 836w",
+          "webp": "../assets/generated/gadget-charm-640.webp 640w, ../assets/generated/gadget-charm-836.webp 836w",
+          "fallback": "../assets/generated/gadget-charm-836.webp",
+          "position": "35% center"
+        },
+        "content_position": "right"
+      },
+      {
+        "id": "ring",
+        "kicker": "02 · Wear",
+        "heading": "Signal Ring",
+        "body": "Technik, die zuerst wie Schmuck gelesen wird und erst danach wie ein Gerät.",
+        "image": {
+          "alt": "Minimalistischer futuristischer Ring in einer dunklen editorialen Nahaufnahme.",
+          "avif": "../assets/generated/gadget-ring-640.avif 640w, ../assets/generated/gadget-ring-813.avif 813w",
+          "webp": "../assets/generated/gadget-ring-640.webp 640w, ../assets/generated/gadget-ring-813.webp 813w",
+          "fallback": "../assets/generated/gadget-ring-813.webp",
+          "position": "58% center"
+        },
+        "content_position": "left"
+      },
+      {
+        "id": "pocket",
+        "kicker": "03 · Keep",
+        "heading": "Pocket Relay",
+        "body": "Ein ruhiges Stück Hardware für Aufgaben, die nicht nach einem weiteren Bildschirm verlangen.",
+        "image": {
+          "alt": "Kompaktes futuristisches Pocket-Gadget auf hellem Stein in warmem Licht.",
+          "avif": "../assets/generated/gadget-pocket-640.avif 640w, ../assets/generated/gadget-pocket-836.avif 836w",
+          "webp": "../assets/generated/gadget-pocket-640.webp 640w, ../assets/generated/gadget-pocket-836.webp 836w",
+          "fallback": "../assets/generated/gadget-pocket-836.webp",
+          "position": "48% center"
+        },
+        "content_position": "left"
+      },
+      {
+        "id": "clip",
+        "kicker": "04 · Move",
+        "heading": "Field Clip",
+        "body": "Nah genug, um verfügbar zu sein. Unauffällig genug, um nicht zum Mittelpunkt zu werden.",
+        "image": {
+          "alt": "Futuristischer Clip an einer hellen technischen Jacke vor einer Berglandschaft.",
+          "avif": "../assets/generated/gadget-clip-640.avif 640w, ../assets/generated/gadget-clip-835.avif 835w",
+          "webp": "../assets/generated/gadget-clip-640.webp 640w, ../assets/generated/gadget-clip-835.webp 835w",
+          "fallback": "../assets/generated/gadget-clip-835.webp",
+          "position": "68% center"
+        },
+        "content_position": "left"
+      }
+    ]
+  },
+  "decisions": {
+    "visible_count": 1,
+    "picker": "numbered",
+    "autoplay": false,
+    "wrap": false,
+    "transition": "short editorial reveal",
+    "reduced_motion": "remove transition"
+  }
+}

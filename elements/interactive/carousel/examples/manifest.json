@@ -1,0 +1,19 @@
+{
+  "examples": [
+    {
+      "id": "editorial-story",
+      "label": "Editorial / Visual Story",
+      "file": "editorial-story.html"
+    },
+    {
+      "id": "content-rail",
+      "label": "Content Rail",
+      "file": "content-rail.html"
+    },
+    {
+      "id": "media-gallery",
+      "label": "Media Gallery",
+      "file": "media-gallery.html"
+    }
+  ]
+}

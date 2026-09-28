@@ -49,6 +49,16 @@ Public target:
 https://blame76.github.io/how-to-web/elements/navigation/navbar/
 ```
 
+### Carousel
+
+- Human reference: `elements/interactive/carousel/index.html`
+- LLM-friendly reference: `elements/interactive/carousel/index.md`
+- Build DNA: `elements/interactive/carousel/build-dna.json`
+- Agent discovery: `elements/interactive/carousel/llms.txt`
+- Research: `elements/interactive/carousel/RESEARCH.md`
+- Examples: `elements/interactive/carousel/examples/` (`editorial-story`, `content-rail`, `media-gallery`)
+- Full-Bleed demo: `elements/interactive/carousel/examples/editorial-story.html`
+
 ## Build DNA
 
 Build DNA is the how-to-web machine-readable layer.
@@ -67,4 +77,4 @@ The repository publishes `llms.txt`. Individual component paths may provide a mo
 
 ## Status
 
-Product Card and Navbar are the first reference features for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.
+Product Card, Navbar and Carousel are reference features for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.
