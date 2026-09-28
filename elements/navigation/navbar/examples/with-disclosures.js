@@ -10,7 +10,9 @@ async function loadData(){
 function itemMarkup(item,index){
   if(item.children){
     const children=item.children.map(child=>`<li><a href="${child.href}"${child.current?' aria-current="page"':''}>${child.label}</a></li>`).join('');
-    return `<li class="nav-item has-disclosure"><button class="disclosure-button" type="button" aria-expanded="false" aria-controls="group-${index}">${item.label} <span aria-hidden="true">↓</span></button><ul class="subnav" id="group-${index}" hidden>${children}</ul></li>`;
+    const currentBranch=item.children.some(child=>child.current);
+    const currentHint=currentBranch?'<span class="visually-hidden">– enthält die aktuelle Seite</span> ':'';
+    return `<li class="nav-item has-disclosure"><button class="disclosure-button" type="button" aria-expanded="false" aria-controls="group-${index}"${currentBranch?' data-current-branch="true"':''}>${item.label} ${currentHint}<span aria-hidden="true">↓</span></button><ul class="subnav" id="group-${index}" hidden>${children}</ul></li>`;
   }
   return `<li class="nav-item"><a class="top-link" href="${item.href}"${item.current?' aria-current="page"':''}>${item.label}</a></li>`;
 }
