@@ -73,7 +73,7 @@ def marker_matches(feature, page):
     return start, end
 
 
-def render_block(indent, dna_raw):
+def render_block(indent, end_indent, dna_raw):
     escaped = html.escape(dna_raw.strip(), quote=False)
     child = indent + "  "
     grandchild = child + "  "
@@ -89,7 +89,7 @@ def render_block(indent, dna_raw):
         f"{child}</div>",
         f'{child}<pre><code class="language-json">{escaped}</code></pre>',
         f"{indent}</details>",
-        f"{indent}{END_TOKEN}",
+        f"{end_indent}{END_TOKEN}",
     ])
 
 
@@ -97,7 +97,7 @@ def process_feature(feature, check_only):
     dna_raw, page = read_contract(feature)
     start, end = marker_matches(feature, page)
 
-    expected = render_block(start.group(1), dna_raw)
+    expected = render_block(start.group(1), end.group(1), dna_raw)
     current = page[start.start():end.end()]
 
     if current == expected:
