@@ -1,22 +1,28 @@
 {
   "id": "dialog",
   "kind": "organism",
-  "status": "structure-only",
+  "status": "ready",
   "variants": [
     {
       "id": "information",
-      "label": "Information",
-      "example": null
+      "label": "Information / Long Content",
+      "description": "Strukturierter Inhalt; Initialfokus auf einen statischen Startpunkt.",
+      "example": "information.html",
+      "status": "ready"
     },
     {
       "id": "form",
       "label": "Form",
-      "example": null
+      "description": "Task-Dialog; Initialfokus auf das erste relevante Eingabefeld.",
+      "example": "form.html",
+      "status": "ready"
     },
     {
       "id": "confirmation",
-      "label": "Confirmation",
-      "example": null
+      "label": "Destructive Confirmation",
+      "description": "Schwer rückgängig zu machende Aktion; Initialfokus auf Cancel.",
+      "example": "confirmation.html",
+      "status": "ready"
     }
   ],
   "stage": {
