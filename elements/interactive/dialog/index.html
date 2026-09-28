@@ -69,6 +69,9 @@
       <li><strong>Fokus bleibt modal:</strong> Tab/Shift+Tab dürfen nicht hinter den Dialog entkommen.</li>
       <li><strong>Fokusrückgabe:</strong> nach dem Schließen zurück zum Invoker, außer der Workflow verlangt logisch etwas anderes.</li>
       <li><strong>Explizites Schließen:</strong> nicht nur auf Escape oder Backdrop verlassen; eine sichtbare Aktion zum Schließen bereitstellen.</li>
+      <li><strong>Close Requests:</strong> explizites Abbrechen/Schließen kann über <code>requestClose()</code> denselben cancelbaren Pfad wie Escape nutzen; erfolgreiche Task-Abschlüsse dürfen direkt schließen.</li>
+      <li><strong>Light Dismiss:</strong> Backdrop-Click ist eine bewusste Produktentscheidung. <code>closedby</code> kann das deklarativ ausdrücken, ist aber noch keine Baseline-Voraussetzung.</li>
+      <li><strong>Progressive Plattform:</strong> <code>commandfor</code>/<code>command</code> können Dialoge inzwischen deklarativ öffnen oder schließen; die Build DNA bindet sich trotzdem nicht an diese Technik.</li>
     </ul>
     <p><a href="./RESEARCH.md">Recherche, Quellen und Ableitungen öffnen</a></p>
   </section>
