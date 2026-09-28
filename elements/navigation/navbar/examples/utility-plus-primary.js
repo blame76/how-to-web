@@ -16,8 +16,8 @@ function navigationMarkup(data){
     <a class="brand" href="${data.navigation.home.href}">${data.navigation.home.label}</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="utility-navigation">${data.navigation.mobile_label}</button>
     <nav class="nav-panel" id="utility-navigation" aria-label="${data.navigation.label}">
-      <div class="nav-group"><span class="group-label">Primär</span>${linksMarkup(data.navigation.primary,'primary-list')}</div>
-      <div class="nav-group utility-group"><span class="group-label">Service</span>${linksMarkup(data.navigation.utility,'utility-list')}</div>
+      <div class="nav-group"><span class="group-label" id="primary-label">Primär</span>${linksMarkup(data.navigation.primary,'primary-list').replace('<ul class="primary-list">','<ul class="primary-list" aria-labelledby="primary-label">')}</div>
+      <div class="nav-group utility-group"><span class="group-label" id="utility-label">Service</span>${linksMarkup(data.navigation.utility,'utility-list').replace('<ul class="utility-list">','<ul class="utility-list" aria-labelledby="utility-label">')}</div>
     </nav>
   </div>`;
 }
