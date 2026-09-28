@@ -1,0 +1,26 @@
+# how-to-web Navbar
+
+> Machine-readable reconstruction guidance for the how-to-web Navbar organism.
+
+This path documents a framework-independent global website Navbar. Coding agents should use the Build DNA as the primary reconstruction contract. The visual examples demonstrate three implementations and are not the specification.
+
+## Primary
+
+- [Build DNA](./build-dna.json): Canonical reconstruction contract. Read this first.
+- [Navbar reference](./index.md): LLM-friendly anatomy, behavior, responsive and accessibility contract.
+- [Research](./RESEARCH.md): Current evidence and source links.
+- [Human reference](./): Interactive showcase and self-review guidance.
+
+## Examples
+
+- [Simple](./examples/simple.json): Direct global navigation.
+- [With Disclosures](./examples/with-disclosures.json): Navigation with disclosure groups.
+- [Utility + Primary](./examples/utility-plus-primary.json): Primary plus service navigation.
+
+## Source
+
+- [GitHub source](https://github.com/blame76/how-to-web/tree/main/elements/navigation/navbar)
+
+## Agent instruction
+
+Reconstruct from Build DNA rather than copying HTML. Preserve the supplied information architecture, native link/button semantics, current-page state, disclosure behavior, responsive continuity and accessibility. Mobile is a responsive state, not a different navigation model. Ask for missing navigation decisions instead of inventing them.
