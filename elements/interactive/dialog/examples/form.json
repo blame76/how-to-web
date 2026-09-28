@@ -1,0 +1,43 @@
+{
+  "id": "form",
+  "label": "Form",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "dialog": {
+    "label": "Kontakt ergänzen",
+    "initial_focus": "first relevant input",
+    "close_behavior": [
+      "cancel button",
+      "Escape",
+      "save action"
+    ],
+    "backdrop_close": false,
+    "focus_return": "invoker",
+    "fields": [
+      {
+        "id": "name",
+        "label": "Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "E-Mail",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "note",
+        "label": "Notiz",
+        "type": "text",
+        "required": false
+      }
+    ]
+  },
+  "decisions": {
+    "modal": true,
+    "native_dialog": true,
+    "initial_focus": "name field",
+    "backdrop_close": false
+  }
+}

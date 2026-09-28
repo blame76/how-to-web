@@ -1,0 +1,33 @@
+# how-to-web Dialog
+
+> Reconstruction guidance for the how-to-web modal Dialog organism.
+
+Use [Build DNA](./build-dna.json) as the normative contract. The examples demonstrate different focus strategies; they are not separate specifications.
+
+## Primary
+
+- [Build DNA](./build-dna.json)
+- [Dialog reference](./index.md)
+- [Research](./RESEARCH.md)
+- [Human reference](./)
+
+## Variants
+
+- [Information data](./examples/information.json)
+- [Information example](./examples/information.html)
+- [Form data](./examples/form.json)
+- [Form example](./examples/form.html)
+- [Confirmation data](./examples/confirmation.json)
+- [Confirmation example](./examples/confirmation.html)
+
+## Platform notes
+
+- Prefer native `<dialog>` + `showModal()`.
+- For cancellation/dismissal, `requestClose()` is the preferred modern close-request API when supported; fall back as needed.
+- `closedby` may express light dismiss but is not a required baseline capability.
+- Invoker Commands may be used declaratively on current browser targets, but are an implementation option rather than part of the normative contract.
+- Use `aria-describedby` selectively; avoid flattening long structured content into one large description.
+
+## Agent instruction
+
+Preserve modal semantics, accessible naming, initial-focus strategy, background inertness, Escape, explicit dismissal and focus return. Prefer native dialog behavior when available. Do not invent backdrop-close, destructive defaults or workflow side effects.

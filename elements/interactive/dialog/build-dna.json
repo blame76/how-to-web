@@ -1,0 +1,273 @@
+{
+  "format": "how-to-web-build-dna",
+  "version": "0.1",
+  "id": "dialog",
+  "kind": "organism",
+  "title": "Dialog",
+  "status": "ready",
+  "purpose": "Interrupt the current context only when a focused task or decision requires temporary modal attention.",
+  "reconstruction_priority": [
+    "purpose",
+    "constraints",
+    "behavior",
+    "composition",
+    "responsive",
+    "accessibility",
+    "visual"
+  ],
+  "composition": [
+    {
+      "id": "invoker",
+      "role": "opens the dialog and usually receives focus back",
+      "required": true,
+      "semantics": "button"
+    },
+    {
+      "id": "dialog",
+      "role": "modal top-layer task container",
+      "required": true,
+      "semantics": "native dialog preferred"
+    },
+    {
+      "id": "title",
+      "role": "accessible name and visual heading",
+      "required": true,
+      "semantics": "heading referenced by aria-labelledby or native equivalent"
+    },
+    {
+      "id": "content",
+      "role": "information or task that justifies interruption",
+      "required": true,
+      "semantics": "structured content"
+    },
+    {
+      "id": "actions",
+      "role": "task-specific controls",
+      "required": false,
+      "semantics": "buttons, form controls or links as appropriate"
+    },
+    {
+      "id": "close-control",
+      "role": "explicit dismissal",
+      "required": true,
+      "semantics": "native button"
+    }
+  ],
+  "data_contract": {
+    "required": [
+      "dialog.label",
+      "dialog.initial_focus",
+      "dialog.close_behavior",
+      "dialog.focus_return"
+    ],
+    "optional": [
+      "dialog.description",
+      "dialog.fields",
+      "dialog.actions",
+      "dialog.destructive_action",
+      "dialog.backdrop_close"
+    ],
+    "prohibit_invention": [
+      "destructive action",
+      "default confirmation",
+      "backdrop-close behavior",
+      "focus target",
+      "submission side effects"
+    ]
+  },
+  "behavior": {
+    "opening": {
+      "preferred_api": "HTMLDialogElement.showModal()",
+      "modal": true,
+      "background_inert": true,
+      "store_invoker": true
+    },
+    "initial_focus": {
+      "rule": "Choose based on task and content; do not default blindly to the first focusable element.",
+      "strategies": {
+        "information_long_content": "focus a static heading or content start with tabindex=-1",
+        "form": "focus the first relevant input",
+        "destructive_confirmation": "focus the less destructive action",
+        "simple_acknowledgement": "focus the most likely continue/OK action when appropriate"
+      }
+    },
+    "keyboard": {
+      "escape": "closes the topmost modal dialog",
+      "tab": "remains within the modal dialog",
+      "shift_tab": "remains within the modal dialog"
+    },
+    "closing": {
+      "explicit_control": true,
+      "backdrop_click": "must be explicitly decided; default false",
+      "focus_return": "return to invoker when it still exists unless workflow requires another logical target",
+      "preferred_cancel_api": "HTMLDialogElement.requestClose() when available; fall back to close() for older targets.",
+      "light_dismiss": {
+        "default": false,
+        "rule": "Backdrop/light-dismiss is an explicit product decision, never inferred.",
+        "platform_note": "closedby=\"any\" can express light dismiss declaratively where supported, but closedby is not yet a Baseline requirement."
+      }
+    },
+    "stacking": {
+      "multiple_modals": "avoid unless necessary; Escape closes only the topmost modal"
+    },
+    "platform_enhancements": {
+      "invoker_commands": {
+        "status": "optional progressive enhancement",
+        "commands": [
+          "show-modal",
+          "request-close",
+          "close"
+        ],
+        "rule": "May replace JavaScript wiring where target-browser support is acceptable; must not change the focus and workflow contract."
+      }
+    }
+  },
+  "layout": {
+    "default": "centered modal surface in top layer",
+    "narrow_viewport": "may become edge-to-edge or nearly full-screen while preserving task structure",
+    "max_height": "content may scroll inside the dialog rather than forcing viewport overflow",
+    "backdrop": true
+  },
+  "visual": {
+    "preserve": "clear modal boundary, strong heading/action hierarchy and visible focus",
+    "adaptable_tokens": [
+      "color",
+      "typeface",
+      "spacing",
+      "radius",
+      "shadow",
+      "backdrop",
+      "width",
+      "animation"
+    ]
+  },
+  "responsive": {
+    "minimum_test_viewport_css_px": 320,
+    "zoom_test_percent": 200,
+    "horizontal_page_overflow": false,
+    "all_actions_reachable": true,
+    "content_scrolls_without_hiding_controls": true
+  },
+  "accessibility": {
+    "native_dialog_preferred": true,
+    "modal_semantics": true,
+    "accessible_name": true,
+    "visible_focus": true,
+    "keyboard_operable": true,
+    "explicit_close": true,
+    "background_inert": true,
+    "initial_focus_required": true,
+    "focus_return_required": true,
+    "dialog_tabindex": "Do not put tabindex on the dialog element itself; focus a suitable descendant or static content node.",
+    "description_strategy": "Use aria-describedby for short/simple descriptive text when useful. Omit it for long or semantically structured content that should be read in its own structure."
+  },
+  "constraints": [
+    "Do not use a modal dialog when interaction outside must remain available.",
+    "Do not mark a surface modal unless outside content is actually inert.",
+    "Do not remove Escape dismissal without a compelling, explicit requirement.",
+    "Do not rely on Escape or backdrop click as the only way to close.",
+    "Do not choose initial focus solely by DOM order.",
+    "Do not move focus to a destructive action by default when the action is hard to reverse.",
+    "Do not implement a custom focus trap when native dialog behavior already satisfies the contract.",
+    "Do not allow background interaction while a modal dialog is open.",
+    "Do not require closedby or Invoker Commands API support unless the target browser matrix explicitly allows it.",
+    "Do not apply aria-describedby to long or semantically structured dialog content merely to force one large announcement."
+  ],
+  "adaptation_contract": {
+    "may_change": [
+      "framework",
+      "template language",
+      "CSS architecture",
+      "class names",
+      "design tokens",
+      "colors",
+      "typography",
+      "spacing",
+      "radius",
+      "shadow",
+      "dialog width",
+      "animation"
+    ],
+    "must_preserve": [
+      "modal interruption purpose",
+      "accessible name",
+      "initial-focus strategy",
+      "keyboard containment",
+      "Escape behavior",
+      "explicit dismissal",
+      "background inertness",
+      "focus return"
+    ]
+  },
+  "agent_contract": {
+    "instruction": "Reconstruct from this Build DNA rather than copying reference HTML. Use native dialog behavior when the target platform supports it. Ask for missing modal, close, focus and workflow decisions instead of inventing them.",
+    "when_conflicting": "Purpose, constraints, behavior and accessibility override visual resemblance.",
+    "output_expectation": "Production-appropriate dialog code for the requested stack plus explicitly listed unresolved interaction decisions.",
+    "request_examples": [
+      {
+        "id": "generic-reconstruction",
+        "intent": "Build a generic modal dialog.",
+        "prompt": "Baue mir einen Dialog nach https://blame76.github.io/how-to-web/elements/interactive/dialog/ und nutze die Build DNA als Rekonstruktionsvertrag."
+      },
+      {
+        "id": "information",
+        "intent": "Build the long-information dialog.",
+        "prompt": "Baue mir die Variante \"Information / Long Content\". Setze den Initialfokus auf einen statischen Startpunkt, damit der Inhalt von Anfang an verständlich gelesen werden kann."
+      },
+      {
+        "id": "form",
+        "intent": "Build the task form dialog.",
+        "prompt": "Baue mir die Variante \"Form\". Setze den Initialfokus auf das erste für den Task relevante Eingabefeld."
+      },
+      {
+        "id": "confirmation",
+        "intent": "Build the destructive confirmation dialog.",
+        "prompt": "Baue mir die Variante \"Destructive Confirmation\". Setze den Initialfokus auf die weniger destruktive Aktion und bewahre Escape/Cancel."
+      },
+      {
+        "id": "project-adaptation",
+        "intent": "Adapt the Dialog contract to an existing stack.",
+        "prompt": "Übertrage den how-to-web Dialog in mein bestehendes Projekt. Nutze vorhandene Tokens und Komponenten und bewahre Modalität, Fokus, Escape und Focus Return."
+      }
+    ]
+  },
+  "acceptance": [
+    "The dialog has an accessible name.",
+    "Opening the modal makes background content non-interactive.",
+    "Initial focus matches the documented task-specific strategy.",
+    "Tab and Shift+Tab remain within the modal dialog.",
+    "Escape closes the topmost modal dialog.",
+    "A visible explicit close or cancel action exists.",
+    "Closing returns focus to the invoker unless another logical workflow target is documented.",
+    "A destructive confirmation does not initially focus the destructive action.",
+    "The dialog remains usable at 320 CSS px and 200% zoom.",
+    "No unintended horizontal page overflow occurs while the dialog is open."
+  ],
+  "public": {
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
+    "source_repository": "https://github.com/blame76/how-to-web/tree/main/elements/interactive/dialog"
+  },
+  "examples": [
+    {
+      "id": "information",
+      "data": "./examples/information.json",
+      "human": "./examples/information.html",
+      "note": "Long structured information with initial focus on a static heading."
+    },
+    {
+      "id": "form",
+      "data": "./examples/form.json",
+      "human": "./examples/form.html",
+      "note": "Task form with initial focus on the first relevant input."
+    },
+    {
+      "id": "confirmation",
+      "data": "./examples/confirmation.json",
+      "human": "./examples/confirmation.html",
+      "note": "Destructive confirmation with initial focus on Cancel."
+    }
+  ]
+}

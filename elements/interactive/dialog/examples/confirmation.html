@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Destructive Confirmation Dialog – how-to-web</title><link rel="stylesheet" href="./confirmation.css"><script src="./confirmation.js" defer></script></head>
+<body>
+<main class="demo">
+  <p class="eyebrow">Dialog · Destructive Confirmation</p>
+  <h1>Gefahr braucht keinen Default.</h1>
+  <p class="intro">Die destruktive Aktion ist sichtbar, aber nicht der Initialfokus. Bei Abbruch geht Fokus zurück zum Öffner; bei bestätigter Demo-Löschung zum nächsten logischen Ziel.</p>
+
+  <section class="project-card" data-project>
+    <div><p class="eyebrow">Projekt</p><h2>Prototype Alpha</h2><p>Demo-Objekt für eine schwer rückgängig zu machende Aktion.</p></div>
+    <button class="delete-trigger" type="button" data-open>Projekt löschen</button>
+  </section>
+
+  <div class="result" data-result tabindex="-1" hidden>
+    <p class="eyebrow">Ergebnis</p>
+    <h2>Projekt entfernt</h2>
+    <p>In einem echten Workflow wäre dies der nächste sinnvolle Fokuspunkt, weil der ursprüngliche Öffner nicht mehr existiert.</p>
+  </div>
+
+  <dialog class="modal" aria-labelledby="confirm-title" aria-describedby="confirm-description" data-dialog>
+    <div class="dialog-shell">
+      <header class="dialog-header">
+        <p class="eyebrow">Bestätigung</p>
+        <h2 id="confirm-title">Projekt wirklich löschen?</h2>
+      </header>
+      <div class="dialog-content">
+        <p id="confirm-description">„Prototype Alpha“ würde dauerhaft entfernt. Diese Demo führt keine echte Löschung außerhalb des Beispiels aus.</p>
+      </div>
+      <footer class="dialog-actions">
+        <button type="button" class="secondary" data-cancel autofocus>Abbrechen</button>
+        <button type="button" class="danger" data-confirm>Projekt löschen</button>
+      </footer>
+    </div>
+  </dialog>
+</main>
+</body></html>

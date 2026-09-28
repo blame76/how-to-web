@@ -1,0 +1,19 @@
+{
+  "examples": [
+    {
+      "id": "information",
+      "label": "Information / Long Content",
+      "file": "information.html"
+    },
+    {
+      "id": "form",
+      "label": "Form",
+      "file": "form.html"
+    },
+    {
+      "id": "confirmation",
+      "label": "Destructive Confirmation",
+      "file": "confirmation.html"
+    }
+  ]
+}

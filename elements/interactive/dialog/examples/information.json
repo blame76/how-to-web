@@ -1,0 +1,36 @@
+{
+  "id": "information",
+  "label": "Information / Long Content",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "dialog": {
+    "label": "Was ändert sich mit Build DNA?",
+    "initial_focus": "title",
+    "close_behavior": [
+      "explicit close button",
+      "Escape"
+    ],
+    "backdrop_close": false,
+    "focus_return": "invoker",
+    "sections": [
+      {
+        "heading": "Der sichtbare Teil",
+        "body": "Ein Dialog ist schnell gezeichnet: Box, Titel, Text, Button. Für die Rekonstruktion reicht das nicht."
+      },
+      {
+        "heading": "Der unsichtbare Vertrag",
+        "body": "Initialfokus, Tab-Reihenfolge, Escape, Hintergrund-Inertheit und Fokusrückgabe bestimmen, ob sich die Oberfläche wie ein modaler Dialog verhält."
+      },
+      {
+        "heading": "Warum statischer Initialfokus?",
+        "body": "Bei längerem strukturiertem Inhalt soll zuerst der Anfang wahrnehmbar sein, statt direkt zu einer Aktion am Ende zu springen."
+      }
+    ]
+  },
+  "decisions": {
+    "modal": true,
+    "native_dialog": true,
+    "initial_focus": "static heading with tabindex=-1",
+    "backdrop_close": false
+  }
+}

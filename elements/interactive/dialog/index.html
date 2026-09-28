@@ -1,1 +1,153 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dialog – how-to-web</title><link rel="stylesheet" href="./styles.css"><script src="./script.js" defer></script></head><body><main><header><p class="eyebrow">how-to-web · organism</p><h1>Dialog</h1><p><strong>Muss ich den aktuellen Kontext wirklich unterbrechen?</strong></p><p>Schwarz-Weiß-Gerüst. Beispiele werden später aus dem lokalen Manifest geladen.</p></header><section><h2>Showcase</h2><div class="stage"><div class="stage-toolbar" data-stage-toolbar></div><div class="stage-frame" data-stage-frame></div></div><h3>Geplante Darstellungen</h3><ul data-variants></ul></section><section><h2>Anatomie</h2><ul><li><code>dialog-container</code></li><li><code>title</code></li><li><code>content</code></li><li><code>actions</code></li><li><code>close-control</code></li></ul></section><section><h2>Best-Practice-Leitplanken</h2><ul><li>Dialoge brauchen einen klaren zugänglichen Namen und sinnvollen Initialfokus.</li><li>Modale Dialoge halten die Tab-Sequenz im Dialog; Schließen und logische Fokusrückgabe gehören zum Verhalten.</li><li>Eine Oberfläche nur dann als modal kennzeichnen, wenn Interaktion außerhalb tatsächlich blockiert ist.</li></ul><p><a href="./RESEARCH.md">Recherche und Quellen</a></p></section><section><h2>Was musst du entscheiden?</h2><div class="grid"><div class="panel">Inhalt</div><div class="panel">Hierarchie</div><div class="panel">Interaktion</div><div class="panel">Darstellung</div></div></section><section><h2>Review it yourself</h2><ul><li>Initialfokus sinnvoll?</li><li>Tab/Shift+Tab bleiben korrekt?</li><li>Escape/Schließen funktioniert wie dokumentiert?</li><li>Fokus kehrt logisch zurück?</li></ul></section><section><h2>Maschinenlesbar</h2><a href="./examples/variants.json">Beispielvarianten (JSON)</a><p><code>/specs/elements/dialog.json</code></p></section></main></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dialog – how-to-web</title>
+  <meta name="description" content="Interaktive Referenz für modale Dialoge: Fokus, Modalität, Escape, Fokusrückgabe und Accessibility.">
+  <meta name="how-to-web:build-dna" content="./build-dna.json">
+  <link rel="alternate" type="text/markdown" href="./index.md" title="Dialog – Markdown">
+  <link rel="describedby" type="text/markdown" href="./llms.txt">
+  <link rel="alternate" type="application/json" href="./build-dna.json" title="how-to-web Build DNA">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="site-intro">
+    <p class="eyebrow">how-to-web · organism</p>
+    <h1>Dialog</h1>
+    <p class="lead"><strong>Muss der aktuelle Kontext wirklich unterbrochen werden?</strong></p>
+    <p>Ein modaler Dialog zieht Aufmerksamkeit und Fokus aus der Seite in einen begrenzten Arbeitsraum. Genau deshalb gehören Öffnen, Initialfokus, Tab-Reihenfolge, Escape, Schließen und Fokusrückgabe zum Vertrag – nicht nur die Box in der Mitte.</p>
+  </header>
+
+  <section aria-labelledby="showcase-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">01 · Erst sehen</p><h2 id="showcase-title">Showcase</h2></div>
+      <p>Drei Varianten zeigen unterschiedliche Aufgaben und deshalb unterschiedliche Initialfokus-Strategien.</p>
+    </div>
+    <div class="stage">
+      <div class="stage-toolbar" data-stage-toolbar aria-label="Dialog-Beispiele wechseln">
+        <button type="button" aria-pressed="true">Information / Long Content</button>
+      </div>
+      <div class="stage-frame" data-stage-frame>
+        <iframe src="./examples/information.html" title="Information / Long Content"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="variants-title">
+    <p class="eyebrow">02 · Varianten erkennen</p>
+    <h2 id="variants-title">Nicht jeder Dialog startet am selben Fokuspunkt</h2>
+    <ul class="variant-list" data-variants>
+      <li><strong>Information / Long Content</strong> – Fokus auf statischen Inhalt am Anfang.</li>
+      <li><strong>Form</strong> – Fokus auf das erste sinnvolle Eingabefeld.</li>
+      <li><strong>Destructive Confirmation</strong> – Fokus auf die weniger destruktive Aktion.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="anatomy-title">
+    <p class="eyebrow">03 · Benennen</p>
+    <h2 id="anatomy-title">Anatomie</h2>
+    <div class="grid">
+      <div class="panel"><code>invoker</code><p>Das Element, das den Dialog öffnet und normalerweise den Fokus zurückerhält.</p></div>
+      <div class="panel"><code>dialog</code><p>Der modale Top-Layer-Container; bei nativer Umsetzung ein <code>&lt;dialog&gt;</code>.</p></div>
+      <div class="panel"><code>title</code><p>Der zugängliche Name des Dialogs.</p></div>
+      <div class="panel"><code>content</code><p>Information oder Aufgabe, die den Kontextwechsel rechtfertigt.</p></div>
+      <div class="panel"><code>actions</code><p>Bestätigen, abbrechen oder andere taskbezogene Aktionen.</p></div>
+      <div class="panel"><code>close-control</code><p>Ein expliziter, erreichbarer Mechanismus zum Schließen.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="research-title">
+    <p class="eyebrow">04 · Verstehen</p>
+    <h2 id="research-title">Best-Practice-Leitplanken</h2>
+    <ul class="research-list">
+      <li><strong>Native zuerst:</strong> <code>&lt;dialog&gt;</code> mit <code>showModal()</code> bringt Top Layer, modale Semantik und inert geschalteten Hintergrund mit.</li>
+      <li><strong>Initialfokus:</strong> hängt von Inhalt und Aufgabe ab – nicht pauschal „erstes Element“.</li>
+      <li><strong>Escape:</strong> schließt einen modalen Dialog; dieses erwartete Verhalten nicht ohne starken Grund unterbinden.</li>
+      <li><strong>Fokus bleibt modal:</strong> Tab/Shift+Tab dürfen nicht hinter den Dialog entkommen.</li>
+      <li><strong>Fokusrückgabe:</strong> nach dem Schließen zurück zum Invoker, außer der Workflow verlangt logisch etwas anderes.</li>
+      <li><strong>Explizites Schließen:</strong> nicht nur auf Escape oder Backdrop verlassen; eine sichtbare Aktion zum Schließen bereitstellen.</li>
+      <li><strong>Close Requests:</strong> explizites Abbrechen/Schließen kann über <code>requestClose()</code> denselben cancelbaren Pfad wie Escape nutzen; erfolgreiche Task-Abschlüsse dürfen direkt schließen.</li>
+      <li><strong>Light Dismiss:</strong> Backdrop-Click ist eine bewusste Produktentscheidung. <code>closedby</code> kann das deklarativ ausdrücken, ist aber noch keine Baseline-Voraussetzung.</li>
+      <li><strong>Progressive Plattform:</strong> <code>commandfor</code>/<code>command</code> können Dialoge inzwischen deklarativ öffnen oder schließen; die Build DNA bindet sich trotzdem nicht an diese Technik.</li>
+    </ul>
+    <p><a href="./RESEARCH.md">Recherche, Quellen und Ableitungen öffnen</a></p>
+  </section>
+
+  <section aria-labelledby="decide-title">
+    <p class="eyebrow">05 · Entscheiden</p>
+    <h2 id="decide-title">Was musst du festlegen?</h2>
+    <div class="grid">
+      <div class="panel"><h3>Modal oder nicht?</h3><p>Darf außerhalb weitergearbeitet werden? Wenn ja, ist ein modaler Dialog vermutlich falsch.</p></div>
+      <div class="panel"><h3>Initialfokus</h3><p>Welche Stelle hilft beim Verstehen oder Weiterarbeiten – Titel, Feld, Continue oder Cancel?</p></div>
+      <div class="panel"><h3>Schließen</h3><p>Welche Aktionen schließen? Was bedeutet Escape? Ist Backdrop-Click überhaupt vorgesehen?</p></div>
+      <div class="panel"><h3>Fokusrückgabe</h3><p>Zum Invoker oder zu einem neuen logischen Schritt im Workflow?</p></div>
+      <div class="panel"><h3>Größe</h3><p>Dialog, Sheet oder eigene Seite? Zu viel Inhalt ist oft ein Hinweis gegen den Dialog.</p></div>
+      <div class="panel"><h3>Destruktive Aktion</h3><p>Ist die Aktion schwer rückgängig zu machen? Dann darf der Default-Fokus nicht in die Gefahr hineinlenken.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="review-title">
+    <p class="eyebrow">06 · Selbst prüfen</p>
+    <h2 id="review-title">Review it yourself</h2>
+    <ul class="check-list">
+      <li>Landet der Fokus beim Öffnen an der für diesen Dialog sinnvollsten Stelle?</li>
+      <li>Bleibt Tab/Shift+Tab innerhalb des modalen Dialogs?</li>
+      <li>Schließt Escape den obersten Dialog?</li>
+      <li>Gibt es zusätzlich eine sichtbare Schließen-/Abbrechen-Aktion?</li>
+      <li>Kehrt Fokus nach dem Schließen logisch zurück?</li>
+      <li>Ist der Hintergrund tatsächlich nicht bedienbar?</li>
+      <li>Bleibt der Dialog bei 320 CSS px und 200&nbsp;% Zoom vollständig nutzbar?</li>
+    </ul>
+  </section>
+
+  <section class="machine-section" aria-labelledby="machine-title">
+    <p class="eyebrow">07 · Weitergeben</p>
+    <h2 id="machine-title">Maschinenlesbar</h2>
+    <p class="machine-lead">Build DNA beschreibt hier vor allem den Fokus- und Modalitätsvertrag. Ein Screenshot kann genau diesen Teil kaum transportieren.</p>
+
+    <div class="build-dna-panel">
+      <div>
+        <p class="eyebrow">how-to-web · Build DNA 0.1</p>
+        <h3>Portable Reconstruction Contract</h3>
+        <p>Ein Coding-Agent darf Layout, Design Tokens und Stack ändern. Modalität, Initialfokus, Tab-Containment, Escape und Fokusrückgabe müssen erhalten bleiben.</p>
+      </div>
+      <ul class="machine-links">
+        <li><a href="./build-dna.json"><strong>Build DNA öffnen</strong> · JSON</a></li>
+        <li><a href="./index.md">LLM-freundliche Referenz · Markdown</a></li>
+        <li><a href="./llms.txt">Agent Discovery · llms.txt</a></li>
+        <li><a href="./examples/information.json">Information · JSON</a></li>
+        <li><a href="./examples/form.json">Form · JSON</a></li>
+        <li><a href="./examples/confirmation.json">Confirmation · JSON</a></li>
+      </ul>
+    </div>
+
+    <div class="agent-prompts">
+      <h3>Für Coding-Agenten</h3>
+      <p>Die Build DNA bleibt der Vertrag. Die Prompts unterscheiden nur Aufgabe und Fokusstrategie.</p>
+      <div class="prompt-grid">
+        <article class="prompt-card"><p class="eyebrow">Generisch</p><h4>Modalen Dialog bauen</h4><pre><code>Baue mir einen Dialog nach
+https://blame76.github.io/how-to-web/elements/interactive/dialog/
+
+Nutze die Build DNA als Rekonstruktionsvertrag.
+Erfinde keine Fokus- oder Schließen-Regeln.</code></pre></article>
+        <article class="prompt-card"><p class="eyebrow">Information</p><h4>Längeren Inhalt zeigen</h4><pre><code>Baue mir die Variante „Information / Long Content“.
+Setze den Initialfokus so, dass der Inhalt
+von Anfang an verständlich gelesen werden kann.</code></pre></article>
+        <article class="prompt-card"><p class="eyebrow">Form</p><h4>Task-Dialog bauen</h4><pre><code>Baue mir die Variante „Form“.
+Setze den Initialfokus auf das erste
+für den Task relevante Eingabefeld.</code></pre></article>
+        <article class="prompt-card"><p class="eyebrow">Confirmation</p><h4>Destruktive Aktion bestätigen</h4><pre><code>Baue mir die Variante „Destructive Confirmation“.
+Setze den Initialfokus auf die weniger
+destruktive Aktion und erhalte Escape/Cancel.</code></pre></article>
+        <article class="prompt-card"><p class="eyebrow">Projektbezogen</p><h4>In bestehendes Projekt übertragen</h4><pre><code>Übertrage den how-to-web Dialog in mein Projekt.
+Nutze vorhandene Tokens und Komponenten.
+Bewahre Modalität, Fokus, Escape und Focus Return.</code></pre></article>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
