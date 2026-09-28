@@ -24,6 +24,9 @@ Use the most specific `llms.txt` available for a component path. Build DNA is th
 - [Combobox](./elements/interactive/combobox/index.md): Human/agent reference for editable autocomplete controls and state contracts.
 - [Combobox Build DNA](./elements/interactive/combobox/build-dna.json): Canonical Combobox reconstruction contract.
 - [Combobox llms.txt](./elements/interactive/combobox/llms.txt): Combobox-specific agent guidance.
+- [Form Submission](./patterns/form-submission/index.md): Human/agent reference for submission lifecycle, error classes and recovery.
+- [Form Submission Build DNA](./patterns/form-submission/build-dna.json): Canonical Form Submission task-flow contract.
+- [Form Submission llms.txt](./patterns/form-submission/llms.txt): Pattern-specific agent guidance.
 
 ## Source
 
