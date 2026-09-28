@@ -12,6 +12,5 @@ function show(nextIndex,announce=true){index=Math.max(0,Math.min(nextIndex,slide
 function move(delta){let target=index+delta;if(wrap){target=(target+slides.length)%slides.length}show(target)}
 function bindPickers(){pickersHost.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>show(Number(b.dataset.index))))}
 prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
-root.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowLeft'){e.preventDefault();move(-1)}if(e.key==='ArrowRight'){e.preventDefault();move(1)}});
 function report(){requestAnimationFrame(()=>window.parent.postMessage({type:'how-to-web:example-height',height:document.documentElement.scrollHeight},'*'))}
 load().then(render).catch(e=>{console.warn('JSON konnte nicht geladen werden. Statischer Fallback bleibt aktiv.',e);slides=[{}];show(0,false)});
