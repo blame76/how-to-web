@@ -113,6 +113,18 @@ See `docs/architecture/BUILD-DNA.md` for the current contract.
 
 The repository publishes `llms.txt`. Individual component paths may provide a more specific `llms.txt`; agents should prefer the most specific applicable file.
 
+## Testing
+
+Playwright is the local pre-merge browser gate for reference features.
+
+```bash
+npm install
+npx playwright install chromium
+npm run gate
+```
+
+See `TESTING.md` for focused runs and the manual human-review gate.
+
 ## Status
 
 Product Card, Navbar, Carousel, Dialog, Mega Menu, Combobox and Form Submission are reference features for the series. New features should reuse the same human-reference, Build-DNA, Markdown and agent-discovery structure.
