@@ -30,7 +30,12 @@
         "default_value": "Ich hätte gern mehr Informationen zu eurem Angebot."
       }
     ],
-    "submit_label": "Nachricht senden"
+    "submit_label": "Nachricht senden",
+    "pending_strategy": {
+      "duplicate_intent": "submit remains focusable with aria-disabled; repeat submit events are guarded",
+      "editing": "text inputs and textarea become readonly while the simulated request is pending",
+      "scenario_snapshot": "the selected outcome is captured when submit begins"
+    }
   },
   "scenarios": [
     {
