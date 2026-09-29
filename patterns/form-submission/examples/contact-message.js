@@ -87,23 +87,26 @@ form.addEventListener('submit',event=>{
   event.preventDefault();
   if(submitting)return;
 
+  const submittedScenario=scenario;
   submitting=true;
   clearServerError();
   form.setAttribute('aria-busy','true');
   status.textContent='Wird gesendet …';
   submit.setAttribute('aria-disabled','true');
   submit.textContent='Wird gesendet …';
+  form.querySelectorAll('input,textarea').forEach(control=>{control.readOnly=true});
 
   window.setTimeout(()=>{
     submitting=false;
     form.setAttribute('aria-busy','false');
     submit.removeAttribute('aria-disabled');
     submit.textContent='Nachricht senden';
+    form.querySelectorAll('input,textarea').forEach(control=>{control.readOnly=false});
     status.textContent='';
 
-    const config=scenarios[scenario];
+    const config=scenarios[submittedScenario];
 
-    if(scenario==='validation'){
+    if(submittedScenario==='validation'){
       email.setAttribute('aria-invalid','true');
       emailError.textContent='Bitte verwende eine andere E-Mail-Adresse.';
       form.hidden=false;
