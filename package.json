@@ -1,0 +1,19 @@
+{
+  "name": "how-to-web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Playwright-based contract and accessibility checks for how-to-web reference features.",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test tests/smoke.spec.js",
+    "test:contracts": "playwright test tests/contracts",
+    "test:a11y": "playwright test tests/accessibility.spec.js",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "gate": "python3 bin/sync-build-dna --check-all && playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0"
+  }
+}
