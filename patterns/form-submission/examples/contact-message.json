@@ -34,7 +34,8 @@
     "pending_strategy": {
       "duplicate_intent": "submit remains focusable with aria-disabled; repeat submit events are guarded",
       "editing": "text inputs and textarea become readonly while the simulated request is pending",
-      "scenario_snapshot": "the selected outcome is captured when submit begins"
+      "scenario_snapshot": "the selected outcome is captured when submit begins",
+      "scenario_control": "demo scenario controls are disabled while the simulated request is in flight"
     }
   },
   "scenarios": [
