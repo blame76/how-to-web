@@ -256,6 +256,19 @@ Quellen:
 
 ---
 
+### Pending und Request-Snapshot
+
+Bei asynchronem Submit wird der Request aus einem konkreten Datenstand gebaut. `new FormData(form)` übernimmt die zu diesem Zeitpunkt submitbaren Werte des Formulars in ein eigenes `FormData`-Objekt.
+
+**Ableitung:** Wenn Nutzer während eines laufenden Requests weiter editieren können, darf die UI nicht so wirken, als würden diese Änderungen den bereits erzeugten Request nachträglich verändern. Der Pending-Vertrag muss deshalb festlegen, ob relevante Felder temporär eingefroren werden, ob Änderungen für einen späteren Submit gelten oder ob ein echtes Cancel/Replace-Modell existiert.
+
+Quellen:
+
+- https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
+- https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects
+
+---
+
 ## 11. Duplicate Submit und Retry sind nicht nur Frontend-Fragen
 
 POST ist grundsätzlich nicht idempotent. RFC 9110 sagt deshalb, dass Clients nicht-idempotente Requests nicht automatisch erneut senden sollen, außer sie wissen, dass die Semantik tatsächlich idempotent ist oder dass der erste Request nicht angewendet wurde.
