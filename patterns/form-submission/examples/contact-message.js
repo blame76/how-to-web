@@ -91,10 +91,9 @@ form.addEventListener('submit',event=>{
   submitting=true;
   clearServerError();
   form.setAttribute('aria-busy','true');
-  status.textContent='Wird gesendet …';
+  status.textContent='Wird gesendet … Änderungen ab jetzt gehören nicht mehr zu dieser Anfrage.';
   submit.setAttribute('aria-disabled','true');
   submit.textContent='Wird gesendet …';
-  form.querySelectorAll('input,textarea').forEach(control=>{control.readOnly=true});
   scenarioButtons.forEach(button=>{button.disabled=true});
 
   window.setTimeout(()=>{
@@ -102,7 +101,6 @@ form.addEventListener('submit',event=>{
     form.setAttribute('aria-busy','false');
     submit.removeAttribute('aria-disabled');
     submit.textContent='Nachricht senden';
-    form.querySelectorAll('input,textarea').forEach(control=>{control.readOnly=false});
     scenarioButtons.forEach(button=>{button.disabled=false});
     status.textContent='';
 
