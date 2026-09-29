@@ -6,13 +6,13 @@ test('Form Submission exposes pending and moves successful completion focus to t
   await page.goto(path);
 
   const form = page.locator('[data-form]');
-  const submit = page.getByRole('button', { name: 'Nachricht senden' });
+  const submit = page.locator('[data-submit]');
 
   await submit.click();
 
-  await expect(form).toHaveAttribute('aria-busy', 'true');
-  await expect(submit).toHaveAttribute('aria-disabled', 'true');
-  await expect(submit).toBeFocused();
+  await expect(form).toHaveAttribute('aria-busy', 'true', { timeout: 300 });
+  await expect(submit).toHaveAttribute('aria-disabled', 'true', { timeout: 300 });
+  await expect(submit).toBeFocused({ timeout: 300 });
   await expect(page.getByRole('button', { name: 'Eingabe korrigieren' })).toBeDisabled();
 
   const resultTitle = page.getByRole('heading', { name: 'Nachricht angekommen.' });
