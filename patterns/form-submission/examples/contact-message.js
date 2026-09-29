@@ -17,7 +17,7 @@ const scenarios={
     kicker:'Erfolg',
     title:'Nachricht angekommen.',
     body:'Der Vorgang ist abgeschlossen und die Seite kann eindeutig bestätigen, was passiert ist.',
-    returnLabel:'Neue Nachricht schreiben',
+    returnLabel:'Eingaben ansehen',
     kind:'success'
   },
   validation:{
@@ -95,6 +95,7 @@ form.addEventListener('submit',event=>{
   submit.setAttribute('aria-disabled','true');
   submit.textContent='Wird gesendet …';
   form.querySelectorAll('input,textarea').forEach(control=>{control.readOnly=true});
+  scenarioButtons.forEach(button=>{button.disabled=true});
 
   window.setTimeout(()=>{
     submitting=false;
@@ -102,6 +103,7 @@ form.addEventListener('submit',event=>{
     submit.removeAttribute('aria-disabled');
     submit.textContent='Nachricht senden';
     form.querySelectorAll('input,textarea').forEach(control=>{control.readOnly=false});
+    scenarioButtons.forEach(button=>{button.disabled=false});
     status.textContent='';
 
     const config=scenarios[submittedScenario];
