@@ -1,0 +1,67 @@
+{
+  "id": "contact-message",
+  "label": "Kontaktanfrage",
+  "status": "ready",
+  "conforms_to": "../build-dna.json",
+  "purpose": "Demonstrate the same ordinary form submission ending in four different outcomes.",
+  "form": {
+    "fields": [
+      {
+        "id": "name",
+        "label": "Name",
+        "type": "text",
+        "required": true,
+        "autocomplete": "name",
+        "default_value": "Mira Beispiel"
+      },
+      {
+        "id": "email",
+        "label": "E-Mail",
+        "type": "email",
+        "required": true,
+        "autocomplete": "email",
+        "default_value": "mira@example.com"
+      },
+      {
+        "id": "message",
+        "label": "Nachricht",
+        "type": "textarea",
+        "required": true,
+        "default_value": "Ich hätte gern mehr Informationen zu eurem Angebot."
+      }
+    ],
+    "submit_label": "Nachricht senden",
+    "pending_strategy": {
+      "duplicate_intent": "submit remains focusable with aria-disabled; repeat submit events are guarded",
+      "editing": "fields remain editable in the simulator; the status message makes clear that edits after submit do not alter the in-flight request",
+      "scenario_snapshot": "the selected outcome is captured when submit begins",
+      "scenario_control": "demo scenario controls are disabled while the simulated request is in flight"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "success",
+      "label": "Alles okay",
+      "state": "success"
+    },
+    {
+      "id": "validation",
+      "label": "Eingabe korrigieren",
+      "state": "validation_error"
+    },
+    {
+      "id": "service",
+      "label": "Dienst nicht erreichbar",
+      "state": "submission_error",
+      "outcome_known": true,
+      "retry_safe": true
+    },
+    {
+      "id": "unknown",
+      "label": "Ausgang unklar",
+      "state": "outcome_unknown",
+      "outcome_known": false,
+      "retry_safe": false
+    }
+  ]
+}

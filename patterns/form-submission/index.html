@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Form Submission – how-to-web</title>
+  <meta name="description" content="Form Submission verstehen: Was nach Absenden passieren kann, wie sich Eingabefehler und Servicefehler unterscheiden und wann Wiederholen riskant wird.">
+  <meta name="how-to-web:build-dna" content="./build-dna.json">
+  <link rel="alternate" type="text/markdown" href="./index.md" title="Form Submission – Markdown">
+  <link rel="describedby" type="text/markdown" href="./llms.txt">
+  <link rel="alternate" type="application/json" href="./build-dna.json" title="how-to-web Build DNA">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="site-intro">
+    <p class="eyebrow">how-to-web · pattern</p>
+    <h1>Form Submission</h1>
+    <p class="lead"><strong>Ein Formular ist nicht fertig, wenn jemand auf „Absenden“ klickt.</strong></p>
+    <p>Es ist fertig, wenn klar ist, was passiert ist – und was der Mensch als Nächstes sicher tun kann.</p>
+  </header>
+
+  <section aria-labelledby="experience-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">01 · Erst erleben</p>
+        <h2 id="experience-title">Ein Formular. Vier Ausgänge.</h2>
+      </div>
+      <p>Die Felder sind absichtlich langweilig. Der interessante Teil beginnt erst beim Absenden.</p>
+    </div>
+
+    <div class="stage">
+      <iframe src="./examples/contact-message.html" title="Lernbühne für vier Form-Submission-Ausgänge" data-demo-frame></iframe>
+    </div>
+
+    <div class="lesson-callout">
+      <strong>Die eigentliche Lektion:</strong>
+      <span>„Es ging nicht“ ist zu ungenau. Manchmal muss der Nutzer etwas korrigieren. Manchmal kann er gar nichts reparieren. Und manchmal wissen wir schlicht nicht sicher, was passiert ist.</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="outcomes-title">
+    <p class="eyebrow">02 · Unterscheiden lernen</p>
+    <h2 id="outcomes-title">Was ist wirklich passiert?</h2>
+    <div class="outcome-grid">
+      <article>
+        <span class="outcome-number">1</span>
+        <p class="state-name">Erfolg <code>success</code></p>
+        <h3>Die Aufgabe ist abgeschlossen.</h3>
+        <p>Nicht nur „der Server hat geantwortet“, sondern: Die Nachricht wurde angenommen, die Buchung angelegt oder die Änderung gespeichert.</p>
+      </article>
+      <article>
+        <span class="outcome-number">2</span>
+        <p class="state-name">Eingabe korrigieren <code>validation_error</code></p>
+        <h3>Der Mensch kann etwas reparieren.</h3>
+        <p>Das Problem gehört zu einer Eingabe. Die Seite zeigt wo, erklärt was und lässt die bereits eingegebenen Werte stehen.</p>
+      </article>
+      <article>
+        <span class="outcome-number">3</span>
+        <p class="state-name">Technisches Problem <code>submission_error</code></p>
+        <h3>Die Eingaben können völlig korrekt sein.</h3>
+        <p>Der Dienst ist nicht erreichbar oder konnte den Vorgang nicht verarbeiten. Ein roter Rahmen um die E-Mail-Adresse wäre hier schlicht die falsche Erklärung.</p>
+      </article>
+      <article>
+        <span class="outcome-number">4</span>
+        <p class="state-name">Ausgang unklar <code>outcome_unknown</code></p>
+        <h3>Keine Antwort ist nicht automatisch „fehlgeschlagen“.</h3>
+        <p>Die Verbindung kann abbrechen, nachdem die Anfrage bereits angekommen ist. Bei Bestellung, Zahlung oder Buchung kann blindes Wiederholen dann eine zweite Aktion auslösen.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="flow-title">
+    <p class="eyebrow">03 · Der Weg dazwischen</p>
+    <h2 id="flow-title">„Absenden“ ist ein Übergang.</h2>
+    <div class="flow" aria-label="Vereinfachter Form-Submission-Ablauf">
+      <div class="flow-node"><span>1</span><strong>Eingeben</strong><small>editing</small></div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-node"><span>2</span><strong>Prüfen</strong><small>validation</small></div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-node flow-node--strong"><span>3</span><strong>Senden</strong><small>submitting</small></div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-split">
+        <span>Erfolg</span>
+        <span>Korrigieren</span>
+        <span>Servicefehler</span>
+        <span>Unklar</span>
+      </div>
+    </div>
+    <p class="section-lead">Bei einem klassischen Formular übernimmt der Browser einen Teil dieses Weges durch Navigation. Sobald JavaScript das Senden „schöner“ und ohne Seitenwechsel macht, müssen wir mehr davon selbst korrekt abbilden.</p>
+  </section>
+
+  <section aria-labelledby="mistakes-title">
+    <p class="eyebrow">04 · Drei verbreitete Kurzschlüsse</p>
+    <h2 id="mistakes-title">Was „mach mal schnell“ gerne übersieht.</h2>
+
+    <div class="mistake-list">
+      <article>
+        <p class="mistake-bad">„Wenn es rot ist, hat der Nutzer etwas falsch gemacht.“</p>
+        <p class="mistake-good"><strong>Nein.</strong> Eingabefehler und technische Fehler brauchen unterschiedliche Botschaften und unterschiedliche Recovery.</p>
+      </article>
+      <article>
+        <p class="mistake-bad">„Während des Sendens disable ich einfach das ganze Formular.“</p>
+        <p class="mistake-good"><strong>Nicht pauschal.</strong> Disabled Controls ändern Fokusverhalten und können aus den tatsächlich übertragenen Formulardaten verschwinden. Sperre nur, was wirklich gesperrt werden muss.</p>
+      </article>
+      <article>
+        <p class="mistake-bad">„Wenn fetch einen Fehler wirft, hat der Server den Vorgang nicht ausgeführt.“</p>
+        <p class="mistake-good"><strong>Zu kurz.</strong> HTTP-Fehler und Netzwerkfehler sind verschieden – und ein Verbindungsabbruch kann einen fachlich unbekannten Ausgang hinterlassen.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="retry-title">
+    <p class="eyebrow">05 · Wiederholen?</p>
+    <h2 id="retry-title">Bei einer Nachricht vielleicht harmlos. Bei einer Zahlung vielleicht nicht.</h2>
+
+    <div class="retry-compare">
+      <article>
+        <p class="eyebrow">Niedrige Konsequenz</p>
+        <h3>Kontaktanfrage</h3>
+        <p>Eine doppelte Nachricht ist meist ärgerlich, aber oft reparierbar. Trotzdem sollte das System nicht unnötig Duplikate erzeugen.</p>
+      </article>
+      <article>
+        <p class="eyebrow">Hohe Konsequenz</p>
+        <h3>Bestellung · Buchung · Zahlung</h3>
+        <p>Eine zweite Verarbeitung kann echten Schaden verursachen. Hier muss vor dem UI bereits geklärt sein, ob und wie ein erneuter Versuch sicher ist.</p>
+      </article>
+    </div>
+
+    <div class="decision-box">
+      <p class="eyebrow">Die fachliche Frage</p>
+      <p><strong>Was passiert, wenn exakt dieselbe Aktion zweimal beim Server ankommt?</strong></p>
+      <p>Erst wenn diese Frage beantwortet ist, kann die Oberfläche seriös entscheiden, ob sie „Noch einmal versuchen“ anbieten darf.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="native-title">
+    <p class="eyebrow">06 · Einfach anfangen</p>
+    <h2 id="native-title">Der Browser kann schon ziemlich viel.</h2>
+    <div class="native-grid">
+      <article>
+        <p class="eyebrow">Baseline</p>
+        <h3>Normales HTML-Formular</h3>
+        <p>Ein echtes <code>&lt;form&gt;</code>, ein echter Submit-Button, passende Feldtypen und ein Server, der prüft und antwortet.</p>
+        <p>Für viele Aufgaben ist das bereits ein sehr solider Vertrag.</p>
+      </article>
+      <article>
+        <p class="eyebrow">Enhancement</p>
+        <h3>Asynchron senden</h3>
+        <p>Kein Seitenwechsel, vielleicht schnelleres Feedback – aber dafür gehören Pending, Statusmeldungen, Response-Klassen und Network Failure plötzlich zu deiner eigenen UI.</p>
+      </article>
+    </div>
+
+    <details class="technical-note">
+      <summary>Technischer Unterbau für Entwickler</summary>
+      <div>
+        <p>Für zustandsverändernde Vorgänge ist <code>POST</code> typisch; <code>GET</code> sollte keine beabsichtigten Zustandsänderungen auslösen. Bei einem servergerenderten Flow kann nach erfolgreichem POST beispielsweise auf eine Bestätigungsseite weitergeleitet werden.</p>
+        <p>Bei <code>fetch()</code> muss Code HTTP-Status selbst auswerten: Ein 400- oder 500-Response führt normalerweise nicht automatisch in <code>catch</code>. Und Client-Validation bleibt Komfort – der Server muss Eingaben weiterhin selbst validieren.</p>
+      </div>
+    </details>
+  </section>
+
+  <section aria-labelledby="decisions-title">
+    <p class="eyebrow">07 · Vor dem Build entscheiden</p>
+    <h2 id="decisions-title">Sieben Fragen reichen für einen erstaunlich großen Teil des Vertrags.</h2>
+    <ol class="question-list">
+      <li><strong>Was soll nach dem Absenden fachlich passiert sein?</strong></li>
+      <li><strong>Verändert der Vorgang Daten oder sucht er nur etwas?</strong></li>
+      <li><strong>Welche Fehler kann der Nutzer selbst korrigieren?</strong></li>
+      <li><strong>Was passiert mit seinen Eingaben, wenn etwas schiefgeht?</strong></li>
+      <li><strong>Wie erkennt er eindeutig, dass die Aufgabe abgeschlossen ist?</strong></li>
+      <li><strong>Was bedeutet ein technischer Fehler – und was darf danach sicher wiederholt werden?</strong></li>
+      <li><strong>Was zeigen wir, wenn wir den Ausgang nicht sicher kennen?</strong></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="review-title">
+    <p class="eyebrow">08 · Selbst prüfen</p>
+    <h2 id="review-title">Review it yourself</h2>
+    <ul class="check-list">
+      <li>Kannst du in einem Satz sagen, was ein erfolgreicher Submit für den Nutzer bedeutet?</li>
+      <li>Werden Eingabefehler und technische Fehler sichtbar unterschiedlich behandelt?</li>
+      <li>Bleiben bereits eingegebene Werte nach einem korrigierbaren Fehler erhalten?</li>
+      <li>Zeigt ein asynchroner Flow verständlich, dass gerade gearbeitet wird?</li>
+      <li>Ist klar, was nach Erfolg als Nächstes passiert?</li>
+      <li>Ist ein erneuter Submit fachlich sicher – oder nur technisch leicht?</li>
+      <li>Behauptet die UI niemals „fehlgeschlagen“, wenn der Ausgang eigentlich unbekannt ist?</li>
+      <li>Sind dynamische Status- und Fehlermeldungen auch ohne rein visuelle Hinweise verständlich?</li>
+    </ul>
+    <p><a href="./RESEARCH.md">Recherche, Quellen und Ableitungen öffnen</a></p>
+  </section>
+
+  <section class="machine-section" aria-labelledby="machine-title">
+    <p class="eyebrow">09 · Weitergeben</p>
+    <h2 id="machine-title">Build DNA für einen Flow.</h2>
+    <p class="machine-lead">Hier beschreibt die DNA zum ersten Mal nicht primär einen Baustein, sondern Übergänge: Was löst einen Zustand aus, welche Ausgänge gibt es und wie kommt der Nutzer sicher weiter?</p>
+
+    <div class="contract-hierarchy">
+      <p><strong>Normativ:</strong> <code>build-dna.json</code>.</p>
+      <p><strong>Informativ:</strong> Kontaktformular, Research und Erklärtexte illustrieren den Vertrag, sind aber nicht selbst der Vertrag.</p>
+    </div>
+
+  <!-- BUILD_DNA_INLINE:START -->
+  <details class="build-dna-inline">
+    <summary>Build DNA · normative reconstruction contract</summary>
+    <div class="build-dna-inline__intro">
+      <p><strong>NORMATIVE BUILD CONTRACT.</strong> Read this before reconstructing the component.</p>
+      <p>This contract overrides visual examples, research recommendations and explanatory prose unless the contract explicitly references them.</p>
+      <p>Canonical source: <a href="./build-dna.json"><code>build-dna.json</code></a>. This inline copy is generated from that file for single-pass readers and agents.</p>
+    </div>
+    <pre><code class="language-json">{
+  "format": "how-to-web-build-dna",
+  "version": "0.1",
+  "id": "form-submission",
+  "kind": "pattern",
+  "title": "Form Submission",
+  "status": "ready-for-review",
+  "purpose": "Carry a user's form input from submit intent to a clear outcome while preserving correctable input, distinguishing user-correctable errors from service failures, and defining safe recovery when the outcome is uncertain.",
+  "reconstruction_priority": [
+    "purpose",
+    "task_contract",
+    "flow_contract",
+    "constraints",
+    "validation_contract",
+    "submission_contract",
+    "response_contract",
+    "retry_contract",
+    "accessibility",
+    "visual"
+  ],
+  "learning_contract": {
+    "false_simplification": "A form submission is not finished when a submit button was clicked or a request was sent.",
+    "reader_should_understand": [
+      "validation failure and submission failure are different problems",
+      "a successful technical response still needs a clear user-visible completion state",
+      "entered data should normally survive recoverable errors",
+      "retry can be unsafe when the first submission may already have been processed",
+      "asynchronous submission adds states that native browser navigation may otherwise handle"
+    ]
+  },
+  "task_contract": {
+    "required_decisions": [
+      "what the submission is meant to accomplish",
+      "whether the action changes server-side state",
+      "what counts as successful completion for the user",
+      "how serious duplicate processing would be"
+    ],
+    "rule": "Choose transport and recovery behavior from the task consequences, not from visual preference."
+  },
+  "data_contract": {
+    "required": [
+      "fields actually needed to complete the task",
+      "which fields are required",
+      "server-side validation rules",
+      "how submitted values are encoded"
+    ],
+    "optional": [
+      "client-side validation hints",
+      "autocomplete/input-purpose metadata",
+      "file upload requirements",
+      "sensitive-data handling rules"
+    ],
+    "minimize": true,
+    "rule": "Request only data needed for the task. Visible fields and actually submitted values must not be assumed to be identical."
+  },
+  "flow_contract": {
+    "states": [
+      {
+        "id": "editing",
+        "meaning": "The user is entering or correcting data."
+      },
+      {
+        "id": "invalid",
+        "meaning": "The submission cannot continue because user-correctable input is missing or invalid."
+      },
+      {
+        "id": "submitting",
+        "meaning": "A valid submission has been initiated and its outcome is not yet known."
+      },
+      {
+        "id": "success",
+        "meaning": "The task completed and the user receives clear confirmation."
+      },
+      {
+        "id": "validation_error",
+        "meaning": "The server rejected one or more submitted values and the user can correct them."
+      },
+      {
+        "id": "submission_error",
+        "meaning": "The service could not complete the task for a technical or service reason."
+      },
+      {
+        "id": "outcome_unknown",
+        "meaning": "The client cannot safely determine whether the server completed the action."
+      }
+    ],
+    "transitions": [
+      "editing -&gt; invalid when client-side checks intentionally block submission",
+      "editing -&gt; submitting when submission begins",
+      "submitting -&gt; success when completion is known",
+      "submitting -&gt; validation_error when the server returns correctable input errors",
+      "submitting -&gt; submission_error when the operation is known not to have completed",
+      "submitting -&gt; outcome_unknown when the client loses certainty about whether the operation completed",
+      "invalid -&gt; editing after correction begins",
+      "validation_error -&gt; editing with entered values preserved",
+      "submission_error -&gt; submitting only when retry is explicitly safe",
+      "outcome_unknown -&gt; domain-specific recovery; do not assume blind retry is safe"
+    ],
+    "invariant": "Every terminal or blocking state must tell the user what is known and what they can do next."
+  },
+  "validation_contract": {
+    "client_side": {
+      "role": "early user feedback and optional prevention of obviously invalid submission",
+      "authoritative": false,
+      "strategy": "native HTML constraints, controlled validation, or enhanced validation are product/platform decisions"
+    },
+    "server_side": {
+      "required": true,
+      "authoritative": true,
+      "rule": "Server-side validation remains required even when the browser validates first."
+    },
+    "error_requirements": [
+      "identify the affected field or problem",
+      "describe the problem in text",
+      "provide a clear correction path",
+      "define focus/navigation behavior",
+      "preserve entered values unless there is a specific reason not to"
+    ],
+    "timing_rule": "Do not assume validation must run on every blur or keystroke; choose timing deliberately."
+  },
+  "submission_contract": {
+    "method_decision": {
+      "get": "Prefer for retrieval/search-like tasks without intended side effects.",
+      "post": "Use for typical state-changing submissions; treat duplicate/retry behavior explicitly."
+    },
+    "baseline": "Native HTML form submission is the baseline when the task allows it.",
+    "progressive_enhancement": "Asynchronous submission may enhance the flow, but it must preserve the same task, validation, response, retry and accessibility contracts.",
+    "submitter": "When a form has multiple submit controls, the actual submitter and its semantics are part of the contract.",
+    "pending": {
+      "required_for_async": true,
+      "rule": "Communicate that work is in progress and prevent accidental duplicate intent without indiscriminately disabling controls whose values or focus behavior are still needed.",
+      "focus_rule": "Prevent duplicate intent without causing avoidable focus loss. If a focused submit control remains discoverable via aria-disabled, suppress repeated activation in application logic.",
+      "editing_rule": "Define whether fields may change while a request is in flight. The visible form must not imply that post-submit edits alter an already-created request payload unless the implementation actually supports that behavior.",
+      "request_snapshot": "Values and submitter semantics that define the in-flight request are fixed at submit intent unless the target system explicitly models cancellation or mutation."
+    }
+  },
+  "response_contract": {
+    "success": {
+      "required": true,
+      "rule": "Confirm completion in terms the user understands; an HTTP success status alone is not the user outcome."
+    },
+    "validation_error": {
+      "recovery": "Return the user to correction with entered values preserved and affected inputs identifiable."
+    },
+    "submission_error": {
+      "recovery": "Explain that the service could not complete the task and offer only recovery actions known to be safe."
+    },
+    "outcome_unknown": {
+      "recovery": "State uncertainty honestly and provide a domain-appropriate way to verify, wait, return, or retry only when safe."
+    },
+    "server_rendered_baseline": "A POST followed by redirect to a confirmation GET is one established implementation, not a universal requirement."
+  },
+  "retry_contract": {
+    "required_decisions": [
+      "can the same submission be processed twice without harm",
+      "can the server detect or deduplicate repeated attempts",
+      "what the user should do after an ambiguous network outcome"
+    ],
+    "rule": "Do not promise that disabling a button makes a non-idempotent submission safe from duplicates.",
+    "automatic_retry_default": false
+  },
+  "accessibility": {
+    "labels_and_instructions": true,
+    "errors_textual": true,
+    "errors_identify_affected_input": true,
+    "focus_strategy_explicit": true,
+    "status_changes_programmatically_exposed_for_async_flows": true,
+    "keyboard_operable": true,
+    "entered_values_preserved_on_recoverable_error": true,
+    "zoom_test_percent": 200,
+    "minimum_test_viewport_css_px": 320,
+    "pending_focus_behavior": "Pending-state duplicate prevention should avoid unnecessary focus loss."
+  },
+  "security_contract": {
+    "server_validation": true,
+    "state_change_via_get": false,
+    "csrf": "Required when applicable to authenticated state-changing browser requests; use the target application's established protection.",
+    "sensitive_data": "Do not expose or retain sensitive values beyond the task's actual need."
+  },
+  "visual": {
+    "priority": "communicate task state and next action before decoration",
+    "adaptable_tokens": [
+      "color",
+      "typeface",
+      "spacing",
+      "border",
+      "radius",
+      "shadow",
+      "layout"
+    ],
+    "preserve": [
+      "clear distinction between input problems and service problems",
+      "visible progress for asynchronous submission",
+      "clear completion feedback",
+      "clear recovery action"
+    ]
+  },
+  "constraints": [
+    "Do not treat client-side validation as authoritative security or data-integrity validation.",
+    "Do not clear entered values after a recoverable validation or service error without a task-specific reason.",
+    "Do not present a service outage as if the user entered a field incorrectly.",
+    "Do not present a request with an unknown outcome as definitely failed.",
+    "Do not automatically retry a state-changing submission unless the contract makes retry safe.",
+    "Do not assume fetch rejection represents all HTTP error responses; HTTP status must be evaluated.",
+    "Do not disable all form controls during asynchronous submission without considering submitted values and focus behavior.",
+    "Do not let fields edited after submit appear to modify an already-created in-flight request unless that behavior is explicitly supported.",
+    "Do not change server-side state through GET.",
+    "Do not invent CSRF, idempotency or backend APIs absent from the target system."
+  ],
+  "adaptation_contract": {
+    "may_change": [
+      "framework",
+      "template language",
+      "CSS architecture",
+      "transport implementation",
+      "server framework",
+      "visual tokens",
+      "whether success is a new page or in-page state"
+    ],
+    "must_preserve": [
+      "purpose",
+      "task consequences",
+      "flow states relevant to the task",
+      "distinction between validation and submission errors",
+      "authoritative server validation",
+      "entered-value preservation on recoverable error",
+      "user-visible success",
+      "retry/duplicate policy",
+      "honest handling of unknown outcomes",
+      "accessibility contract"
+    ]
+  },
+  "agent_contract": {
+    "instruction": "Reconstruct the submission flow from this Build DNA, not from the demo form markup. First determine the task, side effects, validation authority, response classes and retry safety. Ask for missing backend or domain decisions instead of inventing them.",
+    "when_conflicting": "Task consequences, flow/recovery rules, constraints and accessibility override visual resemblance or convenience.",
+    "output_expectation": "A complete form-submission flow appropriate to the target stack, including explicit error, success and retry behavior plus unresolved backend/domain decisions.",
+    "request_examples": [
+      {
+        "id": "generic-flow",
+        "intent": "Design or implement a complete form-submission lifecycle.",
+        "prompt": "Baue den Submission-Flow nach https://blame76.github.io/how-to-web/patterns/form-submission/ und nutze die Build DNA als Vertrag. Definiere Erfolg, Validierungsfehler, Servicefehler und Retry-Verhalten explizit."
+      },
+      {
+        "id": "existing-form-review",
+        "intent": "Review an existing form for missing submission states and recovery.",
+        "prompt": "Prüfe mein bestehendes Formular gegen die how-to-web Form-Submission-Build-DNA. Liste fehlende Zustände, Fehlerwege, Recovery- und Retry-Entscheidungen auf, bevor du Code änderst."
+      },
+      {
+        "id": "async-enhancement",
+        "intent": "Enhance a native form with asynchronous submission without losing the baseline contract.",
+        "prompt": "Erweitere mein natives Formular um asynchrones Senden. Bewahre den bestehenden Submission-Vertrag und definiere Pending, HTTP-Fehler, Network Failure, Erfolg und sicheren Retry."
+      }
+    ]
+  },
+  "acceptance": [
+    "The task and side effects of submission are explicit.",
+    "User-correctable validation errors are distinguishable from service failures.",
+    "Server-side validation remains authoritative.",
+    "Recoverable errors preserve entered values.",
+    "Asynchronous submission exposes a clear pending state without losing required submitted data.",
+    "Pending-state duplicate prevention does not discard required form values or cause avoidable focus loss.",
+    "The pending UI does not create ambiguity between the visible field values and the request that is already in flight.",
+    "Success is communicated as task completion, not merely as a transport status.",
+    "Unknown outcomes are not falsely described as definite failure.",
+    "Retry behavior is explicit and automatic retry is not assumed safe for state-changing submissions.",
+    "Dynamic status changes are accessible without unnecessary focus theft.",
+    "The flow remains understandable at 320 CSS px and 200% zoom."
+  ],
+  "public": {
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
+    "research": "./RESEARCH.md",
+    "source_repository": "https://github.com/blame76/how-to-web/tree/main/patterns/form-submission"
+  },
+  "examples": [
+    {
+      "id": "contact-message",
+      "human": "./examples/contact-message.html",
+      "data": "./examples/contact-message.json",
+      "note": "A deliberately ordinary contact form used only to demonstrate the generic submission lifecycle."
+    }
+  ]
+}</code></pre>
+  </details>
+  <!-- BUILD_DNA_INLINE:END -->
+
+    <div class="build-dna-panel">
+      <div>
+        <p class="eyebrow">how-to-web · Build DNA 0.1</p>
+        <h3>Task Flow statt Component Anatomy</h3>
+        <p>Der Schwerpunkt liegt auf Task, Zuständen, Übergängen, Recovery, Retry und dem Unterschied zwischen „Fehler“ und „Ausgang unbekannt“.</p>
+      </div>
+      <ul class="machine-links">
+        <li><a href="./build-dna.json"><strong>Build DNA öffnen</strong> · JSON</a></li>
+        <li><a href="./index.md">LLM-Referenz · Markdown</a></li>
+        <li><a href="./llms.txt">Agent Discovery · llms.txt</a></li>
+        <li><a href="./examples/contact-message.json">Demo-Daten · JSON</a></li>
+        <li><a href="https://github.com/blame76/how-to-web/tree/main/patterns/form-submission">Source im GitHub-Repository</a></li>
+      </ul>
+    </div>
+
+    <div class="agent-prompts">
+      <h3>Für Coding-Agenten</h3>
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <p class="eyebrow">Neu bauen</p>
+          <h4>Submission-Flow definieren</h4>
+          <pre><code>Baue meinen Submission-Flow nach
+https://blame76.github.io/how-to-web/patterns/form-submission/
+
+Nutze die Build DNA als Vertrag.
+Definiere Erfolg, Validierungsfehler,
+Servicefehler und Retry-Verhalten explizit.</code></pre>
+        </article>
+        <article class="prompt-card">
+          <p class="eyebrow">Review</p>
+          <h4>Bestehendes Formular prüfen</h4>
+          <pre><code>Prüfe mein bestehendes Formular gegen die
+how-to-web Form-Submission-Build-DNA.
+
+Liste fehlende Zustände, Fehlerwege,
+Recovery- und Retry-Entscheidungen auf,
+bevor du Code änderst.</code></pre>
+        </article>
+        <article class="prompt-card">
+          <p class="eyebrow">Enhancement</p>
+          <h4>Natives Formular asynchron erweitern</h4>
+          <pre><code>Erweitere mein natives Formular um
+asynchrones Senden.
+
+Bewahre den bestehenden Submission-Vertrag
+und definiere Pending, HTTP-Fehler,
+Network Failure, Erfolg und sicheren Retry.</code></pre>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
