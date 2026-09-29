@@ -33,7 +33,7 @@
     "submit_label": "Nachricht senden",
     "pending_strategy": {
       "duplicate_intent": "submit remains focusable with aria-disabled; repeat submit events are guarded",
-      "editing": "text inputs and textarea become readonly while the simulated request is pending",
+      "editing": "fields remain editable in the simulator; the status message makes clear that edits after submit do not alter the in-flight request",
       "scenario_snapshot": "the selected outcome is captured when submit begins",
       "scenario_control": "demo scenario controls are disabled while the simulated request is in flight"
     }
