@@ -340,7 +340,9 @@
     "pending": {
       "required_for_async": true,
       "rule": "Communicate that work is in progress and prevent accidental duplicate intent without indiscriminately disabling controls whose values or focus behavior are still needed.",
-      "focus_rule": "Prevent duplicate intent without causing avoidable focus loss. If a focused submit control remains discoverable via aria-disabled, suppress repeated activation in application logic."
+      "focus_rule": "Prevent duplicate intent without causing avoidable focus loss. If a focused submit control remains discoverable via aria-disabled, suppress repeated activation in application logic.",
+      "editing_rule": "Define whether fields may change while a request is in flight. The visible form must not imply that post-submit edits alter an already-created request payload unless the implementation actually supports that behavior.",
+      "request_snapshot": "Values and submitter semantics that define the in-flight request are fixed at submit intent unless the target system explicitly models cancellation or mutation."
     }
   },
   "response_contract": {
@@ -412,6 +414,7 @@
     "Do not automatically retry a state-changing submission unless the contract makes retry safe.",
     "Do not assume fetch rejection represents all HTTP error responses; HTTP status must be evaluated.",
     "Do not disable all form controls during asynchronous submission without considering submitted values and focus behavior.",
+    "Do not let fields edited after submit appear to modify an already-created in-flight request unless that behavior is explicitly supported.",
     "Do not change server-side state through GET.",
     "Do not invent CSRF, idempotency or backend APIs absent from the target system."
   ],
@@ -467,6 +470,7 @@
     "Recoverable errors preserve entered values.",
     "Asynchronous submission exposes a clear pending state without losing required submitted data.",
     "Pending-state duplicate prevention does not discard required form values or cause avoidable focus loss.",
+    "The pending UI does not create ambiguity between the visible field values and the request that is already in flight.",
     "Success is communicated as task completion, not merely as a transport status.",
     "Unknown outcomes are not falsely described as definite failure.",
     "Retry behavior is explicit and automatic retry is not assumed safe for state-changing submissions.",
