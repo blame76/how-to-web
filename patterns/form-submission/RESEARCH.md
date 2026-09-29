@@ -159,6 +159,8 @@ GOV.UK verwendet Error Summary + Inline Error Message und setzt Fokus auf die Su
 - konkrete Korrektur ist verständlich,
 - Fokus-/Navigationsstrategie ist bewusst definiert.
 
+Für Gesamtfeedback nach einem Submit nennt WAI eine aussagekräftige Seiten- oder Abschnittsüberschrift als etablierten Weg. Bei einem korrigierbaren Feldfehler kann dagegen der Fokus direkt auf das betroffene Feld gesetzt werden.
+
 Quellen:
 
 - https://www.w3.org/WAI/WCAG22/Understanding/error-identification
@@ -244,9 +246,12 @@ Der HTML-`disabled`-Zustand hat starke Semantik:
 
 **Ableitung:** Ein komplettes `fieldset disabled` als pauschaler Pending-State kann Daten und Fokusverhalten verändern. Wenn während Pending ein zweiter Submit verhindert werden soll, muss gezielt entschieden werden, was tatsächlich deaktiviert oder anderweitig gesperrt wird.
 
+Wenn ein gerade fokussierter Submit-Button während Pending auffindbar bleiben soll, kann `aria-disabled="true"` eine Alternative sein. Das erhält die Fokusierbarkeit, unterdrückt aber **nicht** automatisch Klick oder Submit. Die Anwendung muss die erneute Aktion dann selbst blockieren.
+
 Quellen:
 
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-disabled
 - https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects
 
 ---
