@@ -17,6 +17,7 @@ const scenarios={
     kicker:'Erfolg',
     title:'Nachricht angekommen.',
     body:'Der Vorgang ist abgeschlossen und die Seite kann eindeutig bestätigen, was passiert ist.',
+    returnLabel:'Neue Nachricht schreiben',
     kind:'success'
   },
   validation:{
@@ -27,10 +28,11 @@ const scenarios={
     kind:'validation'
   },
   service:{
-    help:'Die Eingaben sind in Ordnung, aber der Dienst kann die Anfrage gerade nicht verarbeiten.',
+    help:'Die Eingaben sind in Ordnung, aber der Dienst kann die Anfrage gerade nicht verarbeiten. In diesem Testfall ist bekannt: Die Nachricht wurde nicht verarbeitet.',
     kicker:'Technisches Problem',
     title:'Die Nachricht konnte gerade nicht verarbeitet werden.',
-    body:'Kein Feld wird als falsch markiert. Die Eingaben bleiben erhalten, damit ein sicherer neuer Versuch möglich bleibt.',
+    body:'Kein Feld wird als falsch markiert. Die Eingaben bleiben erhalten, damit eine sichere Recovery möglich bleibt.',
+    returnLabel:'Eingaben ansehen',
     kind:'service'
   },
   unknown:{
@@ -38,11 +40,13 @@ const scenarios={
     kicker:'Ausgang unklar',
     title:'Wir können gerade nicht sicher sagen, ob die Nachricht angekommen ist.',
     body:'Das ist etwas anderes als „fehlgeschlagen“. Bei folgenreichen Vorgängen darf ein erneuter Versuch nicht blind empfohlen werden.',
+    returnLabel:'Eingaben ansehen',
     kind:'unknown'
   }
 };
 
 let scenario='success';
+let submitting=false;
 
 function clearServerError(){
   email.removeAttribute('aria-invalid');
@@ -75,18 +79,25 @@ function showResult(config){
   resultKicker.textContent=config.kicker;
   resultTitle.textContent=config.title;
   resultBody.textContent=config.body;
-  result.focus();
+  returnButton.textContent=config.returnLabel || 'Eingaben ansehen';
+  resultTitle.focus();
 }
 
 form.addEventListener('submit',event=>{
   event.preventDefault();
+  if(submitting)return;
+
+  submitting=true;
   clearServerError();
+  form.setAttribute('aria-busy','true');
   status.textContent='Wird gesendet …';
-  submit.disabled=true;
+  submit.setAttribute('aria-disabled','true');
   submit.textContent='Wird gesendet …';
 
   window.setTimeout(()=>{
-    submit.disabled=false;
+    submitting=false;
+    form.setAttribute('aria-busy','false');
+    submit.removeAttribute('aria-disabled');
     submit.textContent='Nachricht senden';
     status.textContent='';
 
