@@ -46,12 +46,16 @@
     {
       "id": "service",
       "label": "Dienst nicht erreichbar",
-      "state": "submission_error"
+      "state": "submission_error",
+      "outcome_known": true,
+      "retry_safe": true
     },
     {
       "id": "unknown",
       "label": "Ausgang unklar",
-      "state": "outcome_unknown"
+      "state": "outcome_unknown",
+      "outcome_known": false,
+      "retry_safe": false
     }
   ]
 }
