@@ -31,12 +31,35 @@ test.describe('320 CSS px reflow smoke', () => {
       await page.goto(path);
       await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
 
-      const overflow = await page.evaluate(() => ({
-        clientWidth: document.documentElement.clientWidth,
-        scrollWidth: document.documentElement.scrollWidth,
-      }));
+      const overflow = await page.evaluate(() => {
+        const root = document.documentElement;
+        const clientWidth = root.clientWidth;
+        const offenders = [...document.querySelectorAll('body *')]
+          .map(element => {
+            const rect = element.getBoundingClientRect();
+            return {
+              element: element.tagName.toLowerCase(),
+              className: typeof element.className === 'string' ? element.className : '',
+              text: (element.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 90),
+              left: Math.round(rect.left * 10) / 10,
+              right: Math.round(rect.right * 10) / 10,
+              width: Math.round(rect.width * 10) / 10,
+            };
+          })
+          .filter(item => item.right > clientWidth + 1 || item.left < -1)
+          .slice(0, 12);
 
-      expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.clientWidth + 1);
+        return {
+          clientWidth,
+          scrollWidth: root.scrollWidth,
+          offenders,
+        };
+      });
+
+      expect(
+        overflow.scrollWidth,
+        `Horizontal overflow offenders:\n${JSON.stringify(overflow.offenders, null, 2)}`
+      ).toBeLessThanOrEqual(overflow.clientWidth + 1);
     });
   }
 });
