@@ -33,7 +33,7 @@
         <h2 id="form-title">Schreib uns</h2>
       </div>
 
-      <form action="./contact-message.html" method="post" data-form>
+      <form action="./contact-message.html" method="post" aria-busy="false" data-form>
         <div class="field">
           <label for="contact-name">Name</label>
           <input id="contact-name" name="name" type="text" autocomplete="name" required value="Mira Beispiel">
@@ -53,9 +53,9 @@
         <button class="submit" type="submit" data-submit>Nachricht senden</button>
       </form>
 
-      <div class="result" data-result hidden tabindex="-1">
+      <div class="result" data-result hidden>
         <p class="result-kicker" data-result-kicker></p>
-        <h3 data-result-title></h3>
+        <h3 id="contact-result-title" tabindex="-1" data-result-title></h3>
         <p data-result-body></p>
         <button type="button" data-return>Zurück zum Formular</button>
       </div>
