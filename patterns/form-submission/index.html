@@ -339,7 +339,8 @@
     "submitter": "When a form has multiple submit controls, the actual submitter and its semantics are part of the contract.",
     "pending": {
       "required_for_async": true,
-      "rule": "Communicate that work is in progress and prevent accidental duplicate intent without indiscriminately disabling controls whose values or focus behavior are still needed."
+      "rule": "Communicate that work is in progress and prevent accidental duplicate intent without indiscriminately disabling controls whose values or focus behavior are still needed.",
+      "focus_rule": "Prevent duplicate intent without causing avoidable focus loss. If a focused submit control remains discoverable via aria-disabled, suppress repeated activation in application logic."
     }
   },
   "response_contract": {
@@ -376,7 +377,8 @@
     "keyboard_operable": true,
     "entered_values_preserved_on_recoverable_error": true,
     "zoom_test_percent": 200,
-    "minimum_test_viewport_css_px": 320
+    "minimum_test_viewport_css_px": 320,
+    "pending_focus_behavior": "Pending-state duplicate prevention should avoid unnecessary focus loss."
   },
   "security_contract": {
     "server_validation": true,
@@ -464,6 +466,7 @@
     "Server-side validation remains authoritative.",
     "Recoverable errors preserve entered values.",
     "Asynchronous submission exposes a clear pending state without losing required submitted data.",
+    "Pending-state duplicate prevention does not discard required form values or cause avoidable focus loss.",
     "Success is communicated as task completion, not merely as a transport status.",
     "Unknown outcomes are not falsely described as definite failure.",
     "Retry behavior is explicit and automatic retry is not assumed safe for state-changing submissions.",
