@@ -1,0 +1,20 @@
+# Page Metadata
+
+> Cross-cutting how-to-web concern for keeping browser, search, social, structured-data and coding-agent representations of a page factually consistent.
+
+Use Build DNA as the normative reconstruction contract. The inspector and prose teach the concern but do not override the contract.
+
+## Contract
+
+- [Build DNA](./build-dna.json): Canonical reconstruction and consistency contract.
+- [LLM-friendly reference](./index.md): Concise explanation.
+- [Research](./RESEARCH.md): Sources and scope decisions.
+- [Human reference](./): Dogfoods its own metadata.
+
+## Constraints
+
+- Do not add meta keywords as a Google Search optimization.
+- Do not describe robots metadata as access control.
+- Do not invent canonical/public URLs or structured-data facts.
+- Treat llms.txt as an agent-discovery proposal, not a mandatory web standard.
+- Keep JSON-LD, Build DNA and demo JSON conceptually separate.
