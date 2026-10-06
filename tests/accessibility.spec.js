@@ -9,6 +9,7 @@ const references = [
   ['/elements/navigation/mega-menu/', 'Mega Menu'],
   ['/elements/interactive/combobox/', 'Combobox'],
   ['/patterns/form-submission/', 'Form Submission'],
+  ['/concerns/page-metadata/', 'Page Metadata'],
 ];
 
 for (const [path, label] of references) {
