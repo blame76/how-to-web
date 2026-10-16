@@ -15,6 +15,10 @@ This pattern starts at **submit intent** and follows the task until a clear outc
 
 The contact form in the human reference is only a demonstration. It is not the generic contract.
 
+## Scope boundary
+
+The Build DNA specifies a generic **submission lifecycle**, not a complete generic form specification. It does not supply a particular form's fields, endpoint, success criteria, server response mapping, data-retention policy, or duplicate-processing guarantees. Decide those from the real task and backend; do not infer them from the contact-form simulator.
+
 ## The core flow
 
 ```text

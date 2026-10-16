@@ -15,11 +15,11 @@ Current baseline:
 Use a currently supported Node.js release. Then:
 
 ```bash
-npm install
+npm ci
 npx playwright install chromium
 ```
 
-The first `npm install` creates `package-lock.json`. Commit that lockfile before this baseline branch is merged.
+`package-lock.json` pins the test dependencies. Use `npm ci` to install the same dependency tree locally and in CI.
 
 ## Normal gate
 
@@ -35,6 +35,8 @@ python3 bin/sync-build-dna --check-all
 ```
 
 Playwright starts a local Python HTTP server automatically on `127.0.0.1:4173`.
+
+Every pull request runs this gate in `.github/workflows/build-dna.yml`; CI installs the lockfile dependencies and Chromium first.
 
 ## Useful focused runs
 

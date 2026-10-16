@@ -2,6 +2,8 @@
 
 Stand: 2026-09-26
 
+Bestandsabgleich mit den Beispieldaten: 2026-10-16. Externe Quellen wurden dabei nicht erneut geprüft.
+
 ## Fragestellung
 
 Welche Informationen und Interaktionen braucht eine moderne Produktkarte, damit Menschen Produkte in einer Liste schnell vergleichen können, ohne aus der Karte bereits eine komplette Produktdetailseite zu machen?
@@ -28,8 +30,8 @@ Baymard empfiehlt für visuell getriebene Produkte inzwischen mindestens drei zu
 Ableitung:
 
 - Thumbnail-Wechsel ist Bestandteil des Premium-Retail-Beispiels.
-- Der aktuelle Demo-Stand mit zwei Bildern wird nicht als Best Practice ausgegeben, sondern als bekannte Lücke.
-- Eine dritte Detailansicht ist bereits als Bildprompt im README definiert.
+- Das Beispiel enthält drei auswählbare Ansichten: Studio, einen Detail-Crop derselben Studioaufnahme und eine separate Rückansicht.
+- Der Detail-Crop ist keine zusätzliche Produktaufnahme; die aktuelle Datenquelle bildet das durch `scale` und `position` ab.
 
 Quellen:
 - https://baymard.com/research-articles/secondary-hover-information
@@ -106,7 +108,7 @@ Quelle:
 ## Bewusste Entscheidungen im ersten Showcase
 
 - Ein Hoodie, keine Produktliste mit mehreren Produkten.
-- Zwei vorhandene Bildansichten; dritte Ansicht bleibt als dokumentierte Lücke.
+- Drei auswählbare Bildansichten; der Detail-Crop verwendet die Studioaufnahme, die Rückansicht eine separate Aufnahme.
 - Schwarz/weiß für UI und Rahmen; die Bildassets dürfen ihre eigene Bildwelt behalten.
 - Kein Wishlist-Icon, kein Sale-Badge, kein künstlicher Countdown.
 - Kein Quick Add.
@@ -119,10 +121,10 @@ Quelle:
 PASS erst, wenn:
 
 - JSON ohne HTML-Änderung austauschbar ist,
-- beide Bilder mit Tastatur umschaltbar sind,
+- alle drei Bildansichten mit Tastatur umschaltbar sind,
 - Focus sichtbar bleibt,
 - Bildwechsel den Accessible Name/Alt-Text korrekt aktualisiert,
 - keine horizontalen Überläufe bei 320 CSS-Pixeln entstehen,
 - 200-%-Zoom sinnvoll bleibt,
 - responsive Bildquellen korrekt aufgelöst werden,
-- die dritte für Apparel empfohlene Ansicht entweder vorhanden oder bewusst als Ausnahme dokumentiert ist.
+- der Bildwechsel eine verständliche Ansicht auswählt und die Datenquelle nicht fälschlich als drei unterschiedliche Produktaufnahmen darstellt.
