@@ -60,5 +60,7 @@ Neither experiment was executed. Both are **NOT RUN** because no independent cod
 - `npm run gate`: **PASS**, all 38 tests in 15.1 seconds; inline DNA sync passed for all 3 generated copies. This includes all 7 reference-consistency tests, existing smoke and interaction-contract tests, and the Axe accessibility tests.
 - `git diff --check`: **PASS**.
 - Secret scan of changed files: **PASS**, no secrets detected.
+- Parallel CodeQL scan: **PASS**, zero alerts for Actions and JavaScript.
+- Automated Code Review: **NOT RUN reliably**. The wrapper returned no findings but logged that its reviewer model was unavailable in the registry. Do not treat this as an independent review result.
 
 The updated GitHub workflow is configured but the post-push run did not execute (`action_required`, no jobs). A repository owner may need to authorize the workflow before remote validation is available.

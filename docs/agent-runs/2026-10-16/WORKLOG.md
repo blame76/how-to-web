@@ -26,6 +26,7 @@
 - Added a narrow-screen single-column rule for Form Submission's mistake rows. The targeted 320px smoke check passed. Re-ran `npm run gate`: **PASS**, all 38 tests, including smoke, seven interaction contracts, the seven new reference-consistency checks, and Axe.
 - Updated the workflow to use locked dependencies, install Chromium, and run `npm run gate` for pull requests. Set up Node 22 via `actions/setup-node` pinned to its checked immutable v7.1.0 commit. The post-push run result is recorded below.
 - After pushing the workflow change, GitHub run `38894313575` completed with `action_required` and zero jobs. The logs endpoint returned 404, so the remote workflow did not execute; local validation remains the only current test result.
+- Ran parallel validation after committing code. CodeQL completed for Actions and JavaScript with zero alerts. The review wrapper reported no comments but its underlying reviewer failed to initialize because the configured model was unavailable; record review as unavailable, not as an independent PASS.
 
 ## Implementation and verification
 
