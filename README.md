@@ -120,7 +120,7 @@ The repository publishes `llms.txt`. Individual component paths may provide a mo
 Playwright is the local pre-merge browser gate for reference features.
 
 ```bash
-npm install
+npm ci
 npx playwright install chromium
 npm run gate
 ```

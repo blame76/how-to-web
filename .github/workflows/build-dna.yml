@@ -1,30 +1,32 @@
-name: Build DNA contract
+name: Reference quality gate
 
 on:
   pull_request:
-    paths:
-      - "**/build-dna.json"
-      - "**/index.html"
-      - "bin/sync-build-dna"
-      - ".github/workflows/build-dna.yml"
   push:
     branches:
       - main
-    paths:
-      - "**/build-dna.json"
-      - "**/index.html"
-      - "bin/sync-build-dna"
-      - ".github/workflows/build-dna.yml"
 
 permissions:
   contents: read
 
 jobs:
-  inline-contract:
+  reference-quality:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Check inline Build DNA copies
-        run: python3 bin/sync-build-dna --check-all
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run the reference quality gate
+        run: npm run gate

@@ -46,4 +46,18 @@ Neither experiment was executed. Both are **NOT RUN** because no independent cod
 - JSON parsing and seven `public.research` target checks: **PASS**.
 - `git diff --check`: initially **FAIL** on trailing whitespace in the edited Product Card research heading; removed the whitespace and re-ran the check successfully.
 
-The existing interaction/smoke/Axe suite and updated CI workflow remain to be verified.
+### Full gate attempt before responsive correction
+
+- `npm ci`: **PASS**; lockfile installation succeeded and npm reported zero vulnerabilities.
+- `npm run gate`: **FAIL**, with 37/38 Playwright tests passing. The failing test was `Form Submission does not create page-level horizontal overflow` at 320 CSS px. Its diagnostic also reported the long inline JSON code element inside its intentionally scrollable `<pre>`; the page-level overflow was traced to a `.mistake-list article` whose two-column grid retained a `14rem` minimum. No form page stylesheet/markup was changed in this run at that point. The fixed-width article grid is inconsistent with the reference's own 320px responsive contract; it will be corrected, not masked by changing the test.
+- Full existing interaction and Axe results are included in the 37 passing tests; the corrected full gate remains to be run.
+
+### After the responsive correction
+
+- Added a single-column grid for `.mistake-list article` at the existing 58rem breakpoint.
+- `npx playwright test tests/smoke.spec.js --grep='Form Submission does not create page-level horizontal overflow'`: **PASS**, 1 test.
+- `npm run gate`: **PASS**, all 38 tests in 15.1 seconds; inline DNA sync passed for all 3 generated copies. This includes all 7 reference-consistency tests, existing smoke and interaction-contract tests, and the Axe accessibility tests.
+- `git diff --check`: **PASS**.
+- Secret scan of changed files: **PASS**, no secrets detected.
+
+The updated GitHub workflow's post-push run is pending and will be recorded separately from this local result.

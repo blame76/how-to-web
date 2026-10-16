@@ -22,6 +22,9 @@
 - Ran `npm install`: **PASS**, six packages installed and npm reported zero vulnerabilities; this created the missing lockfile. Installed the Playwright Chromium browser successfully.
 - Static checks confirmed JSON parsing, JavaScript syntax, and DNA synchronization. `git diff --check` found a trailing-space Markdown hard break in the updated Product Card research header; it was removed. Re-run whitespace checks and tests next.
 - Re-ran whitespace, JSON, syntax, and DNA synchronization checks: **PASS**. `npx playwright test tests/reference-consistency.spec.js`: **PASS**, 7/7 references.
+- Ran `npm ci && npm run gate`: lockfile installation and DNA synchronization passed, then 37/38 Playwright tests passed. The existing Form Submission 320-CSS-pixel smoke check failed: a mistake-list article retained a two-column grid with a `14rem` minimum, causing page overflow. The touched Form Submission edits were Markdown-only; this is an existing responsive defect directly covered by its DNA's 320px contract. Correct the narrow layout rather than weakening the test.
+- Added a narrow-screen single-column rule for Form Submission's mistake rows. The targeted 320px smoke check passed. Re-ran `npm run gate`: **PASS**, all 38 tests, including smoke, seven interaction contracts, the seven new reference-consistency checks, and Axe.
+- Updated the workflow to use locked dependencies, install Chromium, and run `npm run gate` for pull requests. Set up Node 22 via `actions/setup-node` pinned to its checked immutable v7.1.0 commit. The remote run for this workflow change is pending a pushed commit.
 
 ## Implementation and verification
 
