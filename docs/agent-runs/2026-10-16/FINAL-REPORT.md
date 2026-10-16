@@ -22,7 +22,7 @@ The starting point was commit `6d00045bf94add6ba6dd454435b8394d20fd04c1` on `cop
 - Focused reference consistency: **PASS**, 7/7.
 - Corrected Form Submission 320px smoke check: **PASS**.
 - `npm run gate`: **PASS**, 38/38, including DNA synchronization, existing Playwright smoke/contracts, new consistency tests, and Axe.
-- GitHub workflow run for the updated CI is pending; see [VALIDATION.md](./VALIDATION.md).
+- GitHub workflow run `38894313575` ended `action_required` with no jobs and no logs; remote CI is **NOT RUN**. See [VALIDATION.md](./VALIDATION.md).
 
 ## Failed attempts and corrections
 

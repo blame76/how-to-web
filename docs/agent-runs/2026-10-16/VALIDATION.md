@@ -10,6 +10,7 @@
 | HTML discovery links | PASS | Each reference has one Markdown alternate, `llms.txt` describedby, and JSON alternate. |
 | Untouched `npm run gate` | FAIL (environment prerequisite) | Sync passed; `playwright: not found` because `node_modules/` and `package-lock.json` were absent. |
 | Historical Build DNA workflow, run `36547549720`, job `109337471830` | PASS | GitHub job logs show all three inline contracts in sync. This was not the current branch's run. |
+| Updated reference-quality workflow, run `38894313575` | NOT RUN | GitHub conclusion `action_required`; job list is empty and logs return 404. No remote gate result is available. |
 | External source retrieval | BLOCKED | See `RESEARCH.md`; DNS/network errors prevented page access. |
 
 ## Reconstruction experiments
@@ -60,4 +61,4 @@ Neither experiment was executed. Both are **NOT RUN** because no independent cod
 - `git diff --check`: **PASS**.
 - Secret scan of changed files: **PASS**, no secrets detected.
 
-The updated GitHub workflow's post-push run is pending and will be recorded separately from this local result.
+The updated GitHub workflow is configured but the post-push run did not execute (`action_required`, no jobs). A repository owner may need to authorize the workflow before remote validation is available.
