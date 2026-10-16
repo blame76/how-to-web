@@ -1,0 +1,18 @@
+# Worklog
+
+## 2026-10-16 — repository baseline
+
+- Recorded starting branch `copilot/auftrag-how-to-web-finalization`, commit `6d00045bf94add6ba6dd454435b8394d20fd04c1`, and a clean working tree.
+- Read the root README, `llms.txt`, `TESTING.md`, all eight `docs/architecture/` documents, and the seven reference Build DNA, Markdown guides, discovery files, and research notes. Reviewed example inventories, Playwright contracts, smoke/Axe tests, and the Build DNA workflow.
+- A read-only Explore agent audited the same seven reference packages. It confirmed the missing `public.research` pointers in six DNA files and found no other objective contract or link defect.
+- Confirmed all seven JSON files and declared local reference/example targets parse/resolve. All seven pages have Markdown, `llms.txt`, and JSON discovery links. Existing component Markdown links resolve.
+- Ran `python3 bin/sync-build-dna --check-all`: **PASS**, three generated copies.
+- Ran the untouched `npm run gate`: DNA synchronization passed, then Playwright failed to start because dependencies were not installed. No lockfile existed.
+- Retrieved the historical Build DNA CI job logs for run `36547549720`: **PASS** for the three inline copies. The workflow did not include Playwright/Axe.
+- Compared Product Card research with `premium-retail.json`; the research note's two-image/third-image-pending statement is stale. The actual fixture has three views; the detail crop uses the studio source and the back view uses its own image.
+- Attempted external retrieval of WHATWG forms, WAI form validation/Combobox/Dialog guidance, MDN `requestSubmit`, and OWASP input-validation guidance. Fetches were blocked by DNS/network access; no source claim was treated as newly verified.
+- No independent coding agent or isolated project was available for either reconstruction scenario.
+
+## Implementation and verification
+
+Updates will be added here as work proceeds; test commands and their actual results will be recorded in `VALIDATION.md`.
