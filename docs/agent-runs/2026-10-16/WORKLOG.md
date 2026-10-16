@@ -13,6 +13,16 @@
 - Attempted external retrieval of WHATWG forms, WAI form validation/Combobox/Dialog guidance, MDN `requestSubmit`, and OWASP input-validation guidance. Fetches were blocked by DNS/network access; no source claim was treated as newly verified.
 - No independent coding agent or isolated project was available for either reconstruction scenario.
 
+## 2026-10-16 — contract and discovery corrections
+
+- Added `public.research: "./RESEARCH.md"` to the six DNA files that omitted an existing research document. Synchronized the generated Product Card and Combobox inline copies with `bin/sync-build-dna`.
+- Added an explicit Form Submission scope boundary to the public Markdown and agent discovery text: it specifies a generic submission lifecycle, not task-specific fields/backend behavior.
+- Corrected the Product Card research note to match the current three-view fixture, including the shared source used by its detail crop.
+- Added a Playwright consistency test for all seven canonical contracts, discovery links, example/public targets, and relative links in each component's Markdown guidance.
+- Ran `npm install`: **PASS**, six packages installed and npm reported zero vulnerabilities; this created the missing lockfile. Installed the Playwright Chromium browser successfully.
+- Static checks confirmed JSON parsing, JavaScript syntax, and DNA synchronization. `git diff --check` found a trailing-space Markdown hard break in the updated Product Card research header; it was removed. Re-run whitespace checks and tests next.
+- Re-ran whitespace, JSON, syntax, and DNA synchronization checks: **PASS**. `npx playwright test tests/reference-consistency.spec.js`: **PASS**, 7/7 references.
+
 ## Implementation and verification
 
 Updates will be added here as work proceeds; test commands and their actual results will be recorded in `VALIDATION.md`.

@@ -36,4 +36,14 @@ Neither experiment was executed. Both are **NOT RUN** because no independent cod
 
 ## Final test results
 
-Pending implementation. Actual commands, exit status, failures, and corrections will be appended here before finalization.
+### Focused reference-consistency test
+
+- `npm install`: **PASS**; six packages installed, zero reported npm vulnerabilities, and `package-lock.json` created.
+- `npx playwright install chromium`: **PASS**.
+- `npx playwright test tests/reference-consistency.spec.js`: **PASS**, 7 tests.
+- `python3 bin/sync-build-dna --check-all`: **PASS**, 3 inline copies.
+- `node --check tests/reference-consistency.spec.js`: **PASS**.
+- JSON parsing and seven `public.research` target checks: **PASS**.
+- `git diff --check`: initially **FAIL** on trailing whitespace in the edited Product Card research heading; removed the whitespace and re-ran the check successfully.
+
+The existing interaction/smoke/Axe suite and updated CI workflow remain to be verified.

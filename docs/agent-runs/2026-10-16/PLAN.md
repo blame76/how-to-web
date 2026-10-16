@@ -6,8 +6,8 @@ Status vocabulary: `PASS`, `FAIL`, `BLOCKED`, `NOT RUN`.
 
 | Priority | Class | Work | Dependency | Acceptance |
 |---|---|---|---|---|
-| 1 | EXECUTE | Fix the six missing `public.research` pointers and correct the stale Product Card image-count text using the current fixture as evidence. | Baseline audit | All seven DNA files advertise their existing research file; references remain valid JSON; only generated inline copies are synchronized by the existing tool. |
-| 2 | EXECUTE | Add a focused Playwright consistency test for the seven public contracts, discovery links, and local Markdown/example targets. | Reference audit | The test checks canonical contract fields, HTML discovery links, and locally resolvable references without external network access. |
+| 1 | EXECUTE | Fix the six missing `public.research` pointers and correct the stale Product Card image-count text using the current fixture as evidence. | Baseline audit | **PASS** — all seven DNA files advertise existing research; JSON parses; the two generated inline copies were synchronized. |
+| 2 | EXECUTE | Add a focused Playwright consistency test for the seven public contracts, discovery links, and local Markdown/example targets. | Reference audit | **PASS** — seven focused Playwright tests pass; targets are checked locally without external network access. |
 | 3 | EXECUTE | Generate a lockfile for the already pinned npm dependencies, update setup instructions, and make CI run the existing quality gate. | Dependency install; Playwright browser install in CI | `npm ci` succeeds and CI invokes `npm run gate`, including current smoke, contract, and Axe tests. |
 | 4 | EXECUTE | Maintain the seven required dated process documents and prepare two reproducible reconstruction experiments. | Audit and actual test results | Each required file distinguishes observed facts from decisions, unavailable evidence, and unrun work. |
 | 5 | BLOCKED | Independently execute Product Card and Form Submission reconstructions. | An independent coding agent/LLM and isolated target project | Keep both experiments `NOT RUN` unless an independent environment becomes available; self-review is not evidence. |

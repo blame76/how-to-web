@@ -97,6 +97,8 @@ https://blame76.github.io/how-to-web/elements/navigation/navbar/
 
 This is the first reference **pattern** in the series. Its Build DNA emphasizes task flow, error classes, recovery and retry instead of component anatomy.
 
+It specifies a generic submission lifecycle, not every field or backend decision for a particular form. The contact example demonstrates the lifecycle; it does not define production service behavior.
+
 ## Build DNA
 
 Build DNA is the how-to-web machine-readable layer.

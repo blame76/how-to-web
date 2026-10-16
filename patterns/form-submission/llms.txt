@@ -18,6 +18,8 @@
 
 Do not copy the example form as the generic pattern.
 
+This Build DNA is a generic submission-lifecycle contract, not a complete generic form specification. It does not provide task-specific fields, a backend endpoint, success criteria, response mapping, data-retention rules, or retry/idempotency guarantees. The contact example demonstrates outcomes; its scenario settings are not production policy.
+
 First establish:
 
 1. the task and side effects,
