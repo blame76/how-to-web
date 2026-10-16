@@ -1,0 +1,227 @@
+{
+  "format": "how-to-web-build-dna",
+  "version": "0.1",
+  "id": "page-metadata",
+  "kind": "concern",
+  "title": "Page Metadata",
+  "status": "ready-for-review",
+  "purpose": "Keep the human-visible document and its machine-facing representations consistent across browser identity, search/indexing signals, social sharing, structured data and agent discovery.",
+  "reconstruction_priority": [
+    "purpose",
+    "consistency_contract",
+    "identity_contract",
+    "indexing_contract",
+    "social_contract",
+    "structured_data_contract",
+    "agent_discovery_contract",
+    "constraints",
+    "accessibility",
+    "visual"
+  ],
+  "learning_contract": {
+    "false_simplification": "A web page is not only what is visible in the browser viewport.",
+    "reader_should_understand": [
+      "document title, search description, social preview, structured data and agent discovery are different representations of the same page",
+      "these representations may adapt wording to their context but must not contradict the page",
+      "meta keywords are not a useful Google Search ranking/indexing mechanism",
+      "robots metadata is not access control",
+      "JSON-LD, Build DNA and example JSON solve different problems",
+      "llms.txt is an agent-discovery proposal, not a required HTML web standard"
+    ]
+  },
+  "scope": {
+    "includes": [
+      "document title",
+      "meta description",
+      "canonical URL",
+      "robots meta",
+      "Open Graph core metadata",
+      "JSON-LD structured data",
+      "Markdown alternate",
+      "llms.txt discovery",
+      "how-to-web Build DNA discovery",
+      "cross-representation consistency"
+    ],
+    "excludes": [
+      "analytics and tracking",
+      "consent management",
+      "CSP/security headers",
+      "full robots.txt design",
+      "sitemaps",
+      "PWA manifest",
+      "favicon matrix",
+      "RSS/Atom",
+      "hreflang architecture",
+      "platform-specific marketing tags"
+    ]
+  },
+  "source_of_truth": {
+    "rule": "Define page facts once where practical, then deliberately adapt representations for each consumer. Duplication must not create contradictory identity, URLs, descriptions or entities.",
+    "page_facts": [
+      "page identity",
+      "public URL",
+      "canonical URL",
+      "primary title/name",
+      "plain-language description",
+      "share image identity and alt text",
+      "represented structured-data entity"
+    ],
+    "never_invent": [
+      "canonical URL",
+      "public URL",
+      "organization/person claims",
+      "dates",
+      "social image meaning",
+      "structured-data properties not supported by the visible page"
+    ]
+  },
+  "identity_contract": {
+    "required": [
+      "document title",
+      "plain-language page description",
+      "published URL decision",
+      "canonical URL decision"
+    ],
+    "title": "The document title identifies the page outside its visible heading context; it need not be byte-identical to the H1.",
+    "description": "A concise external description. Search engines may choose other page text for snippets.",
+    "canonical": "A preferred representative URL signal, not access control and not a guarantee that a search engine will select it."
+  },
+  "indexing_contract": {
+    "robots_meta": "Declare indexing/result-display preferences only when needed.",
+    "security_boundary": "robots meta and robots.txt are crawler/indexing mechanisms, not authorization or secrecy controls.",
+    "meta_keywords": {
+      "recommended": false,
+      "rule": "Do not add meta keywords for Google Search ranking or indexing. If shown educationally, label them as a historical anti-example."
+    }
+  },
+  "social_contract": {
+    "protocol": "Open Graph",
+    "core": [
+      "og:title",
+      "og:type",
+      "og:image",
+      "og:url"
+    ],
+    "recommended_when_image_present": [
+      "og:description",
+      "og:image:alt",
+      "og:image:width",
+      "og:image:height",
+      "og:image:type"
+    ],
+    "rule": "Treat the share card as an intentional external representation, not as an arbitrary image scraped from the page."
+  },
+  "structured_data_contract": {
+    "preferred_example_format": "JSON-LD",
+    "rule": "Structured data must describe entities and facts actually represented by the page; syntactic validity does not guarantee a rich search result.",
+    "distinguish_from": {
+      "build-dna.json": "how-to-web reconstruction contract",
+      "example JSON": "demo/application data",
+      "JSON-LD": "structured semantic representation of published page/entity"
+    }
+  },
+  "agent_discovery_contract": {
+    "status": "llms.txt is a proposal with v2 published August 2026; present it as agent-discovery guidance, not a mandatory web standard.",
+    "html_links": [
+      "rel=alternate type=text/markdown -> index.md",
+      "rel=describedby -> llms.txt",
+      "rel=alternate type=application/json -> build-dna.json"
+    ],
+    "rule": "Prefer the most specific applicable llms.txt and keep linked machine-readable resources consistent with the human reference."
+  },
+  "consistency_contract": {
+    "may_adapt": [
+      "wording length by context",
+      "social title phrasing",
+      "social description phrasing",
+      "share image composition"
+    ],
+    "must_agree": [
+      "which page/entity is being described",
+      "canonical/public identity",
+      "material factual claims",
+      "meaning of the social preview",
+      "structured-data facts"
+    ],
+    "review_question": "Do all representations tell the same truth about this page?"
+  },
+  "accessibility": {
+    "social_image_alt": "When og:image is provided, provide meaningful og:image:alt for the image's share-context purpose.",
+    "inspector": "Human teaching UI remains keyboard operable, visible at 320 CSS px and understandable without color alone."
+  },
+  "visual": {
+    "concept": "Begin with deliberately sparse visible fine print, then reveal machine perspectives as an inspector.",
+    "preserve": [
+      "contrast between little visible content and rich machine metadata",
+      "clear labels for Browser, Search, Social, JSON-LD and Agents",
+      "anti-example labeling for meta keywords"
+    ],
+    "may_change": [
+      "typeface",
+      "color",
+      "spacing",
+      "border treatment",
+      "inspector layout"
+    ]
+  },
+  "constraints": [
+    "Do not present meta keywords as a Google Search optimization.",
+    "Do not describe noindex or robots.txt as security.",
+    "Do not promise that meta description will be used verbatim as a search snippet.",
+    "Do not treat canonical as an absolute directive.",
+    "Do not invent structured-data facts absent from the page.",
+    "Do not describe llms.txt as a required WHATWG, W3C or IETF standard.",
+    "Do not collapse JSON-LD, Build DNA and demo JSON into one generic JSON concept.",
+    "Do not let social/search/structured representations materially contradict the visible page."
+  ],
+  "adaptation_contract": {
+    "may_change": [
+      "framework",
+      "template language",
+      "metadata generation mechanism",
+      "CMS integration",
+      "CSS architecture",
+      "visual tokens"
+    ],
+    "must_preserve": [
+      "cross-representation factual consistency",
+      "explicit URL identity decisions",
+      "indexing vs security boundary",
+      "intentional social representation",
+      "structured-data honesty",
+      "agent-discovery status and links"
+    ]
+  },
+  "agent_contract": {
+    "instruction": "Reconstruct the metadata concern from this Build DNA. First establish page facts and published URLs, then derive browser, search, social, structured-data and agent representations without inventing facts.",
+    "when_conflicting": "Factual consistency, source-of-truth rules and constraints override visual resemblance or SEO folklore.",
+    "output_expectation": "Metadata appropriate to the target page plus an explicit list of unresolved facts/URLs that require owner input."
+  },
+  "acceptance": [
+    "The page has a meaningful document title and description.",
+    "Canonical/public URL decisions are explicit and consistent with Open Graph and structured identity.",
+    "Robots metadata is never presented as access control.",
+    "Open Graph core metadata represents the same page and image alt is provided when an image is declared.",
+    "JSON-LD facts match the visible page.",
+    "Meta keywords appear only as a clearly labelled anti-example.",
+    "Markdown, llms.txt and Build DNA discovery links are present.",
+    "The human inspector works without JavaScript for core content and enhances without hiding information.",
+    "The reference has no page-level horizontal overflow at 320 CSS px.",
+    "The reference has no automatically detectable WCAG A/AA violations."
+  ],
+  "public": {
+    "human_page": "./",
+    "markdown": "./index.md",
+    "llms": "./llms.txt",
+    "build_dna": "./build-dna.json",
+    "research": "./RESEARCH.md",
+    "source_repository": "https://github.com/blame76/how-to-web/tree/main/concerns/page-metadata"
+  },
+  "examples": [
+    {
+      "id": "this-reference-page",
+      "human": "./",
+      "note": "The reference page dogfoods the metadata concern and exposes its own machine-facing layers through the inspector."
+    }
+  ]
+}

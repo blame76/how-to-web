@@ -4,7 +4,7 @@
 
 how-to-web is a visual and machine-readable reference for web building blocks.
 
-For humans it explains what a component, block, organism or pattern is, which decisions matter, what current best practices say and how to review the result.
+For humans it explains elements, blocks, organisms, patterns and cross-cutting concerns: what they are, which decisions matter, what current best practices say and how to review the result.
 
 For coding agents it provides **Build DNA**: a portable reconstruction contract that describes purpose, composition, behavior, responsive rules, accessibility and constraints without binding the implementation to a framework.
 
@@ -107,7 +107,7 @@ It separates:
 - **what may adapt** — framework, CSS architecture, design tokens and visual styling;
 - **example data** — concrete content used only to demonstrate the component.
 
-See `docs/architecture/BUILD-DNA.md` for the current contract.
+See `docs/architecture/BUILD-DNA.md` for the current contract and `docs/architecture/TAXONOMY.md` for the learning taxonomy.
 
 ## Agent discovery
 

@@ -198,5 +198,9 @@ The same contract applies across how-to-web, but emphasis changes:
 - **Block** → composition, hierarchy and data DNA
 - **Organism** → behavior, coordination and accessibility DNA
 - **Pattern** → task flow, errors, recovery and data-flow DNA
+- **Concern** → cross-cutting policy, consistency, source-of-truth, integration and review DNA
+- **Reference** → normally no Build DNA; explanatory vocabulary rather than a reconstructable implementation contract
+
+See `docs/architecture/TAXONOMY.md` for category boundaries and the decision guide.
 
 Do not invent separate schemas prematurely. Extend the common contract only when repeated features demonstrate a real need.

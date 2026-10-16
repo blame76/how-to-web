@@ -28,6 +28,12 @@ Use the most specific `llms.txt` available for a component path. Build DNA is th
 - [Form Submission Build DNA](./patterns/form-submission/build-dna.json): Canonical Form Submission task-flow contract.
 - [Form Submission llms.txt](./patterns/form-submission/llms.txt): Pattern-specific agent guidance.
 
+## Cross-cutting concerns
+
+- [Page Metadata](./concerns/page-metadata/index.md): Keep browser, search, social, structured-data, and coding-agent representations consistent.
+- [Page Metadata Build DNA](./concerns/page-metadata/build-dna.json): Canonical metadata consistency and reconstruction contract.
+- [Page Metadata llms.txt](./concerns/page-metadata/llms.txt): Concern-specific agent discovery guidance.
+
 ## Source
 
 - [GitHub repository](https://github.com/blame76/how-to-web): Source, research and architecture documentation.
